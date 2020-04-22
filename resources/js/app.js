@@ -9,31 +9,26 @@ window.Vue = require('vue');
 import RecordRTC  from "recordrtc";
 Vue.use(RecordRTC);
 
-function handleSuccess(stream) {
-    window.stream = stream; // stream available to console
-    video.srcObject = stream;
-    var track = stream.getTracks()[0];
-    var settings = track.getSettings ? track.getSettings() : null;
-    var settingsString;
-    if (settings) {
-      settingsString = JSON.stringify(settings).
-        replace(/,"/g,'\n').
-        replace(/":/g, ': ').
-        replace(/{"/g, '').
-        replace(/[}]/g, '');
-    } else {
-      settingsString =
-          'MediaStreamTrack.getSettings() is not supported by this browser :^(.';
-    }
-    settingsDiv.textContent = settingsString;
-  }
-  
-  function handleError(error) {
-    console.log('navigator.getUserMedia error: ', error);
-  }
-  
-  navigator.mediaDevices.getUserMedia(constraints).
-    then(handleSuccess).catch(handleError);
+var MediaStreamRecorder = require('msr');
+Vue.use(MediaStreamRecorder);
+console.log('require-msr', MediaStreamRecorder);
+
+console.log('\n\n-------\n\n');
+
+var recorder = new MediaStreamRecorder({});
+console.log('MediaStreamRecorder', recorder);
+
+console.log('\n\n-------\n\n');
+
+var multiStreamRecorder = new MediaStreamRecorder.MultiStreamRecorder([]);
+console.log('MultiStreamRecorder', multiStreamRecorder);
+var mediaConstraints = {
+    audio: true,
+    video:true,
+};
+
+
+navigator.getUserMedia(mediaConstraints);
 
 
 
