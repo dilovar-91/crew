@@ -20,12 +20,16 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/seamen', 'SeamenController@index')->name('seamen.index');
 Route::get('lang/{locale}', 'HomeController@lang');
 
 
 Route::match(['get', 'post'], '/dashboard', function(){
     return view('dashboard');
+});
+Route::match(['get', 'post'], '/welcome', function(){
+    return view('welcome');
 });
 Route::view('/pages/slick', 'pages.slick');
 Route::view('/pages/datatables', 'pages.datatables');

@@ -81,7 +81,9 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                <record-component></record-component>
+
+
                 </div>
 
                 <div class="links">
