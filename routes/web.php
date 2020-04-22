@@ -22,15 +22,14 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/seamen', 'SeamenController@index')->name('seamen.index');
+Route::get('/test', 'SeamenController@test')->name('seamen.test');
 Route::get('lang/{locale}', 'HomeController@lang');
 
 
 Route::match(['get', 'post'], '/dashboard', function(){
     return view('dashboard');
 });
-Route::match(['get', 'post'], '/welcome', function(){
-    return view('test');
-});
+
 Route::view('/pages/slick', 'pages.slick');
 Route::view('/pages/datatables', 'pages.datatables');
 Route::view('/pages/blank', 'pages.blank');

@@ -20,6 +20,10 @@ class SeamenController extends Controller
     {
         return view('seamen.index');
     }
+    public function test()
+    {
+        return view('seamen.test');
+    }
 
     /**
      * Show the form for creating a new resource.

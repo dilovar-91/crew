@@ -6,8 +6,8 @@
 
         <title>@yield('title')</title>
 
-        <meta name="description" content="OneUI - Bootstrap 4 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
-        <meta name="author" content="pixelcave">
+        <meta name="description" content="">
+        
         <meta name="robots" content="noindex, nofollow">
 
         <!-- CSRF Token -->
