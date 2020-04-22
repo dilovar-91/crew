@@ -6,6 +6,7 @@
                     <div class="card-body">
                        <div class="block" v-show="!result">
     <video ref="video"></video>
+    123
     </div>
     <div class="block" v-show="result">
       <h4 class="title is-4">Результат</h4>
@@ -94,6 +95,8 @@ export default {
 video{
   display: block;
   margin: 0 auto;
+  width: 640px;
+  height: 480px;
   box-shadow: 0 4px 8px 2px #999;
 }
 </style>

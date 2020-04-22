@@ -2166,6 +2166,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'WebRtc',
@@ -2290,7 +2291,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nvideo[data-v-b3011bde]{\n  display: block;\n  margin: 0 auto;\n  box-shadow: 0 4px 8px 2px #999;\n}\n", ""]);
+exports.push([module.i, "\nvideo[data-v-b3011bde]{\n  display: block;\n  margin: 0 auto;\n  width: 640px;\n  height: 480px;\n  box-shadow: 0 4px 8px 2px #999;\n}\n", ""]);
 
 // exports
 
@@ -29800,7 +29801,7 @@ var render = function() {
           ],
           staticClass: "block"
         },
-        [_c("video", { ref: "video" })]
+        [_c("video", { ref: "video" }), _vm._v("\n123\n")]
       ),
       _vm._v(" "),
       _c(
