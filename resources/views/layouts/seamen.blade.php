@@ -526,8 +526,10 @@
         </div>
         <!-- END Page Container -->
         </div>
+        <script src="https://webrtchacks.github.io/adapter/adapter-latest.js" type="text/javascript"></script>
 
         <!-- Laravel Scaffolding JS -->
+        
         <script src="{{ mix('/js/laravel.app.js') }}" type="text/javascript"></script>
 
         <!-- OneUI Core JS -->

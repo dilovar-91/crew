@@ -26,9 +26,20 @@ var mediaConstraints = {
     audio: true,
     video:true,
 };
+function onMediaSuccess(stream) {
+    var mediaRecorder = new MediaStreamRecorder(stream);
+    mediaRecorder.mimeType = 'audio/wav'; // check this line for audio/wav
+    mediaRecorder.ondataavailable = function (blob) {
+        var blobURL = URL.createObjectURL(blob);
+    };
+    mediaRecorder.start(3000);
+}
 
+function onMediaError(e) {
+    console.log('media error', e);
+}
 
-navigator.getUserMedia(mediaConstraints);
+navigator.getUserMedia(mediaConstraints, onMediaSuccess, onMediaError);
 
 
 
