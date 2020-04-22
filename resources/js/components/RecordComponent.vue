@@ -75,13 +75,12 @@ export default {
   mounted() {
     let self = this;
     let video = self.$refs.video;
+    
     navigator.mediaDevices.getUserMedia({
         video: true,
         audio: true
     }).then(async function(stream) {
-        self.recorder = RecordRTC(stream, {
-          type: 'video'
-        });
+        self.recorder = RecordRTC(stream, { mimeType: "video/webm;codecs=h264", video: { width: 1920, height: 1080 }, bitsPerSecond: 51200000 });
         video.srcObject = stream;
         video.volume = 0;
         video.play()
