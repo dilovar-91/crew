@@ -133,7 +133,7 @@
     // Used for buttons that adapt to light/dark header and sidebar variations
     .page-header-dark #page-header .btn-dual,
     .sidebar-dark #sidebar .btn-dual {
-        @include button-dual-variant($white, lighten($brand-dark, 9%), lighten($brand-dark, 9%));
+        @include button-dual-variant($white, lighten($brand-lighter, 9%), lighten($brand-dark, 9%));
     }
 
     // Alerts

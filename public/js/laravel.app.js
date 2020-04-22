@@ -2166,10 +2166,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'WebRtc',
@@ -29776,78 +29772,64 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-md-8" }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-header" }, [
-            _vm._v(
-              _vm._s(
-                _vm.timer.interval
-                  ? "Запись " + _vm.formatedTime
-                  : "Начать запись"
-              )
-            )
-          ]),
+  return _c("div", [
+    _c("div", { staticClass: "card-header" }, [
+      _vm._v(
+        _vm._s(
+          _vm.timer.interval ? "Запись " + _vm.formatedTime : "Начать запись"
+        )
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "card-body" }, [
+      _c(
+        "div",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: !_vm.result,
+              expression: "!result"
+            }
+          ],
+          staticClass: "block"
+        },
+        [_c("video", { ref: "video" })]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.result,
+              expression: "result"
+            }
+          ],
+          staticClass: "block"
+        },
+        [
+          _c("h4", { staticClass: "title is-4" }, [_vm._v("Результат")]),
           _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _c(
-              "div",
-              {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: !_vm.result,
-                    expression: "!result"
-                  }
-                ],
-                staticClass: "block"
-              },
-              [_c("video", { ref: "video" })]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                directives: [
-                  {
-                    name: "show",
-                    rawName: "v-show",
-                    value: _vm.result,
-                    expression: "result"
-                  }
-                ],
-                staticClass: "block"
-              },
-              [
-                _c("h4", { staticClass: "title is-4" }, [_vm._v("Результат")]),
-                _vm._v(" "),
-                _c("video", { attrs: { controls: "", src: _vm.blobUrl } })
-              ]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "field" }, [
-              _vm.recorder && _vm.recorder.getState() === "recording"
-                ? _c(
-                    "button",
-                    {
-                      staticClass: "button is-danger",
-                      on: { click: _vm.stop }
-                    },
-                    [_vm._v("\n      Пауза\n    ")]
-                  )
-                : _c(
-                    "button",
-                    {
-                      staticClass: "button is-primary",
-                      on: { click: _vm.record }
-                    },
-                    [_vm._v("\n      Запись\n    ")]
-                  )
-            ])
-          ])
-        ])
+          _c("video", { attrs: { controls: "", src: _vm.blobUrl } })
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "field" }, [
+        _vm.recorder && _vm.recorder.getState() === "recording"
+          ? _c(
+              "button",
+              { staticClass: "button is-danger", on: { click: _vm.stop } },
+              [_vm._v("\n      Пауза\n    ")]
+            )
+          : _c(
+              "button",
+              { staticClass: "button is-primary", on: { click: _vm.record } },
+              [_vm._v("\n      Запись\n    ")]
+            )
       ])
     ])
   ])

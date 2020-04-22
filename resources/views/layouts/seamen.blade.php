@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
-        <title>OneUI - Bootstrap 4 Admin Template &amp; UI Framework</title>
+        <title>@yield('title')</title>
 
         <meta name="description" content="OneUI - Bootstrap 4 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
         <meta name="author" content="pixelcave">
@@ -72,41 +72,6 @@
             'main-content-narrow'                       Full width Main Content with a percentage width (screen width > 1200px)
         -->
         <div id="page-container" class="sidebar-o enable-page-overlay sidebar-dark side-scroll page-header-fixed">
-            <!-- Side Overlay-->
-            <aside id="side-overlay" class="font-size-sm">
-                <!-- Side Header -->
-                <div class="content-header border-bottom">
-                    <!-- User Avatar -->
-                    <a class="img-link mr-1" href="javascript:void(0)">
-                        <img class="img-avatar img-avatar32" src="{{ asset('media/avatars/avatar10.jpg') }}" alt="">
-                    </a>
-                    <!-- END User Avatar -->
-
-                    <!-- User Info -->
-                    <div class="ml-2">
-                        <a class="link-fx text-dark font-w600" href="javascript:void(0)">Adam McCoy</a>
-                    </div>
-                    <!-- END User Info -->
-
-                    <!-- Close Side Overlay -->
-                    <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-                    <a class="ml-auto btn btn-sm btn-dual" href="javascript:void(0)" data-toggle="layout" data-action="side_overlay_close">
-                        <i class="fa fa-fw fa-times text-danger"></i>
-                    </a>
-                    <!-- END Close Side Overlay -->
-                </div>
-                <!-- END Side Header -->
-
-                <!-- Side Content -->
-                <div class="content-side">
-                    <p>
-                        Content..
-                    </p>
-                </div>
-                <!-- END Side Content -->
-            </aside>
-            <!-- END Side Overlay -->
-
             <!-- Sidebar -->
             <!--
                 Sidebar Mini Mode - Display Helper classes
@@ -124,9 +89,9 @@
                 <div class="content-header bg-white-5">
                     <!-- Logo -->
                     <a class="font-w600 text-dual" href="/">
-                        <i class="fa fa-circle-notch text-primary"></i>
+                        CREW
                         <span class="smini-hide">
-                            <span class="font-w700 font-size-h5">ne</span>
+                            <span class="font-w700 font-size-h5">MSG</span>
                         </span>
                     </a>
                     <!-- END Logo -->
@@ -209,7 +174,7 @@
                 <div class="content-side content-side-full">
                     <ul class="nav-main">
                         <li class="nav-main-item">
-                            <a class="nav-main-link{{ request()->is('dashboard') ? ' active' : '' }}" href="/dashboard">
+                            <a class="nav-main-link{{ request()->is('dashboard') ? ' active' : '' }}" href="#">
                                 <i class="nav-main-link-icon si si-cursor"></i>
                                 <span class="nav-main-link-name">Dashboard</span>
                             </a>
@@ -271,12 +236,6 @@
                         </button>
                         <!-- END Toggle Mini Sidebar -->
 
-                        <!-- Apps Modal -->
-                        <!-- Opens the Apps modal found at the bottom of the page, after footer’s markup -->
-                        <button type="button" class="btn btn-sm btn-dual mr-2" data-toggle="modal" data-target="#one-modal-apps">
-                            <i class="si si-grid"></i>
-                        </button>
-                        <!-- END Apps Modal -->
 
                         <!-- Open Search Section (visible on smaller screens) -->
                         <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
@@ -436,12 +395,6 @@
                         </div>
                         <!-- END Notifications Dropdown -->
 
-                        <!-- Toggle Side Overlay -->
-                        <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-                        <button type="button" class="btn btn-sm btn-dual ml-2" data-toggle="layout" data-action="side_overlay_toggle">
-                            <i class="fa fa-fw fa-list-ul fa-flip-horizontal"></i>
-                        </button>
-                        <!-- END Toggle Side Overlay -->
                     </div>
                     <!-- END Right Section -->
                 </div>
@@ -489,11 +442,11 @@
             <footer id="page-footer" class="bg-body-light">
                 <div class="content py-3">
                     <div class="row font-size-sm">
-                        <div class="col-sm-6 order-sm-2 py-1 text-center text-sm-right">
+                        <!--<div class="col-sm-6 order-sm-2 py-1 text-center text-sm-right">
                             Crafted with <i class="fa fa-heart text-danger"></i> by <a class="font-w600" href="https://1.envato.market/ydb" target="_blank">pixelcave</a>
-                        </div>
+                        </div> -->
                         <div class="col-sm-6 order-sm-1 py-1 text-center text-sm-left">
-                            <a class="font-w600" href="https://1.envato.market/AVD6j" target="_blank">OneUI</a> &copy; <span data-toggle="year-copy"></span>
+                            <a class="font-w600" href="/" target="_blank">CrewMSG</a> &copy; <span data-toggle="year-copy"></span>
                         </div>
                     </div>
                 </div>

@@ -437,7 +437,7 @@ button.bg-sidebar-dark:focus {
 .page-header-dark #page-header .btn-dual,
 .sidebar-dark #sidebar .btn-dual {
   color: #fff;
-  background-color: #526b74;
+  background-color: #cbebe9;
   border-color: #526b74;
 }
 .page-header-dark #page-header .btn-dual:hover, .page-header-dark #page-header .btn-dual:focus, .page-header-dark #page-header .btn-dual.focus,
@@ -445,7 +445,7 @@ button.bg-sidebar-dark:focus {
 .sidebar-dark #sidebar .btn-dual:focus,
 .sidebar-dark #sidebar .btn-dual.focus {
   color: #fff;
-  background-color: #41555c;
+  background-color: #aee0dd;
   border-color: #394a50;
   box-shadow: none;
 }
@@ -459,14 +459,14 @@ button.bg-sidebar-dark:focus {
 .sidebar-dark #sidebar .btn-dual:active,
 .sidebar-dark #sidebar .btn-dual.active {
   color: #fff;
-  background-color: #2c393e;
+  background-color: #89d2cd;
   border-color: #242e32;
 }
 .show > .page-header-dark #page-header .btn-dual.dropdown-toggle,
 .show > .sidebar-dark #sidebar .btn-dual.dropdown-toggle {
   color: #fff;
-  background-color: #526b74;
-  border-color: #526b74;
+  background-color: #cbebe9;
+  border-color: #cbebe9;
 }
 
 .alert-primary {
