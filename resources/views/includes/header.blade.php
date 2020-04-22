@@ -15,17 +15,41 @@
                             <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                                 <ul id="nav" class="navbar-nav ml-auto">
                                     <li class="nav-item active">
-                                        <a class="page-scroll" href="#home">{{ __('menu.home') }}</a>
+                                        <a class="page-scroll" href="#home"><i class="lni lni-home"></i> {{ __('menu.home') }}</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="page-scroll" href="#about">{{ __('menu.for_sailors') }}</a>
+                                        <a class="page-scroll" href="#about"><i class="lni lni-ship"></i> {{ __('menu.for_sailors') }}</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="page-scroll" href="#services"><i class="lni lni-ship"></i>{{ __('menu.for_companies') }}</a>
+                                        <a class="page-scroll" href="#services"><i class="lni lni-briefcase"></i> {{ __('menu.for_companies') }}</a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="page-scroll" href="#work">{{ trans('menu.home')}}</a>
-                                    </li>
+                                    @if (Route::has('login'))
+                <div class="top-right links">
+                    @auth
+                    <li class="nav-item">
+                                        <a class="page-scroll" href="{{ route('login') }}"><i class="lni lni-user"></i> {{ trans('string.sign_in')}}</a>
+                        </li>
+                        
+                    @else
+                        
+                        
+
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            
+                            <span class="btn btn-outline-primary"><i class="lni lni-user"></i> Admin</span>
+                               
+                            </a>
+                            
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/lang/en">Выйти</a>
+                                
+                            </div>
+                        </li>   
+                    @endauth
+                </div>
+            @endif
+                                   
                                     <!--<li class="nav-item">
                                         <a class="page-scroll" href="#pricing">Pricing</a>
                                     </li>
@@ -64,21 +88,6 @@
                         </li>
                     </ul>
 
-                    <ul class="navbar-nav ml-auto">
-                        
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            
-                            <span class="btn btn-outline-primary"><i class="lni lni-user"></i> Admin</span>
-                               
-                            </a>
-                            
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="/lang/en">Выйти</a>
-                                
-                            </div>
-                        </li>
-                    </ul>
                                
 
                     

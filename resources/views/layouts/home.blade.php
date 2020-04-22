@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="shortcut icon" href="/images/favicon.png" type="image/png">
+    <link rel="shortcut icon" href="/images/logo.ico" type="image/ico">
     <link rel="stylesheet" href="/css/animate.css">
     <link rel="stylesheet" href="/fonts/lineicons/font-css/LineIcons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/css/flag-icon.min.css">

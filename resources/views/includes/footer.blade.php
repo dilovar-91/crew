@@ -5,7 +5,7 @@
                     <div class="col-lg-3 col-md-6">
                         <div class="footer_about mt-50">
                             <div class="footer_logo">
-                                <a href="#"><img src="/images/logo-footer.svg" alt=""></a>
+                                <a href="#"><img src="/images/logo.png" alt=""></a>
                             </div>
                             <div class="footer_content">
                                 <p>Lorem ipsum dolor sitco nsetetu nonumy eirmod tempor invidunt ut labore et dolore magna uyam erat, sed diam.</p>
@@ -48,10 +48,10 @@
             <div class="footer_copyright d-sm-flex justify-content-between">
                 <div class="footer_social text-center">
                     <ul class="social">
-                        <li><a href="https://facebook.com/uideckHQ"><i class="lni lni-facebook-filled"></i></a></li>
-                        <li><a href="https://twitter.com/uideckHQ"><i class="lni lni-twitter-filled"></i></a></li>
-                        <li><a href="https://instagram.com/uideckHQ"><i class="lni lni-instagram-original"></i></a></li>
-                        <li><a href="#"><i class="lni lni-linkedin-original"></i></a></li>
+                        <li><a href="https://facebook.com/crew" target="_blank"><i class="lni lni-facebook-filled"></i></a></li>
+                        <li><a href="https://twitter.com/crew" target="_blank"><i class="lni lni-twitter-filled"></i></a></li>
+                        <li><a href="https://instagram.com/crew" target="_blank"><i class="lni lni-instagram-original"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="lni lni-linkedin-original"></i></a></li>
                     </ul>
                 </div> <!-- footer social -->
                 <div class="footer_copyright_content  text-center">
@@ -81,7 +81,7 @@
                             </div>
                         </li>
                     </ul>
-                    <p>Designed and Developed by <a href="https://uideck.com" rel="nofollow">UIdeck</a></p>
+                    <p>Copyright © <?=date('Y')?> {{trans('string.rights')}}. Crew LTD. </p>
                 </div> <!-- footer copyright content -->
             </div> <!-- footer copyright -->
         </div> <!-- container -->

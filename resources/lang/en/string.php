@@ -18,6 +18,12 @@ return [
     'about_system' => 'Site for searching for work and employees in the field of marine vessels and shipping',
     'join_us' => 'Join Us', 
     'sign_up' => 'Sign up',  
-    'sign_in' => 'Sign in',  
+    'sign_in' => 'Sign in',
+    'rights' => 'All rights reserved',
+    'create_cv' => 'Make a resume',  
+    'post_vacancy' => 'Post a vacancy',  
+    'conduct_interview' => 'Conduct an interview',
+    'available_jobs' => 'seamen available for job',
+    'available_vacancies' => 'vacancies available for sailors',    
 
 ];

@@ -61,16 +61,9 @@
 
     <!--====== SERVICES PART START ======-->
 
-    <section class="services_area pt-115" id="about">
+    <section class="services_area" id="about">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <div class="section_title text-center pb-25">
-                        <h5 class="sub_title">About</h5>
-                        <h4 class="main_title">Work Process</h4>
-                    </div> <!-- section title -->
-                </div>
-            </div> <!-- row -->
+           
             <div class="row justify-content-center">
                 <div class="col-lg-4 col-sm-7">
                     <div class="single_services text-center mt-30 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s">
@@ -81,8 +74,8 @@
                             </svg>
                         </div>
                         <div class="services_content">
-                            <h3 class="services_title"><a href="#">Research</a></h3>
-                            <p>Lorem ipsum dolor sit amet, consetetur sadi aliquyam erat, sed diam voluptua. At vero eos accusam et justo duo dolores </p>
+                            <h3 class="services_title"><a href="#">{{trans('string.create_cv')}}</a></h3>
+                            <p>65150+</span> {{trans('string.available_vacancies')}}</p>
                         </div>
                     </div> <!-- single services -->
                 </div>
@@ -95,8 +88,8 @@
                             </svg>
                         </div>
                         <div class="services_content">
-                            <h3 class="services_title"><a href="#">Prototype</a></h3>
-                            <p>Lorem ipsum dolor sit amet, consetetur sadi aliquyam erat, sed diam voluptua. At vero eos accusam et justo duo dolores </p>
+                            <h3 class="services_title"><a href="#">{{ trans('string.post_vacancy')}}</a></h3>
+                            <p><span class="text-danger">145200+</span> {{trans('string.available_jobs')}}</p>
                         </div>
                     </div> <!-- single services -->
                 </div>
@@ -109,8 +102,8 @@
                             </svg>
                         </div>
                         <div class="services_content">
-                            <h3 class="services_title"><a href="#">Build</a></h3>
-                            <p>Lorem ipsum dolor sit amet, consetetur sadi aliquyam erat, sed diam voluptua. At vero eos accusam et justo duo dolores </p>
+                            <h3 class="services_title"><a href="#">{{ trans('string.conduct_interview')}}</a></h3>
+                            <p>{{ trans('string.interview_text')}}</p>
                         </div>
                     </div> <!-- single services -->
                 </div>
