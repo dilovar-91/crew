@@ -29,7 +29,7 @@ Route::match(['get', 'post'], '/dashboard', function(){
     return view('dashboard');
 });
 Route::match(['get', 'post'], '/welcome', function(){
-    return view('welcome');
+    return view('test');
 });
 Route::view('/pages/slick', 'pages.slick');
 Route::view('/pages/datatables', 'pages.datatables');
