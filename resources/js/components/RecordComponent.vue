@@ -5,12 +5,12 @@
 
                     <div class="card-body">
                        <div class="block" v-show="!result">
-    <video ref="video"></video>
+    <video ref="video" controls autoplay playsinline style="width: 40%;"></video>
     123
     </div>
     <div class="block" v-show="result">
       <h4 class="title is-4">Результат</h4>
-      <video controls :src="blobUrl"></video>
+      <video controls :src="blobUrl" playsinline style="width: 40%;"></video>
     </div>
     <div class="field">
         <button class="button is-danger" @click="stop" v-if="recorder && recorder.getState() === 'recording'">

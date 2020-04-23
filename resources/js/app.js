@@ -9,38 +9,24 @@ window.Vue = require('vue');
 import RecordRTC  from "recordrtc";
 Vue.use(RecordRTC);
 
-var MediaStreamRecorder = require('msr');
-Vue.use(MediaStreamRecorder);
-console.log('require-msr', MediaStreamRecorder);
 
-console.log('\n\n-------\n\n');
-
-var recorder = new MediaStreamRecorder({});
-console.log('MediaStreamRecorder', recorder);
-
-console.log('\n\n-------\n\n');
-
-var multiStreamRecorder = new MediaStreamRecorder.MultiStreamRecorder([]);
-console.log('MultiStreamRecorder', multiStreamRecorder);
-var mediaConstraints = {
-    audio: true,
-    video:true,
+var constraints = {
+  video: true
 };
-function onMediaSuccess(stream) {
-    var mediaRecorder = new MediaStreamRecorder(stream);
-    mediaRecorder.mimeType = 'audio/wav'; // check this line for audio/wav
-    mediaRecorder.ondataavailable = function (blob) {
-        var blobURL = URL.createObjectURL(blob);
-    };
-    //mediaRecorder.start(3000);
+
+var video = document.querySelector('video');
+
+function handleSuccess(stream) {
+  window.stream = stream; // only to make stream available to console
+  video.srcObject = stream;
 }
 
-function onMediaError(e) {
-    console.log('media error', e);
+function handleError(error) {
+  console.log('getUserMedia error: ', error);
 }
 
-navigator.mediaDevices.getUserMedia(mediaConstraints).
-then(onMediaSuccess).catch(onMediaError);
+navigator.mediaDevices.getUserMedia(constraints).
+  then(handleSuccess).catch(handleError);
 
   
  
