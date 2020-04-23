@@ -16,7 +16,7 @@
         <button class="button is-danger" @click="stop" v-if="recorder && recorder.getState() === 'recording'">
           Пауза
         </button>
-        <button class="button is-primary" @click="captureCamera" v-else>
+        <button class="button is-primary" @click="record" v-else>
           Запись
         </button>
     </div>
@@ -43,58 +43,57 @@ export default {
       }
     }
   },
- 
-  methods: {
-
-
-  captureCamera(camera) {
-        var video = this.$refs.video
-        video.muted = true;
-        video.volume = 0;
-        video.srcObject = camera;
-
-        this.recorder = RecordRTC(camera, {
-            type: 'video'
-        });
-
-        recorder.startRecording();
-
-        // release camera on stopRecording
-        recorder.camera = camera;
-
-        //document.getElementById('btn-stop-recording').disabled = false;
-    },
-    stop(){
-       //this.disabled = true;
-    this.recorder.stopRecording(stopRecordingCallback);
-    }
-
-  },
-  mounted(){
-    navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(function(camera) {
-        var video = this.$refs.video
-        video.src = video.srcObject = null;
-        video.muted = false;
-        video.volume = 1;
-        video.src = URL.createObjectURL(recorder.getBlob());
-        
-        this.recorder.camera.stop();
-        this.recorder.destroy();
-        this.recorder = null;
-    }).catch(function(error) {
-        alert('Unable to capture your camera. Please check console logs.');
-        console.error(error);
-    });
-  } 
+  computed: {
+    formatedTime() {
+      let hour = Math.floor(this.timer.value /3600);
+      let minute = Math.floor((this.timer.value - hour*3600)/60);
+      let seconds = this.timer.value - (hour*3600 + minute*60);
+      return [hour, minute, seconds].map(this._fillzero).join(':');
     
-  
+    }
+  },
+  methods: {
+    _fillzero(value) { 
+      return value < 9 ? '0' + value: value;
+    },
+    record() {
+      this.recorder && this.recorder.startRecording()
+      this.result = null;
+      this.blobUrl && URL.revokeObjectURL(this.blobUrl);
+      this.blobUrl = null;
+      this.timer.interval = setInterval(() => ++this.timer.value, 1000)
+    },
+    stop() {
+      this.recorder.stopRecording(() => {
+        this.result = this.recorder.getBlob();
+        this.blobUrl = window.URL.createObjectURL(this.result);
+        clearInterval(this.timer.interval)
+        this.timer.value = 0;
+        this.timer.interval = null;
+      })
+    }
+  },
+  mounted() {
+    let self = this;
+    let video = self.$refs.video;
+    
+    navigator.mediaDevices.getUserMedia({
+        video: true,
+        audio: true
+    }).then(async function(stream) {
+        self.recorder = RecordRTC(stream, { mimeType: "video/webm;codecs=h264", video: { width: 1920, height: 1080 }, bitsPerSecond: 51200000 });
+        video.srcObject = stream;
+        video.volume = 0;
+        video.play()
+    })
+  }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 video{
-  
+  display: block;
   margin: 0 auto;
   width: 640px;
   height: 480px;
