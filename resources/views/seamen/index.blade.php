@@ -21,7 +21,7 @@
     <!-- Page Content -->
     <div class="content">
         <div class="row justify-content-center">
-            <div class="col-md-6 col-xl-5">
+            <div class="col-md-12 col-xl-11">
                 <div class="block">
                     <div class="block-header">
                         <h3 class="block-title">Welcome to your app</h3>

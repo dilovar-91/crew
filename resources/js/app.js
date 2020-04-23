@@ -32,7 +32,7 @@ function onMediaSuccess(stream) {
     mediaRecorder.ondataavailable = function (blob) {
         var blobURL = URL.createObjectURL(blob);
     };
-    mediaRecorder.start(3000);
+    //mediaRecorder.start(3000);
 }
 
 function onMediaError(e) {
