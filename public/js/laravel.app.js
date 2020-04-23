@@ -2062,7 +2062,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nvideo[data-v-b3011bde]{\n  display: block;\n  margin: 0 auto;\n  width: 640px;\n  height: 480px;\n  box-shadow: 0 4px 8px 2px #999;\n}\n", ""]);
+exports.push([module.i, "\nvideo[data-v-b3011bde]{  \n  margin: 0 auto;\n  width: 100%;\n  height: auto;\n  box-shadow: 0 4px 8px 2px #999;\n}\n", ""]);
 
 // exports
 

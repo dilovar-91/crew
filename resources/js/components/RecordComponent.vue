@@ -92,11 +92,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-video{
-  display: block;
+video{  
   margin: 0 auto;
-  width: 640px;
-  height: 480px;
+  width: 100%;
+  height: auto;
   box-shadow: 0 4px 8px 2px #999;
 }
 </style>
