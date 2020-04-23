@@ -51,10 +51,7 @@ export default {
       return value < 9 ? '0' + value: value;
     },
     record() {
-      this.recorder = RecordRTC(camera, {
-            type: 'video'
-        });
-      this.recorder.startRecording()
+      this.recorder && this.recorder.startRecording()
       this.result = null;
       this.blobUrl && URL.revokeObjectURL(this.blobUrl);
       this.blobUrl = null;
@@ -96,7 +93,7 @@ export default {
         video: true,
         //audio: true
     }).then(async function(camera) {
-        self.recorder = RecordRTC(camera, { audio: true, video: true });
+        self.recorder = RecordRTC(camera, { mimeType: "video/webm;codecs=h264", video: { width: 1920, height: 1080 }, bitsPerSecond: 51200000 });
         video.srcObject = camera;
         video.muted = true;
         video.volume = 0;

@@ -21,7 +21,7 @@ Vue.use(RecordRTC);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('record-component', require('./components/RecordComponent.vue').default);
-Vue.component('capture-component', require('./components/CaptureComponent.vue').default);
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
