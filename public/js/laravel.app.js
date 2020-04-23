@@ -2192,7 +2192,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     record: function record() {
       var _this = this;
 
-      this.recorder && this.recorder.startRecording();
+      this.recorder = recordrtc__WEBPACK_IMPORTED_MODULE_1___default()(camera, {
+        type: 'video'
+      });
+      this.recorder.startRecording();
       this.result = null;
       this.blobUrl && URL.revokeObjectURL(this.blobUrl);
       this.blobUrl = null;
@@ -2240,12 +2243,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 self.recorder = recordrtc__WEBPACK_IMPORTED_MODULE_1___default()(camera, {
-                  mimeType: "video/webm;codecs=h264",
-                  video: {
-                    width: 1920,
-                    height: 1080
-                  },
-                  bitsPerSecond: 51200000
+                  audio: true,
+                  video: true
                 });
                 video.srcObject = camera;
                 video.muted = true;
