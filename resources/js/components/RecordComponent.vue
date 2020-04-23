@@ -74,6 +74,8 @@ export default {
     }
   },
   mounted() {
+
+    
     let self = this;
     let video = self.$refs.video;
     

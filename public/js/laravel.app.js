@@ -39777,22 +39777,6 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 
 Vue.use(recordrtc__WEBPACK_IMPORTED_MODULE_0___default.a);
-var constraints = {
-  video: true
-};
-var video = document.querySelector('video');
-
-function handleSuccess(stream) {
-  window.stream = stream; // only to make stream available to console
-
-  video.srcObject = stream;
-}
-
-function handleError(error) {
-  console.log('getUserMedia error: ', error);
-}
-
-navigator.mediaDevices.getUserMedia(constraints).then(handleSuccess)["catch"](handleError);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
