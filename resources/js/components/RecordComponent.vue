@@ -72,6 +72,7 @@ export default {
   },
   mounted(){
     navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then(function(camera) {
+        var video = this.$refs.video
         video.src = video.srcObject = null;
         video.muted = false;
         video.volume = 1;
