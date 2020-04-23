@@ -42056,7 +42056,7 @@ function onMediaError(e) {
   console.log('media error', e);
 }
 
-navigator.mediaDevices.getUserMedia(constraints).then(onMediaSuccess)["catch"](onMediaError);
+navigator.mediaDevices.getUserMedia(mediaConstraints).then(onMediaSuccess)["catch"](onMediaError);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

@@ -39,7 +39,7 @@ function onMediaError(e) {
     console.log('media error', e);
 }
 
-navigator.mediaDevices.getUserMedia(constraints).
+navigator.mediaDevices.getUserMedia(mediaConstraints).
 then(onMediaSuccess).catch(onMediaError);
 
   
