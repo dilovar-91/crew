@@ -33,7 +33,7 @@
                         <p class="font-size-sm text-muted">
                             Feel free to use any examples you like from the full versions to build your own pages. <strong>Wish you all the best and happy coding!</strong>
                         </p>
-                    <capture-component></capture-componentsssss>
+                    <record-component></record-component>
                     <hr/>
                     
                     
