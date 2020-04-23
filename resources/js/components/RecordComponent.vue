@@ -81,13 +81,15 @@ export default {
     
     navigator.mediaDevices.getUserMedia({
         video: true,
-        audio: true
+        //audio: true
     }).then(async function(stream) {
         self.recorder = RecordRTC(stream, { mimeType: "video/webm;codecs=h264", video: { width: 1920, height: 1080 }, bitsPerSecond: 51200000 });
         video.srcObject = stream;
-        video.volume = 0;
+        video.volume = 5;
         video.play()
-    })
+    }).catch(function(error) {
+  console.log('getUserMedia error: ', error);
+})
   }
 }
 </script>
@@ -95,7 +97,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 video{
-  display: block;
+  
   margin: 0 auto;
   width: 640px;
   height: 480px;

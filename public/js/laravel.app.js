@@ -2223,8 +2223,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     var self = this;
     var video = self.$refs.video;
     navigator.mediaDevices.getUserMedia({
-      video: true,
-      audio: true
+      video: true //audio: true
+
     }).then( /*#__PURE__*/function () {
       var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(stream) {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
@@ -2240,7 +2240,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   bitsPerSecond: 51200000
                 });
                 video.srcObject = stream;
-                video.volume = 0;
+                video.volume = 5;
                 video.play();
 
               case 4:
@@ -2254,7 +2254,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return function (_x) {
         return _ref.apply(this, arguments);
       };
-    }());
+    }())["catch"](function (error) {
+      console.log('getUserMedia error: ', error);
+    });
   }
 });
 
@@ -2291,7 +2293,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nvideo[data-v-b3011bde]{\n  display: block;\n  margin: 0 auto;\n  width: 640px;\n  height: 480px;\n  box-shadow: 0 4px 8px 2px #999;\n}\n", ""]);
+exports.push([module.i, "\nvideo[data-v-b3011bde]{\n  \n  margin: 0 auto;\n  width: 640px;\n  height: 480px;\n  box-shadow: 0 4px 8px 2px #999;\n}\n", ""]);
 
 // exports
 

@@ -9,14 +9,6 @@ window.Vue = require('vue');
 import RecordRTC  from "recordrtc";
 Vue.use(RecordRTC);
 
-
-
-
-  
- 
-
-
-
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
