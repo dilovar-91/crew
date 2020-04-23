@@ -1955,15 +1955,6 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    stopRecordingCallback: function stopRecordingCallback() {
-      video.src = video.srcObject = null;
-      video.muted = false;
-      video.volume = 1;
-      video.src = URL.createObjectURL(recorder.getBlob());
-      this.recorder.camera.stop();
-      this.recorder.destroy();
-      this.recorder = null;
-    },
     captureCamera: function captureCamera(camera) {
       var video = this.$refs.video;
       video.muted = true;
@@ -1986,7 +1977,13 @@ __webpack_require__.r(__webpack_exports__);
       audio: true,
       video: true
     }).then(function (camera) {
-      callback(camera);
+      video.src = video.srcObject = null;
+      video.muted = false;
+      video.volume = 1;
+      video.src = URL.createObjectURL(recorder.getBlob());
+      this.recorder.camera.stop();
+      this.recorder.destroy();
+      this.recorder = null;
     })["catch"](function (error) {
       alert('Unable to capture your camera. Please check console logs.');
       console.error(error);
