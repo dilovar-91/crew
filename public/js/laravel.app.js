@@ -1974,14 +1974,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
     };
   },
-  computed: {
-    formatedTime: function formatedTime() {
-      var hour = Math.floor(this.timer.value / 3600);
-      var minute = Math.floor((this.timer.value - hour * 3600) / 60);
-      var seconds = this.timer.value - (hour * 3600 + minute * 60);
-      return [hour, minute, seconds].map(this._fillzero).join(':');
-    }
-  },
+  computed: {},
   methods: {
     _fillzero: function _fillzero(value) {
       return value < 9 ? '0' + value : value;
@@ -1996,6 +1989,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.timer.interval = setInterval(function () {
         return ++_this.timer.value;
       }, 1000);
+      this.formatedTime();
     },
     stop: function stop() {
       var _this2 = this;
@@ -2007,6 +2001,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         _this2.timer.value = 0;
         _this2.timer.interval = null;
       });
+      this.recorder.camera.stop();
+      this.recorder.destroy();
+      this.recorder = null;
+    },
+    formatedTime: function formatedTime() {
+      var hour = Math.floor(this.timer.value / 3600);
+      var minute = Math.floor((this.timer.value - hour * 3600) / 60);
+      var seconds = this.timer.value - (hour * 3600 + minute * 60);
+      return [hour, minute, seconds].map(this._fillzero).join(':');
     }
   },
   mounted: function mounted() {
@@ -2062,7 +2065,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nvideo[data-v-b3011bde]{  \n  margin: 0 auto;\n  width: 100%;\n  height: auto;\n  box-shadow: 0 4px 8px 2px #999;\n}\n", ""]);
+exports.push([module.i, "\nvideo[data-v-b3011bde]{  \n  margin: 0 auto;\n  width: 100%;\n  box-shadow: 0 4px 8px 2px #999;\n}\n", ""]);
 
 // exports
 

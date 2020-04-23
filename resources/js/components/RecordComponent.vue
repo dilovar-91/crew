@@ -44,13 +44,7 @@ export default {
     }
   },
   computed: {
-    formatedTime() {
-      let hour = Math.floor(this.timer.value /3600);
-      let minute = Math.floor((this.timer.value - hour*3600)/60);
-      let seconds = this.timer.value - (hour*3600 + minute*60);
-      return [hour, minute, seconds].map(this._fillzero).join(':');
     
-    }
   },
   methods: {
     _fillzero(value) { 
@@ -62,6 +56,7 @@ export default {
       this.blobUrl && URL.revokeObjectURL(this.blobUrl);
       this.blobUrl = null;
       this.timer.interval = setInterval(() => ++this.timer.value, 1000)
+      this.formatedTime()
     },
     stop() {
       this.recorder.stopRecording(() => {
@@ -71,6 +66,16 @@ export default {
         this.timer.value = 0;
         this.timer.interval = null;
       })
+      this.recorder.camera.stop();
+      this.recorder.destroy();
+      this.recorder = null;
+    },
+    formatedTime() {
+      let hour = Math.floor(this.timer.value /3600);
+      let minute = Math.floor((this.timer.value - hour*3600)/60);
+      let seconds = this.timer.value - (hour*3600 + minute*60);
+      return [hour, minute, seconds].map(this._fillzero).join(':');
+    
     }
   },
   mounted() {
@@ -95,7 +100,6 @@ export default {
 video{  
   margin: 0 auto;
   width: 100%;
-  height: auto;
   box-shadow: 0 4px 8px 2px #999;
 }
 </style>
