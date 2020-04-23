@@ -44,13 +44,7 @@ export default {
     }
   },
   computed: {
-    formatedTime() {
-      let hour = Math.floor(this.timer.value /3600);
-      let minute = Math.floor((this.timer.value - hour*3600)/60);
-      let seconds = this.timer.value - (hour*3600 + minute*60);
-      return [hour, minute, seconds].map(this._fillzero).join(':');
     
-    }
   },
   methods: {
     _fillzero(value) { 
@@ -61,7 +55,9 @@ export default {
       this.result = null;
       this.blobUrl && URL.revokeObjectURL(this.blobUrl);
       this.blobUrl = null;
+      
       this.timer.interval = setInterval(() => ++this.timer.value, 1000)
+      this.formatedTime()
     },
     stop() {
       this.recorder.stopRecording(() => {
@@ -70,8 +66,22 @@ export default {
         clearInterval(this.timer.interval)
         this.timer.value = 0;
         this.timer.interval = null;
+
+        video.muted = false;
+        video.volume = 1;
+        this.recorder.camera.stop();
+        this.recorder.destroy();
+        this.recorder = null;
       })
+    },
+    formatedTime() {
+      let hour = Math.floor(this.timer.value /3600);
+      let minute = Math.floor((this.timer.value - hour*3600)/60);
+      let seconds = this.timer.value - (hour*3600 + minute*60);
+      return [hour, minute, seconds].map(this._fillzero).join(':');
+    
     }
+
   },
   mounted() {
 
@@ -82,10 +92,11 @@ export default {
     navigator.mediaDevices.getUserMedia({
         video: true,
         //audio: true
-    }).then(async function(stream) {
-        self.recorder = RecordRTC(stream, { mimeType: "video/webm;codecs=h264", video: { width: 1920, height: 1080 }, bitsPerSecond: 51200000 });
-        video.srcObject = stream;
-        video.volume = 5;
+    }).then(async function(camera) {
+        self.recorder = RecordRTC(camera, { mimeType: "video/webm;codecs=h264", video: { width: 1920, height: 1080 }, bitsPerSecond: 51200000 });
+        video.srcObject = camera;
+        video.muted = true;
+        video.volume = 0;
         video.play()
     }).catch(function(error) {
   console.log('getUserMedia error: ', error);

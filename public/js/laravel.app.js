@@ -2184,14 +2184,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
     };
   },
-  computed: {
-    formatedTime: function formatedTime() {
-      var hour = Math.floor(this.timer.value / 3600);
-      var minute = Math.floor((this.timer.value - hour * 3600) / 60);
-      var seconds = this.timer.value - (hour * 3600 + minute * 60);
-      return [hour, minute, seconds].map(this._fillzero).join(':');
-    }
-  },
+  computed: {},
   methods: {
     _fillzero: function _fillzero(value) {
       return value < 9 ? '0' + value : value;
@@ -2206,6 +2199,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.timer.interval = setInterval(function () {
         return ++_this.timer.value;
       }, 1000);
+      this.formatedTime();
     },
     stop: function stop() {
       var _this2 = this;
@@ -2216,7 +2210,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         clearInterval(_this2.timer.interval);
         _this2.timer.value = 0;
         _this2.timer.interval = null;
+        video.muted = false;
+        video.volume = 1;
+
+        _this2.recorder.camera.stop();
+
+        _this2.recorder.destroy();
+
+        _this2.recorder = null;
       });
+    },
+    formatedTime: function formatedTime() {
+      var hour = Math.floor(this.timer.value / 3600);
+      var minute = Math.floor((this.timer.value - hour * 3600) / 60);
+      var seconds = this.timer.value - (hour * 3600 + minute * 60);
+      return [hour, minute, seconds].map(this._fillzero).join(':');
     }
   },
   mounted: function mounted() {
@@ -2226,12 +2234,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       video: true //audio: true
 
     }).then( /*#__PURE__*/function () {
-      var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(stream) {
+      var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(camera) {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                self.recorder = recordrtc__WEBPACK_IMPORTED_MODULE_1___default()(stream, {
+                self.recorder = recordrtc__WEBPACK_IMPORTED_MODULE_1___default()(camera, {
                   mimeType: "video/webm;codecs=h264",
                   video: {
                     width: 1920,
@@ -2239,11 +2247,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   },
                   bitsPerSecond: 51200000
                 });
-                video.srcObject = stream;
-                video.volume = 5;
+                video.srcObject = camera;
+                video.muted = true;
+                video.volume = 0;
                 video.play();
 
-              case 4:
+              case 5:
               case "end":
                 return _context.stop();
             }
