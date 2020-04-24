@@ -88,9 +88,8 @@ export default {
         video: true,
         audio: true
     }).then(async function(stream) {
-        self.recorder = RecordRTC(stream, { recorderType: MediaStreamRecorder,
-            mimeType: 'video/webm',
-            timeSlice: 1000,  });
+        self.recorder = RecordRTC(stream, {
+            type: 'video' });
         video.srcObject = stream;
         video.volume = 0;
         video.play()

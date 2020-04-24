@@ -2193,9 +2193,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 self.recorder = recordrtc__WEBPACK_IMPORTED_MODULE_1___default()(stream, {
-                  recorderType: MediaStreamRecorder,
-                  mimeType: 'video/webm',
-                  timeSlice: 1000
+                  type: 'video'
                 });
                 video.srcObject = stream;
                 video.volume = 0;
