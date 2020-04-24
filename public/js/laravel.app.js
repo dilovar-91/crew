@@ -26426,81 +26426,76 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "videoRec text-xs-center" },
-    [
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.videoModel,
-            expression: "videoModel"
+  return _c("div", { staticClass: "videoRec text-xs-center" }, [
+    _c("input", {
+      directives: [
+        {
+          name: "model",
+          rawName: "v-model",
+          value: _vm.videoModel,
+          expression: "videoModel"
+        }
+      ],
+      ref: "video_h",
+      attrs: { type: "hidden", name: "video" },
+      domProps: { value: _vm.videoModel },
+      on: {
+        input: function($event) {
+          if ($event.target.composing) {
+            return
           }
-        ],
-        ref: "video_h",
-        attrs: { type: "hidden", name: "video" },
-        domProps: { value: _vm.videoModel },
+          _vm.videoModel = $event.target.value
+        }
+      }
+    }),
+    _vm._v(" "),
+    _c("video", {
+      ref: "video",
+      staticClass: "video",
+      attrs: { poster: _vm.poster, controls: "" }
+    }),
+    _vm._v(" "),
+    _c("div", { staticClass: "video-controllers" }),
+    _vm._v(" "),
+    _c(
+      "button",
+      {
+        staticClass: "btn btn-primary",
         on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.videoModel = $event.target.value
+          click: function($event) {
+            return _vm.startRecording("video1")
           }
         }
-      }),
-      _vm._v(" "),
-      _c("video", {
-        ref: "video",
-        staticClass: "video",
-        attrs: { poster: _vm.poster, controls: "" }
-      }),
-      _vm._v(" "),
-      _c("div", { staticClass: "video-controllers" }),
-      _vm._v(" "),
-      _c(
-        "v-btn",
-        {
-          on: {
-            click: function($event) {
-              return _vm.startRecording("video1")
-            }
+      },
+      [_vm._v("Запись")]
+    ),
+    _vm._v(" "),
+    _c(
+      "button",
+      {
+        staticClass: "btn btn-primary",
+        on: {
+          click: function($event) {
+            return _vm.stopRecording("video1")
           }
-        },
-        [_c("v-icon", [_vm._v("play_arrow")])],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "v-btn",
-        {
-          on: {
-            click: function($event) {
-              return _vm.stopRecording("video1")
-            }
+        }
+      },
+      [_vm._v("Пауза")]
+    ),
+    _vm._v(" "),
+    _c(
+      "button",
+      {
+        staticClass: "btn btn-primary",
+        on: {
+          click: function($event) {
+            return _vm.download("video1")
           }
-        },
-        [_c("v-icon", [_vm._v("pause")])],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "v-btn",
-        {
-          on: {
-            click: function($event) {
-              return _vm.download("video1")
-            }
-          }
-        },
-        [_c("v-icon", [_vm._v("get_app")])],
-        1
-      )
-    ],
-    1
-  )
+        }
+      },
+      [_vm._v("Скачать")]
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

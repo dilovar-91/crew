@@ -3,9 +3,9 @@
     <input type="hidden" ref="video_h" name="video" v-model="videoModel" />
     <video ref="video" class="video" :poster="poster" controls></video>
     <div class="video-controllers"></div>
-      <v-btn @click="startRecording('video1')"><v-icon>play_arrow</v-icon></v-btn>
-      <v-btn @click="stopRecording('video1')"><v-icon>pause</v-icon></v-btn>
-      <v-btn @click="download('video1')"><v-icon>get_app</v-icon></v-btn>
+      <button class="btn btn-primary" @click="startRecording('video1')">Запись</button>
+      <button class="btn btn-primary" @click="stopRecording('video1')">Пауза</button>
+      <button class="btn btn-primary" @click="download('video1')">Скачать</button>
     </div>
 
 </template>
