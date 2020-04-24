@@ -35,5 +35,5 @@ Route::view('/pages/datatables', 'pages.datatables');
 Route::view('/pages/blank', 'pages.blank');
 Route::view('/landing', 'landing');
 
-Route::post('/video/send', 'SeamenController@videoSend')->name('videoPost');
+Route::post('/seamen/video/send', 'SeamenController@videoSend')->name('videoPost');
 
