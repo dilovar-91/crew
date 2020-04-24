@@ -47,8 +47,8 @@ export default {
             bitsPerSecond: 128000 // if this line is provided, skip above two
             };
             this.stream = stream;
-            this.recordRTC = RecordRTC(stream, options);
-            this.recordRTC.startRecording();
+            this.recorder = RecordRTC(stream, options);
+            this.recorder.startRecording();
             let video = this.$refs.video;
             video.src = window.URL.createObjectURL(stream);
             //this.toggleControls();
@@ -58,7 +58,7 @@ export default {
         },
         processVideo(audioVideoWebMURL) {
             let video = this.$refs.video;
-            let recordRTC = this.recordRTC;
+            //let recordRTC = this.recordRTC;
             video.src = audioVideoWebMURL;
             //this.toggleControls();
             var recordedBlob = recordRTC.getBlob();
@@ -103,7 +103,7 @@ export default {
                 
             },
             download(video="video") {
-                this.recordRTC.save('video.webm');
+                this.recorder.save('video.webm');
             }
      
   },
@@ -132,9 +132,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-video{  
-  margin: 0 auto;
-  width: 100%;
-  box-shadow: 0 4px 8px 2px #999;
+.video {
+  box-shadow: 1px 6px 10px 2px rgba(35, 35, 35, 0.62);
+  height: 400px;
+  max-height: 800px;
+  object-fit: none;
 }
 </style>

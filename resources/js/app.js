@@ -20,7 +20,7 @@ Vue.use(RecordRTC);
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-//Vue.component('record-component', require('./components/RecordComponent.vue').default);
+Vue.component('record-component', require('./components/RecordComponent.vue').default);
 Vue.component('capture-component', require('./components/CaptureComponent.vue').default);
 
 
