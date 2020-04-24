@@ -2013,7 +2013,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var video = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "video";
       this.poster = "";
       var recordRTC = this.recordRTC;
-      this.recordRTC.stopRecording(function () {
+      recordRTC.stopRecording(function () {
         _this.result = _this.recordRTC.getBlob();
         _this.blobUrl = window.URL.createObjectURL(_this.result); //clearInterval(this.timer.interval)
         //this.timer.value = 0;

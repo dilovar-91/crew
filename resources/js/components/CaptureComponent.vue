@@ -84,7 +84,7 @@ export default {
              
                
 
-        this.recordRTC.stopRecording(() => {
+        recordRTC.stopRecording(() => {
         this.result = this.recordRTC.getBlob();
         this.blobUrl = window.URL.createObjectURL(this.result);
         //clearInterval(this.timer.interval)
