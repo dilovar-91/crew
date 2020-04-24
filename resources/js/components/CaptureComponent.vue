@@ -29,7 +29,7 @@ export default {
   methods: {
     successCallback(stream) {
             var options = {
-            mimeType: 'video/webm\;codecs=vp9', // or video/webm\;codecs=h264 or video/webm\;codecs=vp9
+            mimeType: 'video/webm\;codecs=h264', // or video/webm\;codecs=h264 or video/webm\;codecs=vp9
             audioBitsPerSecond: 128000,
             videoBitsPerSecond: 128000,
             timeSlice:2000,
@@ -86,6 +86,16 @@ export default {
        video.muted = false;
        video.controls = true;
        video.autoplay = false;
+
+       navigator.mediaDevices.getUserMedia({
+        video: true,
+        audio: true
+    }).then(async function(stream) {
+        self.recorder = RecordRTC(stream, { mimeType: "video/webm;codecs=h264", video: { width: 640, height: 480 }, bitsPerSecond: 128000 });
+        video.srcObject = stream;
+        video.volume = 0;
+        video.play()
+    })
 
   }
 }
