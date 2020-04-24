@@ -19,7 +19,7 @@
         <button class="button is-primary" @click="record" v-else>
           Запись
         </button>
-        <button class="button is-primary" @click="recordSend"  v-show="result">
+        <button class="button is-primary" @click="recordSend" >
           Сохранить
         </button>
     </div>
@@ -74,9 +74,9 @@ export default {
         clearInterval(this.timer.interval)
         this.timer.value = 0;
         this.timer.interval = null;
-        this.recorder.destroy();
-        console.log(this.recorder)
-        this.recorder = null;
+        //this.recorder.destroy();
+        //console.log(this.recorder)
+        //this.recorder = null;
         
       })
       

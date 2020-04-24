@@ -2174,12 +2174,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         _this2.blobUrl = window.URL.createObjectURL(_this2.result);
         clearInterval(_this2.timer.interval);
         _this2.timer.value = 0;
-        _this2.timer.interval = null;
-
-        _this2.recorder.destroy();
-
-        console.log(_this2.recorder);
-        _this2.recorder = null;
+        _this2.timer.interval = null; //this.recorder.destroy();
+        //console.log(this.recorder)
+        //this.recorder = null;
       });
     },
     recordSend: function recordSend() {
@@ -29893,18 +29890,7 @@ var render = function() {
         _vm._v(" "),
         _c(
           "button",
-          {
-            directives: [
-              {
-                name: "show",
-                rawName: "v-show",
-                value: _vm.result,
-                expression: "result"
-              }
-            ],
-            staticClass: "button is-primary",
-            on: { click: _vm.recordSend }
-          },
+          { staticClass: "button is-primary", on: { click: _vm.recordSend } },
           [_vm._v("\n      Сохранить\n    ")]
         )
       ])
