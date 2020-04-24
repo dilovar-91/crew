@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use CloudConvert;
+
 
 class SeamenController extends Controller
 {
@@ -105,7 +105,7 @@ class SeamenController extends Controller
            // dd($data['blob']);
             Storage::disk('public')
                 ->put('videos/'.'video.webm', file_get_contents($request->blob));
-            CloudConvert::file('videos/'.'video.webm')->to('videos/'.'video2.mp4');
+            \CloudConvert::file('videos/'.'video.webm')->to('videos/'.'video2.mp4');
             return response()->json(['status'=>'success']);
     }
     
