@@ -2,6 +2,10 @@
    <div class="videoRec text-xs-center">
     <input type="hidden" ref="video_h" name="video" v-model="videoModel" />
     <video ref="video" class="video" :poster="poster" controls></video>
+    <div class="block" v-show="result">
+      <h4 class="title is-4">Результат</h4>
+      <video controls :src="blobUrl" playsinline style="width: 40%;"></video>
+    </div>
     <div class="video-controllers"></div>
       <button class="btn btn-primary" @click="startRecording('video1')">Запись</button>
       <button class="btn btn-primary" @click="stopRecording('video1')">Пауза</button>
@@ -20,7 +24,14 @@ export default {
   data() {
     return {
        poster: "/images/video-camera.png",
-       videoModel:""
+       videoModel:"",
+       recorder: null,
+      result: null,
+      blobUrl: null,
+      timer: {
+        interval: null,
+        value: 0
+      }
     }
   },
   computed: {
@@ -70,10 +81,25 @@ export default {
             stopRecording(video="video") {
                 this.poster="";
                 let recordRTC = this.recordRTC;
-                recordRTC.stopRecording(this.processVideo.bind(this));
-                let stream = this.stream;
+             
+               
+
+        this.recordRTC.stopRecording(() => {
+        this.result = this.recordRTC.getBlob();
+        this.blobUrl = window.URL.createObjectURL(this.result);
+        //clearInterval(this.timer.interval)
+        //this.timer.value = 0;
+        //this.timer.interval = null;
+        this.processVideo()
+        this.recordRTC.destroy();
+        console.log(this.recordRTC)
+        this.recordRTC = null;
+
+         let stream = this.stream;
                 stream.getAudioTracks().forEach(track => track.stop());
                 stream.getVideoTracks().forEach(track => track.stop());
+        
+      })
                 
             },
             download(video="video") {

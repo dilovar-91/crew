@@ -1942,6 +1942,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'WebRtc',
@@ -1951,7 +1955,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   data: function data() {
     return {
       poster: "/images/video-camera.png",
-      videoModel: ""
+      videoModel: "",
+      recorder: null,
+      result: null,
+      blobUrl: null,
+      timer: {
+        interval: null,
+        value: 0
+      }
     };
   },
   computed: {},
@@ -1997,16 +2008,30 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       navigator.mediaDevices.getUserMedia(mediaConstraints).then(this.successCallback.bind(this), this.errorCallback.bind(this));
     },
     stopRecording: function stopRecording() {
+      var _this = this;
+
       var video = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "video";
       this.poster = "";
       var recordRTC = this.recordRTC;
-      recordRTC.stopRecording(this.processVideo.bind(this));
-      var stream = this.stream;
-      stream.getAudioTracks().forEach(function (track) {
-        return track.stop();
-      });
-      stream.getVideoTracks().forEach(function (track) {
-        return track.stop();
+      this.recordRTC.stopRecording(function () {
+        _this.result = _this.recordRTC.getBlob();
+        _this.blobUrl = window.URL.createObjectURL(_this.result); //clearInterval(this.timer.interval)
+        //this.timer.value = 0;
+        //this.timer.interval = null;
+
+        _this.processVideo();
+
+        _this.recordRTC.destroy();
+
+        console.log(_this.recordRTC);
+        _this.recordRTC = null;
+        var stream = _this.stream;
+        stream.getAudioTracks().forEach(function (track) {
+          return track.stop();
+        });
+        stream.getVideoTracks().forEach(function (track) {
+          return track.stop();
+        });
       });
     },
     download: function download() {
@@ -27247,6 +27272,29 @@ var render = function() {
       staticClass: "video",
       attrs: { poster: _vm.poster, controls: "" }
     }),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.result,
+            expression: "result"
+          }
+        ],
+        staticClass: "block"
+      },
+      [
+        _c("h4", { staticClass: "title is-4" }, [_vm._v("Результат")]),
+        _vm._v(" "),
+        _c("video", {
+          staticStyle: { width: "40%" },
+          attrs: { controls: "", src: _vm.blobUrl, playsinline: "" }
+        })
+      ]
+    ),
     _vm._v(" "),
     _c("div", { staticClass: "video-controllers" }),
     _vm._v(" "),
