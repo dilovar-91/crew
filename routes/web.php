@@ -35,37 +35,5 @@ Route::view('/pages/datatables', 'pages.datatables');
 Route::view('/pages/blank', 'pages.blank');
 Route::view('/landing', 'landing');
 
-
-Route::group([
-    'prefix'=>'seamen',
-    'middleware'=>['auth','home.verify.seamen']
-], function(){
-    Route::get('/video', 'SeamenController@video')->name('video');
-    Route::get('/video/watch', 'SeamenController@videoWatch')->name('videoWatch');
-    Route::post('/video/send', 'SeamenController@videoSend')->name('videoPost');
-    Route::get('/invite', [
-        'uses' => 'Seamen\InviteController@index',
-        'as' => 'seamenInvite'
-    ]);
-
-    //Главная страница админа
-    Route::get('/', [
-        'uses' => 'Seamen\ControllerIndex@index',
-        'as' => 'seamen.index'
-    ]);
-
-    //Главная страница админа
-    Route::get('/polls', [
-        'uses' => 'Seamen\ControllerPolls@index',
-        'as' => 'seamen.polls.index'
-    ]);
-
-    //Главная страница админа
-    Route::get('/polls/{id}', [
-        'uses' => 'Seamen\ControllerPolls@poll',
-        'as' => 'seamen.polls.poll'
-    ]);
-
-
-});
+Route::post('/video/send', 'SeamenController@videoSend')->name('videoPost');
 
