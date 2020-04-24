@@ -7,7 +7,9 @@
 require('./bootstrap');
 window.Vue = require('vue');
 import RecordRTC  from "recordrtc";
+import MediaStreamRecorder   from "msr";
 Vue.use(RecordRTC);
+Vue.use(MediaStreamRecorder);
 
 /**
  * The following block of code may be used to automatically register your
