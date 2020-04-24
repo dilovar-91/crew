@@ -80,20 +80,20 @@ export default {
             },
             stopRecording(video="video") {
                 this.poster="";
-                let recordRTC = this.recordRTC;
+                
              
                
 
-        recordRTC.stopRecording(() => {
-        this.result = this.recordRTC.getBlob();
+        recorder.stopRecording(() => {
+        this.result = this.recorder.getBlob();
         this.blobUrl = window.URL.createObjectURL(this.result);
         //clearInterval(this.timer.interval)
         //this.timer.value = 0;
         //this.timer.interval = null;
         this.processVideo()
-        this.recordRTC.destroy();
-        console.log(this.recordRTC)
-        this.recordRTC = null;
+        this.recorder.destroy();
+        console.log(this.recorder)
+        this.recorder = null;
 
          let stream = this.stream;
                 stream.getAudioTracks().forEach(track => track.stop());
@@ -117,7 +117,10 @@ export default {
         video: true,
         audio: true
     }).then(async function(stream) {
-        self.recorder = RecordRTC(stream, { mimeType: "video/webm;codecs=h264", video: { width: 640, height: 480 }, bitsPerSecond: 128000 });
+        //self.recorder = RecordRTC(stream, { mimeType: "video/webm;codecs=h264", video: { width: 640, height: 480 }, bitsPerSecond: 128000 });
+        self.recorder = RecordRTC(stream, {
+            type: 'video'
+        });
         video.srcObject = stream;
         video.volume = 0;
         video.play()

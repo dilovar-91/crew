@@ -2012,19 +2012,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       var video = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "video";
       this.poster = "";
-      var recordRTC = this.recordRTC;
-      recordRTC.stopRecording(function () {
-        _this.result = _this.recordRTC.getBlob();
+      recorder.stopRecording(function () {
+        _this.result = _this.recorder.getBlob();
         _this.blobUrl = window.URL.createObjectURL(_this.result); //clearInterval(this.timer.interval)
         //this.timer.value = 0;
         //this.timer.interval = null;
 
         _this.processVideo();
 
-        _this.recordRTC.destroy();
+        _this.recorder.destroy();
 
-        console.log(_this.recordRTC);
-        _this.recordRTC = null;
+        console.log(_this.recorder);
+        _this.recorder = null;
         var stream = _this.stream;
         stream.getAudioTracks().forEach(function (track) {
           return track.stop();
@@ -2053,13 +2052,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
+                //self.recorder = RecordRTC(stream, { mimeType: "video/webm;codecs=h264", video: { width: 640, height: 480 }, bitsPerSecond: 128000 });
                 self.recorder = recordrtc__WEBPACK_IMPORTED_MODULE_1___default()(stream, {
-                  mimeType: "video/webm;codecs=h264",
-                  video: {
-                    width: 640,
-                    height: 480
-                  },
-                  bitsPerSecond: 128000
+                  type: 'video'
                 });
                 video.srcObject = stream;
                 video.volume = 0;
