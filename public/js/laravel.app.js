@@ -2123,6 +2123,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'WebRtc',
@@ -2177,6 +2180,24 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
         console.log(_this2.recorder);
         _this2.recorder = null;
+      });
+    },
+    recordSend: function recordSend() {
+      var _this3 = this;
+
+      this.loading = true;
+      var formData = new FormData();
+      console.log(blobSend);
+      formData.append('blob', blobSend);
+      axios.post('/seamen/video/send', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      }).then(function (res) {
+        _this3.loading = false;
+      })["catch"](function (err) {
+        _this3.loadingFiles = false;
+        alert('Reload pages.');
       });
     }
   },
@@ -29868,7 +29889,24 @@ var render = function() {
               "button",
               { staticClass: "button is-primary", on: { click: _vm.record } },
               [_vm._v("\n      Запись\n    ")]
-            )
+            ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.result,
+                expression: "result"
+              }
+            ],
+            staticClass: "button is-primary",
+            on: { click: _vm.recordSend }
+          },
+          [_vm._v("\n      Сохранить\n    ")]
+        )
       ])
     ])
   ])

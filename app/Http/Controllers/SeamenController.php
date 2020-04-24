@@ -90,4 +90,24 @@ class SeamenController extends Controller
     {
         //
     }
+
+    public  function video(){
+        return  view('seamen.video');
+    }
+    
+    public function videoSend(Request $request){
+            $data = $this->validate($request, [
+                'blob'        => 'required',
+            ]);
+    
+           // dd($data['blob']);
+            Storage::disk('public')
+                ->put('videos/'.'video.webm', file_get_contents($request->blob));
+            \CloudConvert::file('videos/'.'video.webm')->to('videos/'.'video2.mp4');
+            return response()->json(['status'=>'success']);
+    }
+    
+    public function videoWatch(){
+        return view('seamen.video-watch');
+    }
 }

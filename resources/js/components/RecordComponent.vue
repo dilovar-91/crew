@@ -19,6 +19,9 @@
         <button class="button is-primary" @click="record" v-else>
           Запись
         </button>
+        <button class="button is-primary" @click="recordSend"  v-show="result">
+          Сохранить
+        </button>
     </div>
                     </div>
                 </div>
@@ -78,7 +81,26 @@ export default {
       })
       
       
+    },
+    recordSend(){
+                this.loading = true;
+                let formData = new FormData();
+                console.log(blobSend);
+                formData.append('blob',blobSend);
+                axios.post('/seamen/video/send',formData ,
+                    {
+                        headers: {
+                            'Content-Type': 'multipart/form-data'
+                        }
+                    }
+                ).then(res => {
+                    this.loading = false;
+                }).catch(err => {
+                    this.loadingFiles = false;
+                    alert('Reload pages.');
+                });
     }
+
   },
   mounted() {
     let self = this;
