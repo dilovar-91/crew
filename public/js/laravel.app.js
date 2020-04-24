@@ -2184,6 +2184,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       this.loading = true;
       var formData = new FormData();
+      var blobSend = this.recorder.getBlob();
       console.log(blobSend);
       formData.append('blob', blobSend);
       axios.post('/seamen/video/send', formData, {

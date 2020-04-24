@@ -85,6 +85,7 @@ export default {
     recordSend(){
                 this.loading = true;
                 let formData = new FormData();
+                let blobSend = this.recorder.getBlob();
                 console.log(blobSend);
                 formData.append('blob',blobSend);
                 axios.post('/seamen/video/send',formData ,
