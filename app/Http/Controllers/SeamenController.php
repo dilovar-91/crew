@@ -103,7 +103,7 @@ class SeamenController extends Controller
                 'blob'        => 'required',
             ]);
     
-           $filname = uniqid();
+           $filename = uniqid();
             Storage::disk('public')
                 ->put('videos/'.$filename.'webm', file_get_contents($request->blob));
             //\CloudConvert::file('videos/'.'video.webm')->to('videos/'.'video2.mp4');
