@@ -103,21 +103,18 @@ class SeamenController extends Controller
                 'blob'        => 'required',
             ]);
     
-           // dd($data['blob']);
+           $filname = uniqid();
             Storage::disk('public')
-                ->put('videos/'.'video.webm', file_get_contents($request->blob));
+                ->put('videos/'.$filename.'webm', file_get_contents($request->blob));
             //\CloudConvert::file('videos/'.'video.webm')->to('videos/'.'video2.mp4');
            
             
 
             FFMpeg::fromDisk('local')->open('public/videos/' . 'video.webm')
-            //FFMpeg::open('videos/'.'video.webm')
-            // optionally you could set the visibility
-            // of the exported file
             ->export()
             ->inFormat(new FFMpeg\Format\Video\X264('libmp3lame', 'libx264'))
             ->withVisibility('public')
-            ->save('public/videos/'.'my_movie.mp4');
+            ->save('public/videos/'.$filename.'.mp4');
             return response()->json(['status'=>'success']);
     }
     
