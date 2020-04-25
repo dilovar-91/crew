@@ -109,7 +109,7 @@ class SeamenController extends Controller
            
             
 
-            FFMpeg::fromDisk('local')->open('videos/' . 'video.webm')
+            FFMpeg::fromDisk('local')->open('public/videos/' . 'video.webm')
             //FFMpeg::open('videos/'.'video.webm')
             // optionally you could set the visibility
             // of the exported file
