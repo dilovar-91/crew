@@ -24,6 +24,9 @@ class SeamenController extends Controller
     }
     public function test()
     {
+        
+
+        $url = Storage::url('videos/my_movie.mp4');
         return view('seamen.test');
     }
 

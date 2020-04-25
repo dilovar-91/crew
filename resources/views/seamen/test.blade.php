@@ -29,6 +29,7 @@
                     <div class="block-content">
                     <capture-component></capture-component>
                     <hr/>
+                    <a href="{{asset('storage/videos/my_movie.mp4')}}">Download</a>;
                     </div>
                 </div>
             </div>
