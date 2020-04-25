@@ -31,7 +31,7 @@
     </head>
     <body>
     <div id="app">
-        <div id="page-container" class="sidebar-o enable-page-overlay sidebar-dark side-scroll page-header-fixed">
+        <div id="page-container" class="sidebar-o enable-page-overlay sidebar-light side-scroll page-header-fixed">
             
             <nav id="sidebar" aria-label="Main Navigation">
                 <!-- Side Header -->
@@ -248,10 +248,12 @@
                                         <span>Lock Account</span>
                                         <i class="si si-lock ml-1"></i>
                                     </a>
-                                    <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
-                                        <span>Log Out</span>
-                                        <i class="si si-logout ml-1"></i>
-                                    </a>
+                                    @if (!Auth::guest())<a class="dropdown-item d-flex align-items-center justify-content-between" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();"><span>Log Out</span>
+                                        <i class="si si-logout ml-1"></i></a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
+                                    @endif
                                 </div>
                             </div>
                         </div>

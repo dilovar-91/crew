@@ -11,7 +11,7 @@ class SeamenController extends Controller
     
     public function __construct()
     {
-        //$this->middleware('auth');
+        $this->middleware('auth');
     }
     /**
      * Display a listing of the resource.
@@ -22,9 +22,10 @@ class SeamenController extends Controller
     {
         return view('seamen.index');
     }
-    public function test()
+    public function test(Request $request)
     {
-        
+        //dd($request);
+        $request->user()->authorizeRoles(['seamen']);
         return view('seamen.test');
     }
 
@@ -102,14 +103,9 @@ class SeamenController extends Controller
             $data = $this->validate($request, [
                 'blob'        => 'required',
             ]);
-    
            $filename = uniqid();
             Storage::disk('public')
-                ->put('videos/'.$filename.'webm', file_get_contents($request->blob));
-            //\CloudConvert::file('videos/'.'video.webm')->to('videos/'.'video2.mp4');
-           
-            
-
+                ->put('videos/'.$filename.'.webm', file_get_contents($request->blob));
             FFMpeg::fromDisk('local')->open('public/videos/' . 'video.webm')
             ->export()
             ->inFormat(new FFMpeg\Format\Video\X264('libmp3lame', 'libx264'))
