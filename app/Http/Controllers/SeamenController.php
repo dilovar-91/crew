@@ -105,7 +105,16 @@ class SeamenController extends Controller
            // dd($data['blob']);
             Storage::disk('public')
                 ->put('videos/'.'video.webm', file_get_contents($request->blob));
-            \CloudConvert::file('videos/'.'video.webm')->to('videos/'.'video2.mp4');
+            //\CloudConvert::file('videos/'.'video.webm')->to('videos/'.'video2.mp4');
+            
+
+            FFMpeg::open('videos/'.'video.webm')
+            // optionally you could set the visibility
+            // of the exported file
+            ->export()
+            ->inFormat(new FFMpeg\Format\Video\MP4)
+            ->withVisibility('public')
+            ->save('videos/'.'my_movie.mp4');
             return response()->json(['status'=>'success']);
     }
     
