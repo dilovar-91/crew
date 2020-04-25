@@ -25,8 +25,6 @@ class SeamenController extends Controller
     public function test()
     {
         
-
-        $url = Storage::url('videos/my_movie.mp4');
         return view('seamen.test');
     }
 
@@ -119,7 +117,7 @@ class SeamenController extends Controller
             ->export()
             ->inFormat(new FFMpeg\Format\Video\X264('libmp3lame', 'libx264'))
             ->withVisibility('public')
-            ->save('videos/'.'my_movie.mp4');
+            ->save('public/videos/'.'my_movie.mp4');
             return response()->json(['status'=>'success']);
     }
     
