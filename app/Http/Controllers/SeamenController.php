@@ -114,7 +114,7 @@ class SeamenController extends Controller
             // optionally you could set the visibility
             // of the exported file
             ->export()
-            ->inFormat(new FFMpeg\Format\Video\X264)
+            ->inFormat(new FFMpeg\Format\Video\X264('libmp3lame', 'libx264'))
             ->withVisibility('public')
             ->save('videos/'.'my_movie.mp4');
             return response()->json(['status'=>'success']);
