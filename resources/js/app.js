@@ -26,7 +26,7 @@ Vue.use(MediaStreamRecorder);
 
 Vue.component('record-component', require('./components/RecordComponent.vue').default);
 Vue.component('capture-component', require('./components/CaptureComponent.vue').default);
-Vue.component('VideoJSRecord', require('./components/VideoJSRecord.vue').default);
+Vue.component('videojs-record', require('./components/VideoJSRecord.vue').default);
 
 
 /**

@@ -108911,7 +108911,7 @@ Vue.use(msr__WEBPACK_IMPORTED_MODULE_0___default.a);
 
 Vue.component('record-component', __webpack_require__(/*! ./components/RecordComponent.vue */ "./resources/js/components/RecordComponent.vue")["default"]);
 Vue.component('capture-component', __webpack_require__(/*! ./components/CaptureComponent.vue */ "./resources/js/components/CaptureComponent.vue")["default"]);
-Vue.component('VideoJSRecord', __webpack_require__(/*! ./components/VideoJSRecord.vue */ "./resources/js/components/VideoJSRecord.vue")["default"]);
+Vue.component('videojs-record', __webpack_require__(/*! ./components/VideoJSRecord.vue */ "./resources/js/components/VideoJSRecord.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

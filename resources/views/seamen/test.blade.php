@@ -27,7 +27,7 @@
                         <h3 class="block-title">Welcome to your app</h3>
                     </div>
                     <div class="block-content">
-                    <VideoJSRecord />
+                    <videojs-record></videojs-record>
                     <hr/>
                     <a href="{{asset('storage/videos/my_movie.mp4')}}">Download</a>
                     </div>
