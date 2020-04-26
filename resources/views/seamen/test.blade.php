@@ -27,9 +27,9 @@
                         <h3 class="block-title">Welcome to your app</h3>
                     </div>
                     <div class="block-content">
-                    <capture-component></capture-component>
+                    <VideoJSRecord />
                     <hr/>
-                    <a href="{{asset('storage/videos/my_movie.mp4')}}">Download</a>;
+                    <a href="{{asset('storage/videos/my_movie.mp4')}}">Download</a>
                     </div>
                 </div>
             </div>

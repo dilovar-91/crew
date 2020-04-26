@@ -25,7 +25,7 @@ class SeamenController extends Controller
     public function test(Request $request)
     {
         //dd($request);
-        $request->user()->authorizeRoles(['seamen']);
+        //$request->user()->authorizeRoles(['seamen']);
         return view('seamen.test');
     }
 

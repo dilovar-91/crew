@@ -35,4 +35,13 @@ mix
    /* Options */
    .options({
        processCssUrls: false
-   });
+   })
+   .webpackConfig({
+    resolve: {
+        alias: {
+            videojs: 'video.js',
+            WaveSurfer: 'wavesurfer.js',
+            RecordRTC: 'recordrtc'
+        }
+    }    
+    });

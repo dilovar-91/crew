@@ -6,10 +6,12 @@
 
 require('./bootstrap');
 window.Vue = require('vue');
-import RecordRTC  from "recordrtc";
+//import RecordRTC  from "recordrtc";
 import MediaStreamRecorder   from "msr";
-Vue.use(RecordRTC);
+//Vue.use(RecordRTC);
 Vue.use(MediaStreamRecorder);
+
+
 
 /**
  * The following block of code may be used to automatically register your
@@ -24,6 +26,7 @@ Vue.use(MediaStreamRecorder);
 
 Vue.component('record-component', require('./components/RecordComponent.vue').default);
 Vue.component('capture-component', require('./components/CaptureComponent.vue').default);
+Vue.component('VideoJSRecord', require('./components/VideoJSRecord.vue').default);
 
 
 /**
