@@ -3492,7 +3492,8 @@ __webpack_require__.r(__webpack_exports__);
           record: {
             audio: true,
             video: true,
-            debug: true
+            debug: true,
+            maxLength: 360
           }
         }
       }

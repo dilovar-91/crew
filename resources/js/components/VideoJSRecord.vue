@@ -32,7 +32,8 @@
                         record: {
                             audio: true,
                             video: true,
-                            debug: true
+                            debug: true,
+                            maxLength: 360
                         }
                     }
                 }
