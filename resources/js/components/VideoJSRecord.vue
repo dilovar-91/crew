@@ -7,7 +7,7 @@
     import 'videojs-record/dist/css/videojs.record.css'
 
     import 'webrtc-adapter'
-    //import RecordRTC from 'recordrtc'
+    import RecordRTC from 'recordrtc'
 
     import videojs from 'video.js'
     // eslint-disable-next-line

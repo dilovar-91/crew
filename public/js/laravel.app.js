@@ -3457,16 +3457,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var videojs_record_dist_css_videojs_record_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! videojs-record/dist/css/videojs.record.css */ "./node_modules/videojs-record/dist/css/videojs.record.css");
 /* harmony import */ var videojs_record_dist_css_videojs_record_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(videojs_record_dist_css_videojs_record_css__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var webrtc_adapter__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! webrtc-adapter */ "./node_modules/webrtc-adapter/src/js/adapter_core.js");
-/* harmony import */ var video_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! video.js */ "./node_modules/video.js/dist/video.es.js");
-/* harmony import */ var videojs_record_dist_videojs_record_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! videojs-record/dist/videojs.record.js */ "./node_modules/videojs-record/dist/videojs.record.js");
-/* harmony import */ var videojs_record_dist_videojs_record_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(videojs_record_dist_videojs_record_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var recordrtc__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! recordrtc */ "./node_modules/recordrtc/RecordRTC.js");
+/* harmony import */ var recordrtc__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(recordrtc__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var video_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! video.js */ "./node_modules/video.js/dist/video.es.js");
+/* harmony import */ var videojs_record_dist_videojs_record_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! videojs-record/dist/videojs.record.js */ "./node_modules/videojs-record/dist/videojs.record.js");
+/* harmony import */ var videojs_record_dist_videojs_record_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(videojs_record_dist_videojs_record_js__WEBPACK_IMPORTED_MODULE_5__);
 //
 //
 //
 //
 
 
- //import RecordRTC from 'recordrtc'
+
 
  // eslint-disable-next-line
 
@@ -3500,10 +3502,10 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     /* eslint-disable no-console */
-    this.player = Object(video_js__WEBPACK_IMPORTED_MODULE_3__["default"])('#myVideo', this.options, function () {
+    this.player = Object(video_js__WEBPACK_IMPORTED_MODULE_4__["default"])('#myVideo', this.options, function () {
       // print version information at startup
-      var msg = 'Using video.js ' + video_js__WEBPACK_IMPORTED_MODULE_3__["default"].VERSION + ' with videojs-record ' + video_js__WEBPACK_IMPORTED_MODULE_3__["default"].getPluginVersion('record') + ' and recordrtc ' + RecordRTC.version;
-      video_js__WEBPACK_IMPORTED_MODULE_3__["default"].log(msg);
+      var msg = 'Using video.js ' + video_js__WEBPACK_IMPORTED_MODULE_4__["default"].VERSION + ' with videojs-record ' + video_js__WEBPACK_IMPORTED_MODULE_4__["default"].getPluginVersion('record') + ' and recordrtc ' + recordrtc__WEBPACK_IMPORTED_MODULE_3___default.a.version;
+      video_js__WEBPACK_IMPORTED_MODULE_4__["default"].log(msg);
     }); // device is ready
 
     this.player.on('deviceReady', function () {
@@ -108885,10 +108887,8 @@ exports.XMLReader = XMLReader;
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var recordrtc__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! recordrtc */ "./node_modules/recordrtc/RecordRTC.js");
-/* harmony import */ var recordrtc__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(recordrtc__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var msr__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! msr */ "./node_modules/msr/MediaStreamRecorder.js");
-/* harmony import */ var msr__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(msr__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var msr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! msr */ "./node_modules/msr/MediaStreamRecorder.js");
+/* harmony import */ var msr__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(msr__WEBPACK_IMPORTED_MODULE_0__);
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -108896,11 +108896,11 @@ __webpack_require__.r(__webpack_exports__);
  */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js"); //import RecordRTC  from "recordrtc";
 
+ //Vue.use(RecordRTC);
 
-Vue.use(recordrtc__WEBPACK_IMPORTED_MODULE_0___default.a);
-Vue.use(msr__WEBPACK_IMPORTED_MODULE_1___default.a);
+Vue.use(msr__WEBPACK_IMPORTED_MODULE_0___default.a);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
