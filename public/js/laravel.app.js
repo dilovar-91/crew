@@ -3543,7 +3543,7 @@ __webpack_require__.r(__webpack_exports__);
 
       this.loading = true;
       var formData = new FormData();
-      var blobSend = this.recorder.getBlob();
+      var blobSend = player.recordedData;
       console.log(blobSend);
       formData.append('blob', blobSend);
       axios.post('/seamen/video/send', formData, {
