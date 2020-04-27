@@ -60,6 +60,7 @@
 
             // user clicked the record button and started recording
             this.player.on('startRecord', () => {
+                this.player.record().getDevice();
                 console.log('started recording!');
             });
 

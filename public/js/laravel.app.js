@@ -3518,6 +3518,8 @@ __webpack_require__.r(__webpack_exports__);
     }); // user clicked the record button and started recording
 
     this.player.on('startRecord', function () {
+      _this.player.record().getDevice();
+
       console.log('started recording!');
     }); // user completed recording and stream is available
 
