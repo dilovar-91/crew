@@ -3524,7 +3524,8 @@ __webpack_require__.r(__webpack_exports__);
     this.player.on('finishRecord', function () {
       // the blob object contains the recorded data that
       // can be downloaded by the user, stored on server etc.
-      player.record().stopDevice();
+      _this.player.record().stopDevice();
+
       _this.save = true;
       console.log('finished recording: ', _this.player.recordedData);
     }); // error handling
@@ -91652,13 +91653,22 @@ var render = function() {
       attrs: { id: "myVideo", playsinline: "" }
     }),
     _vm._v(" "),
-    _c("button", {
-      directives: [
-        { name: "show", rawName: "v-show", value: _vm.save, expression: "save" }
-      ],
-      staticClass: "btn btn-primary",
-      on: { click: _vm.recordSend }
-    })
+    _c(
+      "button",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.save,
+            expression: "save"
+          }
+        ],
+        staticClass: "btn btn-primary",
+        on: { click: _vm.recordSend }
+      },
+      [_vm._v("Сохранить")]
+    )
   ])
 }
 var staticRenderFns = []

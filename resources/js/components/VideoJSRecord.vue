@@ -1,7 +1,7 @@
 <template>
 <div>
     <video id="myVideo" class="video-js vjs-default-skin" playsinline></video>
-    <button v-show="save" class="btn btn-primary" @click="recordSend"  ></button>
+    <button v-show="save" class="btn btn-primary" @click="recordSend"  >Сохранить</button>
 </div>    
 </template>
 
@@ -67,7 +67,7 @@
             this.player.on('finishRecord', () => {
                 // the blob object contains the recorded data that
                 // can be downloaded by the user, stored on server etc.
-                player.record().stopDevice();
+                this.player.record().stopDevice();
                 this.save = true;
                 console.log('finished recording: ', this.player.recordedData);
             });
