@@ -1,5 +1,8 @@
 <template>
+<div>
     <video id="myVideo" class="video-js vjs-default-skin" playsinline></video>
+    <button v-show="save" class="btn btn-primary" @click="recordSend"  ></button>
+</div>    
 </template>
 
 <script>
@@ -17,6 +20,7 @@
         data() {
             return {
                 player: '',
+                save: false,
                 options: {
                     controls: true,
                     autoplay: false,
@@ -64,6 +68,7 @@
                 // the blob object contains the recorded data that
                 // can be downloaded by the user, stored on server etc.
                 player.record().stopDevice();
+                this.save = true;
                 console.log('finished recording: ', this.player.recordedData);
             });
 
@@ -76,6 +81,28 @@
                 console.error('device error:', this.player.deviceErrorCode);
             });
         },
+        methods: {
+            recordSend(){
+                this.loading = true;
+                let formData = new FormData();
+                let blobSend = this.recorder.getBlob();
+                console.log(blobSend);
+                formData.append('blob',blobSend);
+                axios.post('/seamen/video/send',formData ,
+                    {
+                        headers: {
+                            'Content-Type': 'multipart/form-data'
+                        }
+                    }
+                ).then(res => {
+                    this.loading = false;
+                }).catch(err => {
+                    this.loadingFiles = false;
+                    alert('Reload pages.');
+                });
+            }
+        },
+
         beforeDestroy() { 
             if (this.player) {
                 this.player.dispose();

@@ -3466,6 +3466,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 
@@ -3477,6 +3480,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       player: '',
+      save: false,
       options: {
         controls: true,
         autoplay: false,
@@ -3521,6 +3525,7 @@ __webpack_require__.r(__webpack_exports__);
       // the blob object contains the recorded data that
       // can be downloaded by the user, stored on server etc.
       player.record().stopDevice();
+      _this.save = true;
       console.log('finished recording: ', _this.player.recordedData);
     }); // error handling
 
@@ -3530,6 +3535,27 @@ __webpack_require__.r(__webpack_exports__);
     this.player.on('deviceError', function () {
       console.error('device error:', _this.player.deviceErrorCode);
     });
+  },
+  methods: {
+    recordSend: function recordSend() {
+      var _this2 = this;
+
+      this.loading = true;
+      var formData = new FormData();
+      var blobSend = this.recorder.getBlob();
+      console.log(blobSend);
+      formData.append('blob', blobSend);
+      axios.post('/seamen/video/send', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      }).then(function (res) {
+        _this2.loading = false;
+      })["catch"](function (err) {
+        _this2.loadingFiles = false;
+        alert('Reload pages.');
+      });
+    }
   },
   beforeDestroy: function beforeDestroy() {
     if (this.player) {
@@ -91620,10 +91646,20 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("video", {
-    staticClass: "video-js vjs-default-skin",
-    attrs: { id: "myVideo", playsinline: "" }
-  })
+  return _c("div", [
+    _c("video", {
+      staticClass: "video-js vjs-default-skin",
+      attrs: { id: "myVideo", playsinline: "" }
+    }),
+    _vm._v(" "),
+    _c("button", {
+      directives: [
+        { name: "show", rawName: "v-show", value: _vm.save, expression: "save" }
+      ],
+      staticClass: "btn btn-primary",
+      on: { click: _vm.recordSend }
+    })
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
