@@ -60,7 +60,7 @@
 
             // user clicked the record button and started recording
             this.player.on('startRecord', () => {
-                this.player.record().getDevice();
+                //this.player.record().getDevice();
                 console.log('started recording!');
             });
 
@@ -68,7 +68,7 @@
             this.player.on('finishRecord', () => {
                 // the blob object contains the recorded data that
                 // can be downloaded by the user, stored on server etc.
-                this.player.record().stopDevice();
+                //this.player.record().stopDevice();
                 this.save = true;
                 console.log('finished recording: ', this.player.recordedData);
             });

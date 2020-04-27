@@ -3518,16 +3518,14 @@ __webpack_require__.r(__webpack_exports__);
     }); // user clicked the record button and started recording
 
     this.player.on('startRecord', function () {
-      _this.player.record().getDevice();
-
+      //this.player.record().getDevice();
       console.log('started recording!');
     }); // user completed recording and stream is available
 
     this.player.on('finishRecord', function () {
       // the blob object contains the recorded data that
       // can be downloaded by the user, stored on server etc.
-      _this.player.record().stopDevice();
-
+      //this.player.record().stopDevice();
       _this.save = true;
       console.log('finished recording: ', _this.player.recordedData);
     }); // error handling
