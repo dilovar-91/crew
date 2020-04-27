@@ -22,6 +22,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/seamen', 'SeamenController@index')->name('seamen.index');
+Route::get('/seamen/invites', 'SeamenController@invites')->name('seamen.invites');
 Route::get('/test', 'SeamenController@test')->name('seamen.test');
 Route::get('lang/{locale}', 'HomeController@lang');
 

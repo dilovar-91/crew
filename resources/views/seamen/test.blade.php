@@ -21,15 +21,13 @@
     <!-- Page Content -->
     <div class="content">
         <div class="row justify-content-center">
-            <div class="col-md-6 col-xl-5">
+            <div class="col-md-12 col-xl-11">
                 <div class="block">
                     <div class="block-header">
                         <h3 class="block-title">Welcome to your app</h3>
                     </div>
-                    <div class="block-content">
+                    <div class="block-content d-flex justify-content-center pb-4">
                     <videojs-record></videojs-record>
-                    <hr/>
-                    <a href="{{asset('storage/videos/my_movie.mp4')}}">Download</a>
                     </div>
                 </div>
             </div>

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use \FFMpeg;
+use App\Models\Interview;
+use App\Models\User;
 
 class SeamenController extends Controller
 {
@@ -24,9 +26,13 @@ class SeamenController extends Controller
     }
     public function test(Request $request)
     {
-        //dd($request);
-        //$request->user()->authorizeRoles(['seamen']);
         return view('seamen.test');
+    }
+    public function invites(Request $request)
+    {
+        $interviews = Interview::with('user')->get();
+        
+        return view('seamen.invite_list')->with(array('interviews'=>$interviews));
     }
 
     /**

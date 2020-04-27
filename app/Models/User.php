@@ -42,6 +42,11 @@ class User extends Authenticatable
     return $this->belongsToMany(Role::class);
     }
 
+    public function interview()
+    {
+        return $this->hasMany(Interview::class);
+    }
+
     /**
     * @param string|array $roles
     */
