@@ -3520,6 +3520,7 @@ __webpack_require__.r(__webpack_exports__);
     this.player.on('finishRecord', function () {
       // the blob object contains the recorded data that
       // can be downloaded by the user, stored on server etc.
+      player.record().stopDevice();
       console.log('finished recording: ', _this.player.recordedData);
     }); // error handling
 
