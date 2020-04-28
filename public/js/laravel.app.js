@@ -3568,9 +3568,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
       }).then(function (res) {
         _this2.loading = false;
+
+        _this2.$swal('Спасибо!', 'Ваш ответ успешно сохранен!', 'success');
       })["catch"](function (err) {
         _this2.loadingFiles = false;
-        alert('Reload pages.');
+
+        _this2.$swal('Ошибка', 'При сохранении вашего ответа что-то пошло не так', 'error');
       });
     }
   },

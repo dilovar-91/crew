@@ -52,7 +52,8 @@ class InterviewController extends Controller
         $answer->user_id = $request->user_id;
         $answer->comment = $request->comment ?? '';
         $answer->save();
-        return response()->json(['status'=>'success']);
+        // return response()->json(['status'=>'success']);
+        return response()->json($answer, 201);
     }
 
 

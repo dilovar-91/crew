@@ -113,9 +113,10 @@
                     }
                 ).then(res => {
                     this.loading = false;
+                     this.$swal('Спасибо!', 'Ваш ответ успешно сохранен!', 'success');
                 }).catch(err => {
                     this.loadingFiles = false;
-                    alert('Reload pages.');
+                    this.$swal('Ошибка', 'При сохранении вашего ответа что-то пошло не так', 'error');  
                 });
             }
         },
