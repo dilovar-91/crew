@@ -105,7 +105,7 @@
                 formData.append('user_id',this.user_id);
                 formData.append('comment',this.comment);
 
-                axios.post('/interview/videosend',formData ,
+                axios.post('/seamen/interview/videosend',formData ,
                     {
                         headers: {
                             'Content-Type': 'multipart/form-data'

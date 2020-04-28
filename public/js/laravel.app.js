@@ -3562,7 +3562,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       formData.append('question_id', this.question_id);
       formData.append('user_id', this.user_id);
       formData.append('comment', this.comment);
-      axios.post('/interview/videosend', formData, {
+      axios.post('/seamen/interview/videosend', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
