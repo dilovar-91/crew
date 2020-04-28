@@ -15,6 +15,12 @@ import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 Vue.use(VueSweetalert2);
 
+// Import component
+import Loading from 'vue-loading-overlay';
+// Import stylesheet
+Vue.use(Loading);
+import 'vue-loading-overlay/dist/vue-loading.css';
+
 
 
 /**

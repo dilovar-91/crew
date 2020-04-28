@@ -3477,6 +3477,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -3491,6 +3495,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   }, _defineProperty(_props, "question_id", Number), _defineProperty(_props, "time", Number), _props),
   data: function data() {
     return {
+      isLoading: false,
+      fullPage: true,
+      color: '#5c80d1',
       player: '',
       save: false,
       comment: '',
@@ -3554,7 +3561,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     recordSend: function recordSend() {
       var _this2 = this;
 
-      this.loading = true;
+      this.isLoading = true;
       var formData = new FormData();
       var blobSend = this.player.recordedData;
       console.log(blobSend);
@@ -3567,11 +3574,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           'Content-Type': 'multipart/form-data'
         }
       }).then(function (res) {
-        _this2.loading = false;
+        _this2.isLoading = false;
 
         _this2.$swal('Спасибо!', 'Ваш ответ успешно сохранен!', 'success');
       })["catch"](function (err) {
-        _this2.loadingFiles = false;
+        _this2.isLoading = false;
 
         _this2.$swal('Ошибка', 'При сохранении вашего ответа что-то пошло не так', 'error');
       });
@@ -5622,6 +5629,25 @@ exports = module.exports = __webpack_require__(/*! ../../../css-loader/lib/css-b
 
 // module
 exports.push([module.i, "/*!\nDefault styles for videojs-record 3.11.0\n*/\n@font-face {\n  font-family: videojs-record;\n  src: url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAAAW0AAsAAAAACewAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABHU1VCAAABCAAAADsAAABUIIslek9TLzIAAAFEAAAAPAAAAFY6l0dQY21hcAAAAYAAAAByAAAB4PJQ5/VnbHlmAAAB9AAAAYYAAALMPcs3OGhlYWQAAAN8AAAALQAAADYQhba0aGhlYQAAA6wAAAAWAAAAJABhADtobXR4AAADxAAAAA4AAAAoAbAAAGxvY2EAAAPUAAAAFgAAABYELgNEbWF4cAAAA+wAAAAdAAAAIAEXADxuYW1lAAAEDAAAATYAAAJemUJQLnBvc3QAAAVEAAAAcAAAALoqjqNHeJxjYGRgYOBiMGCwY2BycfMJYeDLSSzJY5BiYGGAAJA8MpsxJzM9kYEDxgPKsYBpDiBmg4gCACY7BUgAeJxjYGTQZpzAwMrAwCDHoAgk2aC0OAMTAw8DkGBlZsAKAtJcUxgcPjJ+5GQwAHJZwCQDAyOIAADEhgVmeJztkcENw0AIBOd8+GyilOKXC/IrZaTpq8BhIWUYaXbFCvEAYAV6cAQG7UNDdUXaMu+8MjfOnDHl0+87tEmjt9QlZi02DjZ2PKLBU+/U779zXa3IOy4F8l7oH9MKXXauhX41R4F8K5DvBXIv8B9LThoJAAB4nG1Sf0+DMBC9a4+WEJxTgRGdywKEzTmngXX7w+j3/1i+g/0wxhZer23u9d1ryZC2N9pQTe9Ex3pV+7pyz5wVnxx2HPqs6A5A5/O+O3zxvvWZq1oEh67I105ScQZtIk4iFwEnOjNi8LWCoUTEXmwUWfE8Lkw1JVbA6Txo2FBDD1AQ9u0rnxXoibNQMZfMA8RPXqNMwccFjfpb2lJKS2SPEsf0YzbhCiXU2YL7vA/dN4fSiLYbC63WWmcFfyYmxbqCs5Ex2HHiPSYn/g96gbb5hf8ssK9BuwqV84djmK21nuVQ2UehriRxakymCwARL8YmRjxdan5DT8FaTRgaoW+/4zJKoihJFLanEXDNadAtcvq8TsuyKUlnA9eWYmh8wZ7emboQrnd5Fr7ysGT/zd2CYc89qlcT3EW6E/UEKwrlYJG9Gy9tvMrFaQ9A57Pf6RXRA830BeX98c+pvg59O51KoxwjNFUKT+YaA5ZzZRm93uEl3A4v4R+WzW+KzZXgsSD6Act6LFcAAHicY2BkYGAA4gm5SzLj+W2+MnAzGABFGG7M3rMWmQaK6gJJDgYmEAcANXsKBgAAAHicY2BkYGAwYGBAIhkZUAEXAA5yAJ0AAHicY2AAAgPCGAAgOAGxAAAAAAAAAEIAYACQALwA1gDiASABRgFmAAB4nGNgZGBg4GIwYGBmAAEmMI8LSP4H8xkADk0BVAAAAHicfZA/asMwGMWf8680hlIo7ZRBUOhSYicZQ+cEOmbI7tiyY2NbRlYCuUEP0hP0EB17kJ6iL6qWZLAE0u+9732fQADu8Q0P5+Xhzp7n1cMN1T/3SY+OB+Rnx0P4mDse0X9zPMYr3h37eMCBE7zBLZ0JPhz3mP903Kf/5XhA/nE8xBN+HY8w8eB4jK03cezjxdPHPJGqaKdaxkonG5kdyujKvFRbqdtc1WIezC4La1lLHRmZiN1JtMdsYUwqUq0qsVK1kWWpRKNVIWMT7I1plmGYOj+IVYUjciSQUCjQYgpNjqk03Q0541+UiKi7kl21LVnTzalrCP5/gFlnx5pc264IhnfCrh1OPFv2ZVjQNUipU2YUKtLKTj+nS25Fp7G1ws41fHNvuxosEXKnV/nAvl79AXudcPYAAHicfctLDsIwDARQT/mUJt3DJXIoK7HULIotN+35QS1ihZjVG42GOvqfgA4nnHHBFT1uGBAQqectmfgctlpED/Ja6sG4ZBd57h5dsnpJS2Nv8VvURpu0aco8i/PDam6rS6rv14f74/5zUCN6AYpyMIA=) format(\"woff\");\n  font-weight: normal;\n  font-style: normal; }\n\n.vjs-icon-av-perm {\n  font-family: videojs-record;\n  font-weight: normal;\n  font-style: normal; }\n  .vjs-icon-av-perm:before {\n    content: \"\\F101\"; }\n\n.vjs-icon-sv-perm {\n  font-family: videojs-record;\n  font-weight: normal;\n  font-style: normal; }\n  .vjs-icon-sv-perm:before {\n    content: \"\\F104\"; }\n\n.vjs-icon-video-perm {\n  font-family: videojs-record;\n  font-weight: normal;\n  font-style: normal; }\n  .vjs-icon-video-perm:before {\n    content: \"\\F102\"; }\n\n.vjs-icon-audio-perm {\n  font-family: videojs-record;\n  font-weight: normal;\n  font-style: normal; }\n  .vjs-icon-audio-perm:before {\n    content: \"\\F103\"; }\n\n.vjs-icon-screen-perm {\n  font-family: videojs-record;\n  font-weight: normal;\n  font-style: normal; }\n  .vjs-icon-screen-perm:before {\n    content: \"\\F104\"; }\n\n.vjs-icon-record-start {\n  font-family: videojs-record;\n  font-weight: normal;\n  font-style: normal; }\n  .vjs-icon-record-start:before {\n    content: \"\\F105\"; }\n\n.vjs-icon-record-stop {\n  font-family: videojs-record;\n  font-weight: normal;\n  font-style: normal; }\n  .vjs-icon-record-stop:before {\n    content: \"\\F106\"; }\n\n.vjs-icon-photo-camera {\n  font-family: videojs-record;\n  font-weight: normal;\n  font-style: normal; }\n  .vjs-icon-photo-camera:before {\n    content: \"\\F107\"; }\n\n.vjs-icon-picture-in-picture-start {\n  font-family: videojs-record;\n  font-weight: normal;\n  font-style: normal; }\n  .vjs-icon-picture-in-picture-start:before {\n    content: \"\\F108\"; }\n\n.vjs-icon-picture-in-picture-stop {\n  font-family: videojs-record;\n  font-weight: normal;\n  font-style: normal; }\n  .vjs-icon-picture-in-picture-stop:before {\n    content: \"\\F109\"; }\n\n/* General plugin style.\n--------------------------------------------------------------------------------\n*/\n/* Position fullscreen control on right side of the player.\n--------------------------------------------------------------------------------\n*/\n.vjs-record.video-js .vjs-control.vjs-fullscreen-control {\n  position: absolute;\n  right: 0; }\n\n/* Ensure custom controls are always visible because\n   the plugin hides and replace the video.js native mobile\n   controls.\n--------------------------------------------------------------------------------\n*/\n.vjs-record .vjs-using-native-controls .vjs-control-bar {\n  display: flex !important; }\n\n/* Handle responsive / fluid view.\n--------------------------------------------------------------------------------\n*/\n.vjs-record.vjs-fluid wave.vjs-wavedisplay,\n.vjs-record.vjs-fluid .vjs-record-canvas > canvas:nth-child(1),\n.vjs-record.vjs-fluid .vjs-animation-display > img:nth-child(1) {\n  top: 0;\n  position: absolute !important;\n  width: 100%;\n  min-width: 100%;\n  max-width: 100%;\n  height: 100%; }\n\n/* Device Button (large centered button at startup)\n--------------------------------------------------------------------------------\n*/\n.vjs-record .vjs-device-button.vjs-control {\n  font-size: 3em;\n  position: absolute;\n  z-index: 2;\n  /* Center it vertically */\n  top: 50%;\n  /* Center it horizontally */\n  left: 50%;\n  width: 4em;\n  height: 2.8em;\n  margin-top: -1.8000000000000001em;\n  margin-left: -2.1em;\n  display: block;\n  cursor: pointer;\n  opacity: 1;\n  /* transition */\n  transition: all .4s;\n  text-align: center;\n  vertical-align: middle;\n  /* border-radius */\n  border-radius: .8em;\n  /* Need a slightly gray bg so it can be seen on black backgrounds */\n  /* background-color-with-alpha */\n  background-color: #07141e;\n  background-color: rgba(7, 20, 30, 0.7);\n  /* box-shadow */\n  box-shadow: 0 0 1em rgba(255, 255, 255, 0.25); }\n\n.vjs-record .vjs-error .vjs-device-button {\n  display: none; }\n\n.vjs-record button.vjs-device-button.vjs-control.vjs-icon-av-perm:before,\n.vjs-record button.vjs-device-button.vjs-control.vjs-icon-sv-perm:before,\n.vjs-record button.vjs-device-button.vjs-control.vjs-icon-audio-perm:before,\n.vjs-record button.vjs-device-button.vjs-control.vjs-icon-video-perm:before,\n.vjs-record button.vjs-device-button.vjs-control.vjs-icon-screen-perm:before {\n  font-size: 2.4em; }\n\n/* Record Toggle (start/stop recording button in controlbar)\n--------------------------------------------------------------------------------\n*/\n.vjs-record .vjs-record-button.vjs-control {\n  cursor: pointer; }\n\n.vjs-record .vjs-error .vjs-record-button {\n  display: none; }\n\n.vjs-record .vjs-record-button.vjs-control.vjs-icon-record-start:before {\n  font-size: 1.4em;\n  line-height: 2.2em; }\n\n.vjs-record .vjs-record-button.vjs-control.vjs-icon-record-stop:before {\n  font-size: 2.2em;\n  line-height: 1.4em; }\n\n.vjs-record .vjs-play-control.vjs-control {\n  cursor: pointer; }\n\n/* Camera Button (snapshot try/retry)\n--------------------------------------------------------------------------------\n*/\n.vjs-record .vjs-camera-button.vjs-control {\n  cursor: pointer; }\n\n.vjs-record .vjs-error .vjs-camera-button {\n  display: none; }\n\n.vjs-record .vjs-camera-button.vjs-control.vjs-icon-photo-camera:before {\n  font-size: 2.0em;\n  line-height: 1.4em; }\n\n.vjs-record .vjs-camera-button.vjs-control.vjs-icon-replay:before {\n  font-size: 2.2em;\n  line-height: 1.4em; }\n\n/* Record Indicator (dot in top-right corner visible when recording)\n--------------------------------------------------------------------------------\n*/\n.vjs-record.video-js .vjs-control.vjs-record-indicator.vjs-hidden {\n  display: block !important;\n  opacity: 0;\n  transform: translateX(1em) rotateX(-90deg) scale(0.9);\n  transition: all .5s, transform .5s .25s; }\n\n.vjs-record.video-js .vjs-control.vjs-record-indicator {\n  width: .8em;\n  height: .8em;\n  background-color: #ff625e;\n  line-height: 1.1em;\n  border-radius: 50%;\n  right: 2.5ex;\n  top: 2ex;\n  position: absolute;\n  opacity: 1;\n  transform: rotateX(0) scale(1.3);\n  transition: all .5s, transform .2s .1s; }\n\n.vjs-record.video-js .vjs-control.vjs-record-indicator:before {\n  content: attr(data-label);\n  color: white;\n  position: absolute;\n  left: -2.7em;\n  font-family: \"Helvetica\", sans-serif;\n  -webkit-animation-name: pulsetext;\n          animation-name: pulsetext;\n  -webkit-animation-duration: 5s;\n          animation-duration: 5s;\n  -webkit-animation-iteration-count: infinite;\n          animation-iteration-count: infinite;\n  top: -0.1em;\n  font-size: 0.8em;\n  opacity: 1;\n  transition: opacity .5s .2s; }\n\n.vjs-record.video-js .vjs-control.vjs-record-indicator:after {\n  content: \"\";\n  display: block;\n  height: calc(.8em - 4px);\n  width: calc(.8em - 4px);\n  border: 2px solid #ff625e;\n  border-radius: 50%;\n  position: absolute;\n  top: 2px;\n  left: 2px;\n  transform-origin: center;\n  -webkit-animation-name: pulse;\n          animation-name: pulse;\n  -webkit-animation-duration: 2s;\n          animation-duration: 2s;\n  -webkit-animation-iteration-count: infinite;\n          animation-iteration-count: infinite;\n  -webkit-animation-delay: .25s;\n          animation-delay: .25s; }\n\n@-webkit-keyframes pulsetext {\n  from {\n    opacity: .75; }\n  25% {\n    opacity: .5; }\n  50% {\n    opacity: .75; }\n  75% {\n    opacity: .5; }\n  to {\n    opacity: .75; } }\n\n@keyframes pulsetext {\n  from {\n    opacity: .75; }\n  25% {\n    opacity: .5; }\n  50% {\n    opacity: .75; }\n  75% {\n    opacity: .5; }\n  to {\n    opacity: .75; } }\n\n@-webkit-keyframes pulse {\n  from {\n    opacity: 1;\n    transform: scale(1.6); }\n  50% {\n    opacity: .5;\n    transform: scale(2.5); }\n  to {\n    opacity: 0;\n    transform: scale(3.5); } }\n\n@keyframes pulse {\n  from {\n    opacity: 1;\n    transform: scale(1.6); }\n  50% {\n    opacity: .5;\n    transform: scale(2.5); }\n  to {\n    opacity: 0;\n    transform: scale(3.5); } }\n\n/* Picture-In-Picture Toggle (button in controlbar)\n--------------------------------------------------------------------------------\n*/\n.vjs-record .vjs-pip-button.vjs-control {\n  cursor: pointer; }\n\n.vjs-record .vjs-error .vjs-pip-button {\n  display: none; }\n\n.vjs-record .vjs-pip-button.vjs-control.vjs-icon-picture-in-picture-start:before {\n  font-size: 1.4em;\n  line-height: 2.2em; }\n\n.vjs-record .vjs-pip-button.vjs-control.vjs-icon-picture-in-picture-stop:before {\n  font-size: 1.4em;\n  line-height: 2.2em; }\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loading-overlay/dist/vue-loading.css":
+/*!*************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--11-1!./node_modules/postcss-loader/src??ref--11-2!./node_modules/vue-loading-overlay/dist/vue-loading.css ***!
+  \*************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".vld-overlay {\n  bottom: 0;\n  left: 0;\n  position: absolute;\n  right: 0;\n  top: 0;\n  align-items: center;\n  display: none;\n  justify-content: center;\n  overflow: hidden;\n  z-index: 9999;\n}\n\n.vld-overlay.is-active {\n  display: flex;\n}\n\n.vld-overlay.is-full-page {\n  z-index: 9999;\n  position: fixed;\n}\n\n.vld-overlay .vld-background {\n  bottom: 0;\n  left: 0;\n  position: absolute;\n  right: 0;\n  top: 0;\n  background: #fff;\n  opacity: 0.5;\n}\n\n.vld-overlay .vld-icon, .vld-parent {\n  position: relative;\n}\n\n", ""]);
 
 // exports
 
@@ -94827,57 +94853,76 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("video", {
-      staticClass: "video-js vjs-default-skin",
-      attrs: { id: "myVideo", playsinline: "" }
-    }),
-    _vm._v(" "),
-    _c("div", { staticClass: "form-group" }, [
-      _c("label", { attrs: { for: "exampleFormControlTextarea1" } }, [
-        _vm._v("Comment")
-      ]),
-      _vm._v(" "),
-      _c("textarea", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.comment,
-            expression: "comment"
-          }
-        ],
-        staticClass: "form-control",
-        attrs: { id: "exampleFormControlTextarea1", rows: "3" },
-        domProps: { value: _vm.comment },
+  return _c(
+    "div",
+    { staticClass: "vld-parent" },
+    [
+      _c("loading", {
+        attrs: {
+          active: _vm.isLoading,
+          "can-cancel": true,
+          "on-cancel": _vm.onCancel,
+          "is-full-page": _vm.fullPage
+        },
         on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.comment = $event.target.value
+          "update:active": function($event) {
+            _vm.isLoading = $event
           }
         }
-      })
-    ]),
-    _vm._v(" "),
-    _c(
-      "button",
-      {
-        directives: [
-          {
-            name: "show",
-            rawName: "v-show",
-            value: _vm.save,
-            expression: "save"
+      }),
+      _vm._v(" "),
+      _c("video", {
+        staticClass: "video-js vjs-default-skin",
+        attrs: { id: "myVideo", playsinline: "" }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "exampleFormControlTextarea1" } }, [
+          _vm._v("Comment")
+        ]),
+        _vm._v(" "),
+        _c("textarea", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.comment,
+              expression: "comment"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { id: "exampleFormControlTextarea1", rows: "3" },
+          domProps: { value: _vm.comment },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.comment = $event.target.value
+            }
           }
-        ],
-        staticClass: "btn btn-primary",
-        on: { click: _vm.recordSend }
-      },
-      [_vm._v("Сохранить")]
-    )
-  ])
+        })
+      ]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.save,
+              expression: "save"
+            }
+          ],
+          staticClass: "btn btn-primary",
+          on: { click: _vm.recordSend }
+        },
+        [_vm._v("Сохранить")]
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -94990,6 +95035,47 @@ function normalizeComponent (
   }
 }
 
+
+/***/ }),
+
+/***/ "./node_modules/vue-loading-overlay/dist/vue-loading.css":
+/*!***************************************************************!*\
+  !*** ./node_modules/vue-loading-overlay/dist/vue-loading.css ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../css-loader??ref--11-1!../../postcss-loader/src??ref--11-2!./vue-loading.css */ "./node_modules/css-loader/index.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loading-overlay/dist/vue-loading.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/vue-loading-overlay/dist/vue-loading.min.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/vue-loading-overlay/dist/vue-loading.min.js ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+!function(t,e){ true?module.exports=e():undefined}("undefined"!=typeof self?self:this,(function(){return function(t){var e={};function i(n){if(e[n])return e[n].exports;var r=e[n]={i:n,l:!1,exports:{}};return t[n].call(r.exports,r,r.exports,i),r.l=!0,r.exports}return i.m=t,i.c=e,i.d=function(t,e,n){i.o(t,e)||Object.defineProperty(t,e,{enumerable:!0,get:n})},i.r=function(t){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(t,"__esModule",{value:!0})},i.t=function(t,e){if(1&e&&(t=i(t)),8&e)return t;if(4&e&&"object"==typeof t&&t&&t.__esModule)return t;var n=Object.create(null);if(i.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:t}),2&e&&"string"!=typeof t)for(var r in t)i.d(n,r,function(e){return t[e]}.bind(null,r));return n},i.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return i.d(e,"a",e),e},i.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},i.p="",i(i.s=1)}([function(t,e,i){},function(t,e,i){"use strict";i.r(e);var n="undefined"!=typeof window?window.HTMLElement:Object,r={mounted:function(){document.addEventListener("focusin",this.focusIn)},methods:{focusIn:function(t){if(this.isActive&&t.target!==this.$el&&!this.$el.contains(t.target)){var e=this.container?this.container:this.isFullPage?null:this.$el.parentElement;(this.isFullPage||e&&e.contains(t.target))&&(t.preventDefault(),this.$el.focus())}}},beforeDestroy:function(){document.removeEventListener("focusin",this.focusIn)}};function a(t,e,i,n,r,a,o,s){var u,l="function"==typeof t?t.options:t;if(e&&(l.render=e,l.staticRenderFns=i,l._compiled=!0),n&&(l.functional=!0),a&&(l._scopeId="data-v-"+a),o?(u=function(t){(t=t||this.$vnode&&this.$vnode.ssrContext||this.parent&&this.parent.$vnode&&this.parent.$vnode.ssrContext)||"undefined"==typeof __VUE_SSR_CONTEXT__||(t=__VUE_SSR_CONTEXT__),r&&r.call(this,t),t&&t._registeredComponents&&t._registeredComponents.add(o)},l._ssrRegister=u):r&&(u=s?function(){r.call(this,this.$root.$options.shadowRoot)}:r),u)if(l.functional){l._injectStyles=u;var c=l.render;l.render=function(t,e){return u.call(e),c(t,e)}}else{var d=l.beforeCreate;l.beforeCreate=d?[].concat(d,u):[u]}return{exports:t,options:l}}var o=a({name:"spinner",props:{color:{type:String,default:"#000"},height:{type:Number,default:64},width:{type:Number,default:64}}},(function(){var t=this.$createElement,e=this._self._c||t;return e("svg",{attrs:{viewBox:"0 0 38 38",xmlns:"http://www.w3.org/2000/svg",width:this.width,height:this.height,stroke:this.color}},[e("g",{attrs:{fill:"none","fill-rule":"evenodd"}},[e("g",{attrs:{transform:"translate(1 1)","stroke-width":"2"}},[e("circle",{attrs:{"stroke-opacity":".25",cx:"18",cy:"18",r:"18"}}),e("path",{attrs:{d:"M36 18c0-9.94-8.06-18-18-18"}},[e("animateTransform",{attrs:{attributeName:"transform",type:"rotate",from:"0 18 18",to:"360 18 18",dur:"0.8s",repeatCount:"indefinite"}})],1)])])])}),[],!1,null,null,null).exports,s=a({name:"dots",props:{color:{type:String,default:"#000"},height:{type:Number,default:240},width:{type:Number,default:60}}},(function(){var t=this.$createElement,e=this._self._c||t;return e("svg",{attrs:{viewBox:"0 0 120 30",xmlns:"http://www.w3.org/2000/svg",fill:this.color,width:this.width,height:this.height}},[e("circle",{attrs:{cx:"15",cy:"15",r:"15"}},[e("animate",{attrs:{attributeName:"r",from:"15",to:"15",begin:"0s",dur:"0.8s",values:"15;9;15",calcMode:"linear",repeatCount:"indefinite"}}),e("animate",{attrs:{attributeName:"fill-opacity",from:"1",to:"1",begin:"0s",dur:"0.8s",values:"1;.5;1",calcMode:"linear",repeatCount:"indefinite"}})]),e("circle",{attrs:{cx:"60",cy:"15",r:"9","fill-opacity":"0.3"}},[e("animate",{attrs:{attributeName:"r",from:"9",to:"9",begin:"0s",dur:"0.8s",values:"9;15;9",calcMode:"linear",repeatCount:"indefinite"}}),e("animate",{attrs:{attributeName:"fill-opacity",from:"0.5",to:"0.5",begin:"0s",dur:"0.8s",values:".5;1;.5",calcMode:"linear",repeatCount:"indefinite"}})]),e("circle",{attrs:{cx:"105",cy:"15",r:"15"}},[e("animate",{attrs:{attributeName:"r",from:"15",to:"15",begin:"0s",dur:"0.8s",values:"15;9;15",calcMode:"linear",repeatCount:"indefinite"}}),e("animate",{attrs:{attributeName:"fill-opacity",from:"1",to:"1",begin:"0s",dur:"0.8s",values:"1;.5;1",calcMode:"linear",repeatCount:"indefinite"}})])])}),[],!1,null,null,null).exports,u=a({name:"bars",props:{color:{type:String,default:"#000"},height:{type:Number,default:40},width:{type:Number,default:40}}},(function(){var t=this.$createElement,e=this._self._c||t;return e("svg",{attrs:{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 30 30",height:this.height,width:this.width,fill:this.color}},[e("rect",{attrs:{x:"0",y:"13",width:"4",height:"5"}},[e("animate",{attrs:{attributeName:"height",attributeType:"XML",values:"5;21;5",begin:"0s",dur:"0.6s",repeatCount:"indefinite"}}),e("animate",{attrs:{attributeName:"y",attributeType:"XML",values:"13; 5; 13",begin:"0s",dur:"0.6s",repeatCount:"indefinite"}})]),e("rect",{attrs:{x:"10",y:"13",width:"4",height:"5"}},[e("animate",{attrs:{attributeName:"height",attributeType:"XML",values:"5;21;5",begin:"0.15s",dur:"0.6s",repeatCount:"indefinite"}}),e("animate",{attrs:{attributeName:"y",attributeType:"XML",values:"13; 5; 13",begin:"0.15s",dur:"0.6s",repeatCount:"indefinite"}})]),e("rect",{attrs:{x:"20",y:"13",width:"4",height:"5"}},[e("animate",{attrs:{attributeName:"height",attributeType:"XML",values:"5;21;5",begin:"0.3s",dur:"0.6s",repeatCount:"indefinite"}}),e("animate",{attrs:{attributeName:"y",attributeType:"XML",values:"13; 5; 13",begin:"0.3s",dur:"0.6s",repeatCount:"indefinite"}})])])}),[],!1,null,null,null).exports,l=a({name:"vue-loading",mixins:[r],props:{active:Boolean,programmatic:Boolean,container:[Object,Function,n],isFullPage:{type:Boolean,default:!0},transition:{type:String,default:"fade"},canCancel:Boolean,onCancel:{type:Function,default:function(){}},color:String,backgroundColor:String,opacity:Number,width:Number,height:Number,zIndex:Number,loader:{type:String,default:"spinner"}},data:function(){return{isActive:this.active}},components:{Spinner:o,Dots:s,Bars:u},beforeMount:function(){this.programmatic&&(this.container?(this.isFullPage=!1,this.container.appendChild(this.$el)):document.body.appendChild(this.$el))},mounted:function(){this.programmatic&&(this.isActive=!0),document.addEventListener("keyup",this.keyPress)},methods:{cancel:function(){this.canCancel&&this.isActive&&(this.hide(),this.onCancel.apply(null,arguments))},hide:function(){var t=this;this.$emit("hide"),this.$emit("update:active",!1),this.programmatic&&(this.isActive=!1,setTimeout((function(){var e;t.$destroy(),void 0!==(e=t.$el).remove?e.remove():e.parentNode.removeChild(e)}),150))},keyPress:function(t){27===t.keyCode&&this.cancel()}},watch:{active:function(t){this.isActive=t}},beforeDestroy:function(){document.removeEventListener("keyup",this.keyPress)}},(function(){var t=this,e=t.$createElement,i=t._self._c||e;return i("transition",{attrs:{name:t.transition}},[i("div",{directives:[{name:"show",rawName:"v-show",value:t.isActive,expression:"isActive"}],staticClass:"vld-overlay is-active",class:{"is-full-page":t.isFullPage},style:{zIndex:t.zIndex},attrs:{tabindex:"0","aria-busy":t.isActive,"aria-label":"Loading"}},[i("div",{staticClass:"vld-background",style:{background:t.backgroundColor,opacity:t.opacity},on:{click:function(e){return e.preventDefault(),t.cancel(e)}}}),i("div",{staticClass:"vld-icon"},[t._t("before"),t._t("default",[i(t.loader,{tag:"component",attrs:{color:t.color,width:t.width,height:t.height}})]),t._t("after")],2)])])}),[],!1,null,null,null).exports,c=function(t){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},i=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{};return{show:function(){var n=arguments.length>0&&void 0!==arguments[0]?arguments[0]:e,r=arguments.length>1&&void 0!==arguments[1]?arguments[1]:i,a={programmatic:!0},o=Object.assign({},e,n,a),s=new(t.extend(l))({el:document.createElement("div"),propsData:o}),u=Object.assign({},i,r);return Object.keys(u).map((function(t){s.$slots[t]=u[t]})),s}}};i(0);l.install=function(t){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:{},i=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{},n=c(t,e,i);t.$loading=n,t.prototype.$loading=n};e.default=l}]).default}));
 
 /***/ }),
 
@@ -112199,6 +112285,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_sweetalert2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-sweetalert2 */ "./node_modules/vue-sweetalert2/dist/index.js");
 /* harmony import */ var sweetalert2_dist_sweetalert2_min_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! sweetalert2/dist/sweetalert2.min.css */ "./node_modules/sweetalert2/dist/sweetalert2.min.css");
 /* harmony import */ var sweetalert2_dist_sweetalert2_min_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(sweetalert2_dist_sweetalert2_min_css__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var vue_loading_overlay__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-loading-overlay */ "./node_modules/vue-loading-overlay/dist/vue-loading.min.js");
+/* harmony import */ var vue_loading_overlay__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vue_loading_overlay__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var vue_loading_overlay_dist_vue_loading_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-loading-overlay/dist/vue-loading.css */ "./node_modules/vue-loading-overlay/dist/vue-loading.css");
+/* harmony import */ var vue_loading_overlay_dist_vue_loading_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(vue_loading_overlay_dist_vue_loading_css__WEBPACK_IMPORTED_MODULE_4__);
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -112213,7 +112303,12 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 Vue.use(msr__WEBPACK_IMPORTED_MODULE_0___default.a);
 
 
-Vue.use(vue_sweetalert2__WEBPACK_IMPORTED_MODULE_1__["default"]);
+Vue.use(vue_sweetalert2__WEBPACK_IMPORTED_MODULE_1__["default"]); // Import component
+
+ // Import stylesheet
+
+Vue.use(vue_loading_overlay__WEBPACK_IMPORTED_MODULE_3___default.a);
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

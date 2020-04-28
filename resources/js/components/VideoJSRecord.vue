@@ -1,5 +1,9 @@
 <template>
-<div>
+<div class="vld-parent">
+    <loading :active.sync="isLoading" 
+        :can-cancel="true" 
+        :on-cancel="onCancel"
+        :is-full-page="fullPage"></loading>
     <video id="myVideo" class="video-js vjs-default-skin" playsinline></video>
     <div class="form-group">
     <label for="exampleFormControlTextarea1">Comment</label>
@@ -29,6 +33,10 @@
         },
         data() {
             return {
+                isLoading: false,
+                fullPage: true,
+                color: '#5c80d1',
+
                 player: '',
                 save: false,
                 comment: '',
@@ -96,7 +104,7 @@
         },
         methods: {
             recordSend(){
-                this.loading = true;
+                this.isLoading = true;
                 let formData = new FormData();
                 let blobSend = this.player.recordedData;
                 console.log(blobSend);
@@ -112,10 +120,10 @@
                         }
                     }
                 ).then(res => {
-                    this.loading = false;
+                    this.isLoading = false
                      this.$swal('Спасибо!', 'Ваш ответ успешно сохранен!', 'success');
                 }).catch(err => {
-                    this.loadingFiles = false;
+                    this.isLoading = false
                     this.$swal('Ошибка', 'При сохранении вашего ответа что-то пошло не так', 'error');  
                 });
             }
