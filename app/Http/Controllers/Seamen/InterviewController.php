@@ -48,6 +48,7 @@ class InterviewController extends Controller
         ->save('public/videos/'.$filename.'.mp4');
         $answer = new Answer;
         $answer->question_id = $request->question_id;
+        $answer->answer = $filename.'.mp4';
         $answer->user_id = $request->user_id;
         $answer->comment = $request->comment ?? '';
         $answer->save();
