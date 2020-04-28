@@ -103,7 +103,7 @@
                 let loader = this.$loading.show({
                   // Optional parameters
                   container: null,
-                  canCancel: true,
+                  canCancel: false,
                   onCancel: this.onCancel,
                   color: this.color
                 });

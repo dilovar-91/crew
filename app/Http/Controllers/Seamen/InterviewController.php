@@ -10,7 +10,7 @@ use App\Models\Invite;
 use App\Models\Answer;
 use App\Models\Question;
 use Illuminate\Support\Facades\Storage;
-use \FFMpeg;
+use App\Jobs\ProcessVideoConvert;
 
 class InterviewController extends Controller
 {
@@ -38,20 +38,17 @@ class InterviewController extends Controller
         $data = $this->validate($request, [
             'blob'        => 'required',
         ]);
-       $filename = uniqid();
+        $filename = uniqid();
         Storage::disk('public')
             ->put('videos/'.$filename.'.webm', file_get_contents($request->blob));
-        FFMpeg::fromDisk('local')->open('public/videos/'.$filename.'.webm')
-        ->export()
-        ->inFormat(new FFMpeg\Format\Video\X264('libmp3lame', 'libx264'))
-        ->withVisibility('public')
-        ->save('public/videos/'.$filename.'.mp4');
+        
         $answer = new Answer;
         $answer->question_id = $request->question_id;
         $answer->answer = $filename.'.mp4';
         $answer->user_id = $request->user_id;
         $answer->comment = $request->comment ?? '';
         $answer->save();
+        ProcessVideoConvert::dispatch($answer);
         // return response()->json(['status'=>'success']);
         return response()->json($answer, 201);
     }
