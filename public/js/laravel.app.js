@@ -3559,7 +3559,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       var loader = this.$loading.show({
         // Optional parameters
-        container: this.fullPage,
+        container: null,
         canCancel: true,
         onCancel: this.onCancel,
         color: this.color

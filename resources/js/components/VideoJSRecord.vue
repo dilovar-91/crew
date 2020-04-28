@@ -1,5 +1,5 @@
 <template>
-<div class="vld-parent">
+<div class="vld-parent" >
     
     <video id="myVideo" class="video-js vjs-default-skin" playsinline></video>
     <div class="form-group">
@@ -102,7 +102,7 @@
             recordSend(){
                 let loader = this.$loading.show({
                   // Optional parameters
-                  container: this.fullPage,
+                  container: null,
                   canCancel: true,
                   onCancel: this.onCancel,
                   color: this.color
