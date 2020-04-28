@@ -15,6 +15,7 @@ class ProcessVideoConvert implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
+    protected $answer;
     /**
      * Create a new job instance.
      *
