@@ -46,6 +46,19 @@ class User extends Authenticatable
     {
         return $this->hasMany(Interview::class);
     }
+    public function question()
+    {
+        return $this->hasMany(Question::class);
+    }
+
+    public function invite()
+    {
+    return $this->hasMany(Invite::class);
+    }
+    public function inviter()
+    {
+    return $this->hasMany(Invite::class);
+    }
 
     /**
     * @param string|array $roles

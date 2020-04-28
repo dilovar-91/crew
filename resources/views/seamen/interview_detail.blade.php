@@ -26,13 +26,13 @@
         <div class="content content-full">
             <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
                 <h1 class="flex-sm-fill h3 my-2">
-                   Interview Invites
+                Interview <span class="text-primary">"{{$interview->title}}"</span> from <span class="text-success">{{ucfirst($interview->user->name ?? '')}}</span>
                 </h1>
                 <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
                     <ol class="breadcrumb breadcrumb-alt">
                         <li class="breadcrumb-item">Seamen</li>
                         <li class="breadcrumb-item" aria-current="page">
-                            <a class="link-fx" href="">Interview Invites</a>
+                            <a class="link-fx" href="">Interview Questions</a>
                         </li>
                     </ol>
                 </nav>
@@ -46,7 +46,7 @@
         <!-- Dynamic Table Full -->
         <div class="block">
             <div class="block-header">
-                <h3 class="block-title">Invite List</h3>
+                <h3 class="block-title">Questions</h3>
             </div>
             <div class="block-content block-content-full">
                 <!-- DataTables init on table by adding .js-dataTable-full class, functionality is initialized in js/pages/tables_datatables.js -->
@@ -55,39 +55,30 @@
                         <tr>
                             <th class="text-center" style="width: 80px;">№</th>
                             <th>Title</th>
-                            <th class="d-none d-sm-table-cell" style="width: 30%;">Inviter</th>
-                            <th style="width: 15%;">Date</th>
-                            <th style="width: 15%;">Aprove</th>
-                            <th style="width: 15%;">Decline</th>
+                            <th style="width: 15%;">Answer</th>
+                            <th style="width: 15%;">Comment</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php $i=1; ?>
                        
-                        @foreach ($invites as $str)
+                        @foreach ($interview->questions as $str)
                         <tr>
                             <td class="text-center">{{$i}}</td>
                             <td class="font-w600">
-                                <a href="/seamen/interview/{{$str->interview->id}}">Invite to {{$str->interview->title ?? ''}}</a>
-                            </td>
-                            <td class="d-none d-sm-table-cell">
-                            {{ucfirst($str->inviter->name ?? '')}}
+                                <a href="/seamen/interview/question/{{$str->id}}">{{$str->question ?? ''}}</a>
                             </td>
                             <td>
-                                <em class="text-muted">{{ $str->created_at }}</em>
-                            </td>
-                            <td>
-                                @if ($str->status ==0 ||$str->status ==2 )
-                                <em class="text-muted"><a href="/seamen/invite/aprove/{{$str->id}}"><i class="si si-check"></i> Aprove</em>
+                                @if ($str->active ==1 ||$str->active ==2 )
+                                <em class="text-muted"><a href="/seamen/interview/question/{{$str->id}}"><i class="si si-check"></i> Answer</em>
                                 @else
-                                <em class="text-success"><i class="si si-check"></i> Aproved</em>
+                                <em class="text-success"><i class="si si-check"></i> Answered</em>
                                 @endif
                             </td>
                             <td>
-                                @if ($str->status ==0 ||$str->status ==1 )
-                                <em ><a class="text-danger" href="/seamen/invite/decline/{{$str->id}}"><i class="si si-close"></i> Decline</em>
-                                @else
-                                <em class="text-danger"><i class="si si-close"></i> Declined</em>
+                                @if ($str->active ==1 )
+                                <em ><a class="text-danger" href="/seamen/interview/comment/{{$str->id}}"><i class="si si-close"></i> Add Comment</em>
+                                
                                 @endif
                                 
                             </td>

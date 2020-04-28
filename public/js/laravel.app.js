@@ -3462,6 +3462,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var video_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! video.js */ "./node_modules/video.js/dist/video.es.js");
 /* harmony import */ var videojs_record_dist_videojs_record_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! videojs-record/dist/videojs.record.js */ "./node_modules/videojs-record/dist/videojs.record.js");
 /* harmony import */ var videojs_record_dist_videojs_record_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(videojs_record_dist_videojs_record_js__WEBPACK_IMPORTED_MODULE_5__);
+var _props;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
 //
 //
 //
@@ -3477,10 +3485,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: (_props = {
+    question_id: Number,
+    user_id: Number
+  }, _defineProperty(_props, "question_id", Number), _defineProperty(_props, "time", Number), _props),
   data: function data() {
     return {
       player: '',
       save: false,
+      comment: '',
       options: {
         controls: true,
         autoplay: false,
@@ -3497,7 +3510,7 @@ __webpack_require__.r(__webpack_exports__);
             audio: true,
             video: true,
             debug: true,
-            maxLength: 360
+            maxLength: time || 240
           }
         }
       }
@@ -3546,7 +3559,10 @@ __webpack_require__.r(__webpack_exports__);
       var blobSend = this.player.recordedData;
       console.log(blobSend);
       formData.append('blob', blobSend);
-      axios.post('/seamen/video/send', formData, {
+      formData.append('question_id', this.question_id);
+      formData.append('user_id', this.user_id);
+      formData.append('comment', this.comment);
+      axios.post('/interview/videosend', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
@@ -91652,6 +91668,34 @@ var render = function() {
       staticClass: "video-js vjs-default-skin",
       attrs: { id: "myVideo", playsinline: "" }
     }),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "exampleFormControlTextarea1" } }, [
+        _vm._v("Comment")
+      ]),
+      _vm._v(" "),
+      _c("textarea", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.comment,
+            expression: "comment"
+          }
+        ],
+        staticClass: "form-control",
+        attrs: { id: "exampleFormControlTextarea1", rows: "3" },
+        domProps: { value: _vm.comment },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.comment = $event.target.value
+          }
+        }
+      })
+    ]),
     _vm._v(" "),
     _c(
       "button",

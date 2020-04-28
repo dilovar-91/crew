@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use \FFMpeg;
 use App\Models\Interview;
 use App\Models\User;
+use App\Models\Invite;
 
 class SeamenController extends Controller
 {
@@ -26,13 +27,30 @@ class SeamenController extends Controller
     }
     public function test(Request $request)
     {
+        dd($request);
         return view('seamen.test');
     }
     public function invites(Request $request)
     {
-        $interviews = Interview::with('user')->get();
-        
-        return view('seamen.invite_list')->with(array('interviews'=>$interviews));
+        $invites = Invite::with(['user', 'interview', 'inviter'])->get();
+        return view('seamen.invite_list')->with(array('invites'=>$invites));
+    }
+    
+    public function aproveinvite($id)
+    {
+        //$request->user()->authorizeRoles('seamen');
+        $invite = Invite::find($id);
+        $invite->status = 1;
+        $invite->save();
+        return redirect()->route('seamen.invites');
+    }
+    public function declineinvite($id)
+    {
+        //$request->user()->authorizeRoles('seamen');
+        $invite = Invite::find($id);
+        $invite->status = 2;
+        $invite->save();
+        return redirect()->route('seamen.invites');
     }
 
     /**
@@ -101,26 +119,7 @@ class SeamenController extends Controller
         //
     }
 
-    public  function video(){
-        return  view('seamen.video');
-    }
     
-    public function videoSend(Request $request){
-            $data = $this->validate($request, [
-                'blob'        => 'required',
-            ]);
-           $filename = uniqid();
-            Storage::disk('public')
-                ->put('videos/'.$filename.'.webm', file_get_contents($request->blob));
-            FFMpeg::fromDisk('local')->open('public/videos/' . 'video.webm')
-            ->export()
-            ->inFormat(new FFMpeg\Format\Video\X264('libmp3lame', 'libx264'))
-            ->withVisibility('public')
-            ->save('public/videos/'.$filename.'.mp4');
-            return response()->json(['status'=>'success']);
-    }
     
-    public function videoWatch(){
-        return view('seamen.video-watch');
-    }
+    
 }

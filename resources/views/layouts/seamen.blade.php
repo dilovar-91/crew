@@ -64,35 +64,40 @@
                 <div class="content-side content-side-full">
                     <ul class="nav-main">
                         <li class="nav-main-item">
-                            <a class="nav-main-link{{ request()->is('dashboard') ? ' active' : '' }}" href="#">
-                                <i class="nav-main-link-icon si si-cursor"></i>
-                                <span class="nav-main-link-name">Dashboard</span>
+                            <a class="nav-main-link" href="/">
+                                <i class="nav-main-link-icon si si-home"></i>
+                                <span class="nav-main-link-name">Главная</span>
                             </a>
                         </li>
-                        <li class="nav-main-heading">Various</li>
-                        <li class="nav-main-item{{ request()->is('pages/*') ? ' open' : '' }}">
+                        
+                        <li class="nav-main-item{{ request()->is('seamen/interview/*') ? ' open' : '' }}">
                             <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="true" href="#">
                                 <i class="nav-main-link-icon si si-bulb"></i>
-                                <span class="nav-main-link-name">Examples</span>
+                                <span class="nav-main-link-name">Interviews</span>
                             </a>
                             <ul class="nav-main-submenu">
                                 <li class="nav-main-item">
-                                    <a class="nav-main-link{{ request()->is('pages/datatables') ? ' active' : '' }}" href="/pages/datatables">
-                                        <span class="nav-main-link-name">DataTables</span>
+                                    <a class="nav-main-link{{ request()->is('seamen/interviews') ? ' active' : '' }}" href="/seamen/interviews">
+                                    <i class="nav-main-link-icon si si-camera"></i>     
+                                    <span class="nav-main-link-name">Interviews</span>
                                     </a>
                                 </li>
                                 <li class="nav-main-item">
-                                    <a class="nav-main-link{{ request()->is('pages/slick') ? ' active' : '' }}" href="/pages/slick">
-                                        <span class="nav-main-link-name">Slick Slider</span>
-                                    </a>
-                                </li>
-                                <li class="nav-main-item">
-                                    <a class="nav-main-link{{ request()->is('pages/blank') ? ' active' : '' }}" href="/pages/blank">
-                                        <span class="nav-main-link-name">Blank</span>
+                                    <a class="nav-main-link{{ request()->is('seamen/invites') ? ' active' : '' }}" href="/seamen/invites">
+                                    <i class="nav-main-link-icon si si-user-follow"></i>     
+                                    <span class="nav-main-link-name">Invites</span>
                                     </a>
                                 </li>
                             </ul>
                         </li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" href="/seamen/resume">
+                                <i class="nav-main-link-icon si si-doc"></i>
+                                <span class="nav-main-link-name">Resume</span>
+                            </a>
+                        </li>
+
+                        
                         <li class="nav-main-heading">More</li>
                         <li class="nav-main-item open">
                             <a class="nav-main-link" href="/">

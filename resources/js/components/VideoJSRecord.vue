@@ -1,6 +1,10 @@
 <template>
 <div>
     <video id="myVideo" class="video-js vjs-default-skin" playsinline></video>
+    <div class="form-group">
+    <label for="exampleFormControlTextarea1">Comment</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" v-model="comment"></textarea>
+  </div>
     <button v-show="save" class="btn btn-primary" @click="recordSend"  >Сохранить</button>
 </div>    
 </template>
@@ -17,10 +21,17 @@
     import Record from 'videojs-record/dist/videojs.record.js'
 
     export default {
+        props: {
+            question_id: Number,
+            user_id: Number,
+            question_id: Number,
+            time: Number,
+        },
         data() {
             return {
                 player: '',
                 save: false,
+                comment: '',
                 options: {
                     controls: true,
                     autoplay: false,
@@ -37,7 +48,7 @@
                             audio: true,
                             video: true,
                             debug: true,
-                            maxLength: 360
+                            maxLength: time || 240
                         }
                     }
                 }
@@ -89,7 +100,11 @@
                 let blobSend = this.player.recordedData;
                 console.log(blobSend);
                 formData.append('blob',blobSend);
-                axios.post('/seamen/video/send',formData ,
+                formData.append('question_id',this.question_id);
+                formData.append('user_id',this.user_id);
+                formData.append('comment',this.comment);
+
+                axios.post('/interview/videosend',formData ,
                     {
                         headers: {
                             'Content-Type': 'multipart/form-data'

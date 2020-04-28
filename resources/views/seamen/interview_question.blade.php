@@ -27,7 +27,7 @@
                         <h3 class="block-title">Welcome to your app</h3>
                     </div>
                     <div class="block-content d-flex justify-content-center pb-4">
-                    <videojs-record></videojs-record>
+                    <videojs-record user_id="1" question_id="{{$question->id}}" time="{{$question->time}}"></videojs-record>
                     </div>
                 </div>
             </div>

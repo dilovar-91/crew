@@ -26,26 +26,33 @@
                                     @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                    <li class="nav-item">
-                                        <a class="page-scroll" href="{{ route('login') }}"><i class="lni lni-user"></i> {{ trans('string.sign_in')}}</a>
-                        </li>
-                        
-                    @else
-                        
-                        
+                   
 
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             
-                            <span class="btn btn-outline-primary"><i class="lni lni-user"></i> Admin</span>
+                            <span class="btn btn-outline-primary"><i class="lni lni-user"></i> {{Auth::user()->name}}</span>
                                
                             </a>
                             
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="/lang/en">Выйти</a>
+                               
+                                <a href="/{{Auth::user()->role}}" class="dropdown-item d-flex align-items-center justify-content-between"><span>Profile</span> <span><span class="badge badge-pill badge-success">1</span> <i class="si si-user ml-1"></i></span></a>    
+                            
+                                <a class="dropdown-item d-flex align-items-center justify-content-between" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();"><span>Log Out</span>
+                                        <i class="si si-logout ml-1"></i></a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
                                 
                             </div>
+                        </li>  
+                        
+                    @else
+                    <li class="nav-item">
+                                        <a class="page-scroll" href="{{ route('login') }}"><i class="lni lni-user"></i> {{ trans('string.sign_in')}}</a>
                         </li>   
+                        
                     @endauth
                 </div>
             @endif

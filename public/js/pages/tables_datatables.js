@@ -144,6 +144,12 @@ var pageTablesDatatables = /*#__PURE__*/function () {
         pageLength: 5,
         lengthMenu: [[5, 10, 15, 20], [5, 10, 15, 20]],
         autoWidth: false
+      });
+      jQuery('.js-dataTable-simple').dataTable({
+        "paging": false,
+        "ordering": false,
+        "info": false,
+        "searching": false
       }); // Init DataTable with Buttons
 
       jQuery('.js-dataTable-buttons').dataTable({

@@ -12,17 +12,13 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/', 'HomeController@index')->name('home');
 Auth::routes();
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/seamen', 'SeamenController@index')->name('seamen.index');
-Route::get('/seamen/invites', 'SeamenController@invites')->name('seamen.invites');
+
 Route::get('/test', 'SeamenController@test')->name('seamen.test');
 Route::get('lang/{locale}', 'HomeController@lang');
 
@@ -36,5 +32,71 @@ Route::view('/pages/datatables', 'pages.datatables');
 Route::view('/pages/blank', 'pages.blank');
 Route::view('/landing', 'landing');
 
-Route::post('/seamen/video/send', 'SeamenController@videoSend')->name('videoPost');
+
+
+Route::group([
+    'prefix'=>'seamen',
+    //'middleware'=>['auth','home.verify.seamen']
+], function(){
+    
+    //Главная страница админа
+    Route::get('/', [
+        'uses' => 'SeamenController@index',
+        'as' => 'seamen.index'
+    ]);
+
+ 
+    Route::get('/interview/{id}', [
+        'uses' => 'Seamen\InterviewController@detail',
+        'as' => 'seamen.interview.detail'
+    ]);
+    Route::get('/interview/question/{id}', [
+        'uses' => 'Seamen\InterviewController@question',
+        'as' => 'seamen.interview.question'
+    ]);
+    Route::post('/interview/videosend', [
+        'uses' => 'Seamen\InterviewController@videosend',
+        'as' => 'seamen.interview.videosend'
+    ]);
+    Route::get('/invites', [
+        'uses' => 'SeamenController@invites',
+        'as' => 'seamen.invites'
+    ]);
+    Route::get('/invite/aprove/{id}', [
+        'uses' => 'SeamenController@aproveinvite',
+        'as' => 'seamen.aproveinvite'
+    ]);
+    Route::get('/invite/decline/{id}', [
+        'uses' => 'SeamenController@declineinvite',
+        'as' => 'seamen.declineinvite'
+    ]);
+
+    //Главная страница админа
+    Route::get('/polls', [
+        'uses' => 'Seamen\ControllerPolls@index',
+        'as' => 'seamen.polls.index'
+    ]);
+
+    //Главная страница админа
+    Route::get('/polls/{id}', [
+        'uses' => 'Seamen\ControllerPolls@poll',
+        'as' => 'seamen.polls.poll'
+    ]);
+
+
+
+
+
+});
+Route::group([
+    'prefix'=>'employer/',
+    'middleware'=>'auth'
+], function() {
+    Route::get('invite', [
+        'uses' => 'Employer\InviteController@index',
+        'as'   => 'employerInvite'
+    ]);
+
+
+});
 
