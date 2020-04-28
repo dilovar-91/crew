@@ -35,7 +35,7 @@ class ProcessVideoConvert implements ShouldQueue
     {
         
         $answer = $this->answer;
-        $file = substr($answer->answer, 0, -5);
+        $file = substr($answer->answer, 0, -4);
         FFMpeg::fromDisk('local')->open('public/videos/'.$file.'.webm')
         ->export()
         ->inFormat(new FFMpeg\Format\Video\X264('libmp3lame', 'libx264'))
