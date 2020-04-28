@@ -3510,7 +3510,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             audio: true,
             video: true,
             debug: true,
-            maxLength: time || 240
+            maxLength: this.time
           }
         }
       }

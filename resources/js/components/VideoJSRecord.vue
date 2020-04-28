@@ -48,12 +48,13 @@
                             audio: true,
                             video: true,
                             debug: true,
-                            maxLength: time || 240
+                            maxLength: this.time
                         }
                     }
                 }
             };
         },
+       
         mounted() {
             /* eslint-disable no-console */
             this.player = videojs('#myVideo', this.options, () => {
