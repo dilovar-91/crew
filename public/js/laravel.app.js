@@ -3478,9 +3478,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
 
 
 
@@ -3495,7 +3492,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   }, _defineProperty(_props, "question_id", Number), _defineProperty(_props, "time", Number), _props),
   data: function data() {
     return {
-      isLoading: false,
       fullPage: true,
       color: '#5c80d1',
       player: '',
@@ -3561,7 +3557,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     recordSend: function recordSend() {
       var _this2 = this;
 
-      this.isLoading = true;
+      var loader = this.$loading.show({
+        // Optional parameters
+        container: this.fullPage,
+        canCancel: true,
+        onCancel: this.onCancel,
+        color: this.color
+      });
       var formData = new FormData();
       var blobSend = this.player.recordedData;
       console.log(blobSend);
@@ -3574,11 +3576,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           'Content-Type': 'multipart/form-data'
         }
       }).then(function (res) {
-        _this2.isLoading = false;
+        loader.hide();
 
         _this2.$swal('Спасибо!', 'Ваш ответ успешно сохранен!', 'success');
       })["catch"](function (err) {
-        _this2.isLoading = false;
+        loader.hide();
 
         _this2.$swal('Ошибка', 'При сохранении вашего ответа что-то пошло не так', 'error');
       });
@@ -94853,76 +94855,57 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "vld-parent" },
-    [
-      _c("loading", {
-        attrs: {
-          active: _vm.isLoading,
-          "can-cancel": true,
-          "on-cancel": _vm.onCancel,
-          "is-full-page": _vm.fullPage
-        },
-        on: {
-          "update:active": function($event) {
-            _vm.isLoading = $event
-          }
-        }
-      }),
-      _vm._v(" "),
-      _c("video", {
-        staticClass: "video-js vjs-default-skin",
-        attrs: { id: "myVideo", playsinline: "" }
-      }),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "exampleFormControlTextarea1" } }, [
-          _vm._v("Comment")
-        ]),
-        _vm._v(" "),
-        _c("textarea", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.comment,
-              expression: "comment"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: { id: "exampleFormControlTextarea1", rows: "3" },
-          domProps: { value: _vm.comment },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.comment = $event.target.value
-            }
-          }
-        })
+  return _c("div", { staticClass: "vld-parent" }, [
+    _c("video", {
+      staticClass: "video-js vjs-default-skin",
+      attrs: { id: "myVideo", playsinline: "" }
+    }),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "exampleFormControlTextarea1" } }, [
+        _vm._v("Comment")
       ]),
       _vm._v(" "),
-      _c(
-        "button",
-        {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: _vm.save,
-              expression: "save"
+      _c("textarea", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.comment,
+            expression: "comment"
+          }
+        ],
+        staticClass: "form-control",
+        attrs: { id: "exampleFormControlTextarea1", rows: "3" },
+        domProps: { value: _vm.comment },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
             }
-          ],
-          staticClass: "btn btn-primary",
-          on: { click: _vm.recordSend }
-        },
-        [_vm._v("Сохранить")]
-      )
-    ],
-    1
-  )
+            _vm.comment = $event.target.value
+          }
+        }
+      })
+    ]),
+    _vm._v(" "),
+    _c(
+      "button",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.save,
+            expression: "save"
+          }
+        ],
+        staticClass: "btn btn-primary",
+        on: { click: _vm.recordSend }
+      },
+      [_vm._v("Сохранить")]
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
