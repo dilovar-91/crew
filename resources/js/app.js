@@ -11,6 +11,10 @@ import MediaStreamRecorder   from "msr";
 //Vue.use(RecordRTC);
 Vue.use(MediaStreamRecorder);
 
+import vSelect from 'vue-select'
+Vue.component('v-select', vSelect)
+import 'vue-select/dist/vue-select.css';
+
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 Vue.use(VueSweetalert2);
@@ -20,6 +24,9 @@ import Loading from 'vue-loading-overlay';
 // Import stylesheet
 Vue.use(Loading);
 import 'vue-loading-overlay/dist/vue-loading.css';
+
+
+
 
 
 
@@ -37,7 +44,12 @@ import 'vue-loading-overlay/dist/vue-loading.css';
 Vue.component('record-component', require('./components/RecordComponent.vue').default);
 Vue.component('capture-component', require('./components/CaptureComponent.vue').default);
 Vue.component('videojs-record', require('./components/VideoJSRecord.vue').default);
-
+Vue.component('profile-school', require('./components/profile/SchoolComponent.vue').default);
+Vue.component('profile-document', require('./components/profile/DocumentComponent.vue').default);
+Vue.component('personal-component', require('./components/profile/PersonalComponent.vue').default);
+Vue.component('profile-main', require('./components/profile/MainComponent.vue').default);
+Vue.component('profile-address', require('./components/profile/AdressComponent.vue').default);
+Vue.component('profile-service', require('./components/profile/ServiceComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

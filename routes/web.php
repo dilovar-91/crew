@@ -45,7 +45,49 @@ Route::group([
         'as' => 'seamen.index'
     ]);
 
- 
+    //profile routes    
+    Route::get('/profile', [
+        'uses' => 'Seamen\ProfileController@index',
+        'as' => 'seamen.profile.index'
+    ]);
+    Route::get('/profile/edit/main', [
+        'uses' => 'Seamen\ProfileController@editmain',
+        'as' => 'seamen.profile.editmain'
+    ]);
+
+    Route::get('/profile/edit/personal', [
+        'uses' => 'Seamen\ProfileController@editpersonal',
+        'as' => 'seamen.profile.editpersonal'
+    ]);
+    Route::get('/profile/edit/main', [
+        'uses' => 'Seamen\ProfileController@editmaininfo',
+        'as' => 'seamen.profile.editmaininfo'
+    ]);
+    Route::get('/profile/edit/adress', [
+        'uses' => 'Seamen\ProfileController@editadress',
+        'as' => 'seamen.profile.editadress'
+    ]);
+    Route::get('/profile/edit/school', [
+        'uses' => 'Seamen\ProfileController@editschool',
+        'as' => 'seamen.profile.editschool'
+    ]);
+
+    Route::get('/profile/edit/document', [
+        'uses' => 'Seamen\ProfileController@editdoc',
+        'as' => 'seamen.profile.editdoc'
+    ]);
+    Route::get('/profile/edit/service', [
+        'uses' => 'Seamen\ProfileController@editservice',
+        'as' => 'seamen.profile.editservice'
+    ]);
+    Route::get('/profile/edit/courses', [
+        'uses' => 'Seamen\ProfileController@editcourses',
+        'as' => 'seamen.profile.editcourses'
+    ]);
+    Route::get('/profile/edit/documents', [
+        'uses' => 'Seamen\ProfileController@editdocuments',
+        'as' => 'seamen.profile.editdocuments'
+    ]);
     Route::get('/interview/{id}', [
         'uses' => 'Seamen\InterviewController@detail',
         'as' => 'seamen.interview.detail'

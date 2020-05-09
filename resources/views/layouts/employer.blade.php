@@ -91,9 +91,9 @@
                             </ul>
                         </li>
                         <li class="nav-main-item">
-                            <a class="nav-main-link" href="/seamen/profile">
+                            <a class="nav-main-link" href="/seamen/resume">
                                 <i class="nav-main-link-icon si si-doc"></i>
-                                <span class="nav-main-link-name">Profile</span>
+                                <span class="nav-main-link-name">Resume</span>
                             </a>
                         </li>
 

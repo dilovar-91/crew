@@ -52,8 +52,4 @@ class InterviewController extends Controller
         // return response()->json(['status'=>'success']);
         return response()->json($answer, 201);
     }
-
-
-
-
 }
