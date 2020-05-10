@@ -136,8 +136,9 @@
             <a  class="btn btn-sm btn-primary" href="/seamen/profile/edit/service">Edit</a>
             </div>
         </div>
-        <div class="block-content">
+        <div class="block-content table-responsive">
         @if(isset($services))
+        <div class="table-responsive">
         <table class="table">
         <thead>
         <tr>
@@ -166,6 +167,7 @@
         @endforeach
         </tbody>
         </table>
+        </div>
         @endif
         </div>
     </div>
@@ -176,8 +178,9 @@
             <a  class="btn btn-sm btn-primary" href="/seamen/profile/edit/school">Edit</a>
             </div>
         </div>
-        <div class="block-content">
+        <div class="block-content table-responsive">
         @if(isset($education))
+        <div class="table-responsive">
         <table class="table table-bordered table-vcenter">
             <thead>
             <tr>
@@ -196,6 +199,7 @@
             @endforeach
             </tbody>
         </table>
+        </div>
         @endif
         </div>
     </div>
@@ -208,6 +212,7 @@
         </div>
         <div class="block-content">
         @if(isset($documents)) 
+        <div class="table-responsive">
         <table class="table table-bordered table-vcenter">
             <thead>
             <tr>
@@ -231,6 +236,7 @@
             @endforeach
             </tbody>
         </table>
+        </div>
         @endif
         </div>
     </div>

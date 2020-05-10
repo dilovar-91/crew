@@ -4599,6 +4599,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
 
 Vue.use(vuejs_datepicker__WEBPACK_IMPORTED_MODULE_0__["default"]);
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4746,6 +4749,8 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToAr
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
+//
+//
 //
 //
 //
@@ -98547,81 +98552,83 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "block-content" }, [
-      _c("table", { staticClass: "table table-bordered table-vcenter" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "tbody",
-          _vm._l(_vm.rowData, function(item, index) {
-            return _c("tr", { key: item.id }, [
-              _c(
-                "th",
-                { staticClass: "text-center", attrs: { scope: "row" } },
-                [_vm._v(_vm._s(index + 1))]
-              ),
-              _vm._v(" "),
-              _c("td", { staticClass: "font-w600 font-size-sm" }, [
-                _vm._v(
-                  "\r\n                                   " +
-                    _vm._s(item.name) +
-                    "\r\n                                "
-                )
-              ]),
-              _vm._v(" "),
-              _c("td", { staticClass: "d-none d-sm-table-cell" }, [
-                _c("span", { staticClass: "badge badge-info" }, [
-                  _vm._v(_vm._s(item.from))
-                ])
-              ]),
-              _vm._v(" "),
-              _c("td", { staticClass: "d-none d-sm-table-cell" }, [
-                _c("span", { staticClass: "badge badge-primary" }, [
-                  _vm._v(_vm._s(item.to))
-                ])
-              ]),
-              _vm._v(" "),
-              _c("td", { staticClass: "text-center" }, [
-                _c("div", { staticClass: "btn-group" }, [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-sm btn-light js-tooltip-enabled",
-                      attrs: {
-                        type: "button",
-                        title: "",
-                        "data-original-title": "Edit Client",
-                        "data-toggle": "modal",
-                        "data-target": "#exampleModal",
-                        "data-whatever": "@mdo"
-                      },
-                      on: {
-                        click: function($event) {
-                          _vm.currentData = item
-                        }
-                      }
-                    },
-                    [_c("i", { staticClass: "fa fa-fw fa-pencil-alt" })]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      staticClass: "btn btn-sm btn-light js-tooltip-enabled",
-                      attrs: { href: "javascript:;" },
-                      on: {
-                        click: function($event) {
-                          return _vm.deleteUser(item.id, index)
-                        }
-                      }
-                    },
-                    [_c("i", { staticClass: "fa fa-fw fa-times" })]
+      _c("div", [
+        _c("table", { staticClass: "table table-bordered table-vcenter" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "tbody",
+            _vm._l(_vm.rowData, function(item, index) {
+              return _c("tr", { key: item.id }, [
+                _c(
+                  "th",
+                  { staticClass: "text-center", attrs: { scope: "row" } },
+                  [_vm._v(_vm._s(index + 1))]
+                ),
+                _vm._v(" "),
+                _c("td", { staticClass: "font-w600 font-size-sm" }, [
+                  _vm._v(
+                    "\r\n                                   " +
+                      _vm._s(item.name) +
+                      "\r\n                                "
                   )
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "d-none d-sm-table-cell" }, [
+                  _c("span", { staticClass: "badge badge-info" }, [
+                    _vm._v(_vm._s(item.from))
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "d-none d-sm-table-cell" }, [
+                  _c("span", { staticClass: "badge badge-primary" }, [
+                    _vm._v(_vm._s(item.to))
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "text-center" }, [
+                  _c("div", { staticClass: "btn-group" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-sm btn-light js-tooltip-enabled",
+                        attrs: {
+                          type: "button",
+                          title: "",
+                          "data-original-title": "Edit Client",
+                          "data-toggle": "modal",
+                          "data-target": "#exampleModal",
+                          "data-whatever": "@mdo"
+                        },
+                        on: {
+                          click: function($event) {
+                            _vm.currentData = item
+                          }
+                        }
+                      },
+                      [_c("i", { staticClass: "fa fa-fw fa-pencil-alt" })]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "btn btn-sm btn-light js-tooltip-enabled",
+                        attrs: { href: "javascript:;" },
+                        on: {
+                          click: function($event) {
+                            return _vm.deleteUser(item.id, index)
+                          }
+                        }
+                      },
+                      [_c("i", { staticClass: "fa fa-fw fa-times" })]
+                    )
+                  ])
                 ])
               ])
-            ])
-          }),
-          0
-        )
+            }),
+            0
+          )
+        ])
       ]),
       _vm._v(" "),
       _c(
@@ -99091,123 +99098,125 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "block-content" }, [
-      _c("table", { staticClass: "table table-bordered table-vcenter" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "tbody",
-          _vm._l(_vm.rowData, function(item, index) {
-            return _c("tr", { key: item.id }, [
-              _c(
-                "th",
-                { staticClass: "text-center", attrs: { scope: "row" } },
-                [_vm._v(_vm._s(index + 1))]
-              ),
-              _vm._v(" "),
-              _c("td", { staticClass: "font-w600 font-size-sm" }, [
-                _vm._v(
-                  "\r\n                                   " +
-                    _vm._s(item.position) +
-                    "\r\n                                "
-                )
-              ]),
-              _vm._v(" "),
-              _c("td", { staticClass: "font-w600 font-size-sm" }, [
-                _vm._v(
-                  "\r\n                                   " +
-                    _vm._s(item.vessel_name || "") +
-                    "\r\n                                "
-                )
-              ]),
-              _vm._v(" "),
-              _c("td", { staticClass: "d-none d-sm-table-cell" }, [
-                _c("span", { staticClass: "badge badge-info" }, [
-                  _vm._v(_vm._s(item.vessel_type))
-                ])
-              ]),
-              _vm._v(" "),
-              _c("td", { staticClass: "d-none d-sm-table-cell" }, [
-                _vm._v(
-                  "\r\n                                    " +
-                    _vm._s(item.me_type) +
-                    "\r\n                                "
-                )
-              ]),
-              _vm._v(" "),
-              _c("td", { staticClass: "d-none d-sm-table-cell" }, [
-                _vm._v(
-                  "\r\n                                    " +
-                    _vm._s(item.from) +
-                    "\r\n                                "
-                )
-              ]),
-              _vm._v(" "),
-              _c("td", { staticClass: "d-none d-sm-table-cell" }, [
-                _vm._v(
-                  "\r\n                                    " +
-                    _vm._s(item.till) +
-                    "\r\n                                "
-                )
-              ]),
-              _vm._v(" "),
-              _c("td", { staticClass: "d-none d-sm-table-cell" }, [
-                _vm._v(
-                  "\r\n                                    " +
-                    _vm._s(item.shipowner) +
-                    "\r\n                                "
-                )
-              ]),
-              _vm._v(" "),
-              _c("td", { staticClass: "d-none d-sm-table-cell" }, [
-                _vm._v(
-                  "\r\n                                    " +
-                    _vm._s(item.country["name"] || "") +
-                    "\r\n                                "
-                )
-              ]),
-              _vm._v(" "),
-              _c("td", { staticClass: "text-center" }, [
-                _c("div", { staticClass: "btn-group" }, [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-sm btn-light js-tooltip-enabled",
-                      attrs: {
-                        type: "button",
-                        title: "",
-                        "data-original-title": "Edit Client",
-                        "data-toggle": "modal",
-                        "data-target": "#exampleModal",
-                        "data-whatever": "@mdo"
-                      },
-                      on: {
-                        click: function($event) {
-                          _vm.currentData = item
-                        }
-                      }
-                    },
-                    [_c("i", { staticClass: "fa fa-fw fa-pencil-alt" })]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      staticClass: "btn btn-sm btn-light js-tooltip-enabled",
-                      attrs: { href: "javascript:;" },
-                      on: {
-                        click: function($event) {
-                          return _vm.deleteUser(item.id, index)
-                        }
-                      }
-                    },
-                    [_c("i", { staticClass: "fa fa-fw fa-times" })]
+      _c("div", { staticClass: "table-responsive" }, [
+        _c("table", { staticClass: "table table-bordered table-vcenter" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "tbody",
+            _vm._l(_vm.rowData, function(item, index) {
+              return _c("tr", { key: item.id }, [
+                _c(
+                  "th",
+                  { staticClass: "text-center", attrs: { scope: "row" } },
+                  [_vm._v(_vm._s(index + 1))]
+                ),
+                _vm._v(" "),
+                _c("td", { staticClass: "font-w600 font-size-sm" }, [
+                  _vm._v(
+                    "\r\n                                   " +
+                      _vm._s(item.position) +
+                      "\r\n                                "
                   )
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "font-w600 font-size-sm" }, [
+                  _vm._v(
+                    "\r\n                                   " +
+                      _vm._s(item.vessel_name || "") +
+                      "\r\n                                "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "d-none d-sm-table-cell" }, [
+                  _c("span", { staticClass: "badge badge-info" }, [
+                    _vm._v(_vm._s(item.vessel_type))
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "d-none d-sm-table-cell" }, [
+                  _vm._v(
+                    "\r\n                                    " +
+                      _vm._s(item.me_type) +
+                      "\r\n                                "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "d-none d-sm-table-cell" }, [
+                  _vm._v(
+                    "\r\n                                    " +
+                      _vm._s(item.from) +
+                      "\r\n                                "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "d-none d-sm-table-cell" }, [
+                  _vm._v(
+                    "\r\n                                    " +
+                      _vm._s(item.till) +
+                      "\r\n                                "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "d-none d-sm-table-cell" }, [
+                  _vm._v(
+                    "\r\n                                    " +
+                      _vm._s(item.shipowner) +
+                      "\r\n                                "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "d-none d-sm-table-cell" }, [
+                  _vm._v(
+                    "\r\n                                    " +
+                      _vm._s(item.country["name"] || "") +
+                      "\r\n                                "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("td", { staticClass: "text-center" }, [
+                  _c("div", { staticClass: "btn-group" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-sm btn-light js-tooltip-enabled",
+                        attrs: {
+                          type: "button",
+                          title: "",
+                          "data-original-title": "Edit Client",
+                          "data-toggle": "modal",
+                          "data-target": "#exampleModal",
+                          "data-whatever": "@mdo"
+                        },
+                        on: {
+                          click: function($event) {
+                            _vm.currentData = item
+                          }
+                        }
+                      },
+                      [_c("i", { staticClass: "fa fa-fw fa-pencil-alt" })]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "a",
+                      {
+                        staticClass: "btn btn-sm btn-light js-tooltip-enabled",
+                        attrs: { href: "javascript:;" },
+                        on: {
+                          click: function($event) {
+                            return _vm.deleteUser(item.id, index)
+                          }
+                        }
+                      },
+                      [_c("i", { staticClass: "fa fa-fw fa-times" })]
+                    )
+                  ])
                 ])
               ])
-            ])
-          }),
-          0
-        )
+            }),
+            0
+          )
+        ])
       ]),
       _vm._v(" "),
       _c(

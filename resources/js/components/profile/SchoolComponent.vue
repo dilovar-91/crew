@@ -9,6 +9,7 @@
                     </div>
                 </div>
                 <div class="block-content">
+                    <div>
                     <table class="table table-bordered table-vcenter">
                         <thead>
                             <tr>
@@ -44,6 +45,8 @@
                             </tr>
                             </tbody>
                     </table>
+
+                    </div>
 
 
                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
