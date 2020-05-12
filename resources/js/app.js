@@ -50,6 +50,8 @@ Vue.component('personal-component', require('./components/profile/PersonalCompon
 Vue.component('profile-main', require('./components/profile/MainComponent.vue').default);
 Vue.component('profile-address', require('./components/profile/AdressComponent.vue').default);
 Vue.component('profile-service', require('./components/profile/ServiceComponent.vue').default);
+Vue.component('video-player', require('./components/VideoPLayer.vue').default);
+Vue.component('video-list', require('./components/VideoList.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

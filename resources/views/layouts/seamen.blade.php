@@ -77,7 +77,7 @@
                             </a>
                             <ul class="nav-main-submenu">
                                 <li class="nav-main-item">
-                                    <a class="nav-main-link{{ request()->is('seamen/interviews') ? ' active' : '' }}" href="/seamen/interviews">
+                                    <a class="nav-main-link active{{ request()->is('seamen/interviews') ? ' active' : '' }}" href="/seamen/interviews">
                                     <i class="nav-main-link-icon si si-camera"></i>     
                                     <span class="nav-main-link-name">Interviews</span>
                                     </a>
@@ -86,6 +86,12 @@
                                     <a class="nav-main-link{{ request()->is('seamen/invites') ? ' active' : '' }}" href="/seamen/invites">
                                     <i class="nav-main-link-icon si si-user-follow"></i>     
                                     <span class="nav-main-link-name">Invites</span>
+                                    </a>
+                                </li>
+                                <li class="nav-main-item">
+                                    <a class="nav-main-link{{ request()->is('seamen/feedback') ? ' active' : '' }}" href="/seamen/feedback">
+                                    <i class="nav-main-link-icon si si-user-follow"></i>     
+                                    <span class="nav-main-link-name">Feedback</span>
                                     </a>
                                 </li>
                             </ul>

@@ -1,6 +1,5 @@
 <template>
 <div class="vld-parent" >
-    
     <video id="myVideo" class="video-js vjs-default-skin" playsinline></video>
     <div class="form-group">
     <label for="exampleFormControlTextarea1">Comment</label>

@@ -8,7 +8,7 @@ class Interview extends Model
 {
     public function invite()
     {
-    return $this->hasMany(Invite::class);
+    return $this->belongsTo(Invite::class);
     }
     public function user()
     {
@@ -18,5 +18,9 @@ class Interview extends Model
     public function questions()
     {
     return $this->hasMany(Question::class);
+    }
+    public function feedback()
+    {
+    return $this->hasOne(Feedback::class);
     }
 }

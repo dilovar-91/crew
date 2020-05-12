@@ -47,8 +47,11 @@
         <div class="block">
             <div class="block-header">
                 <h3 class="block-title">Questions</h3>
+                
             </div>
             <div class="block-content block-content-full">
+               
+               
                 <!-- DataTables init on table by adding .js-dataTable-full class, functionality is initialized in js/pages/tables_datatables.js -->
                 <table class="table table-bordered table-striped table-vcenter js-dataTable-simple">
                     <thead>
@@ -61,6 +64,7 @@
                     </thead>
                     <tbody>
                         <?php $i=1; ?>
+                        <?php $complete=0; ?>
                        
                         @foreach ($interview->questions as $str)
                         <tr>
@@ -69,10 +73,12 @@
                                 <a href="/seamen/interview/question/{{$str->id}}">{{$str->question ?? ''}}</a>
                             </td>
                             <td>
-                                @if ($str->active ==1 ||$str->active ==2 )
-                                <em class="text-muted"><a href="/seamen/interview/question/{{$str->id}}"><i class="si si-check"></i> Answer</em>
-                                @else
+                                @if (count($str->answer) > 0 )
+                                <?php $complete++ ?>
                                 <em class="text-success"><i class="si si-check"></i> Answered</em>
+                                
+                                @else
+                                <em class="text-muted"><a href="/seamen/interview/question/{{$str->id}}"><i class="si si-check"></i> Answer</em>
                                 @endif
                             </td>
                             <td>
@@ -87,6 +93,10 @@
                         @endforeach
                     </tbody>
                 </table>
+                <?php $result = ($complete * 100) / (count($interview->questions)); ?>
+                <span class="text-success">Complete:</span> <div class="progress-bar" role="progressbar" style="width: {{$result}}%;" aria-valuenow="{{$result}}" aria-valuemin="0" aria-valuemax="100">
+                                    <span class="font-size-sm font-w600">{{$result}}%</span>
+                                </div>
             </div>
         </div>
         <!-- END Dynamic Table Full -->
@@ -94,4 +104,6 @@
         
     </div>
     <!-- END Page Content -->
+
+    
 @endsection

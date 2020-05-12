@@ -19,6 +19,11 @@ class Answer extends Model
     {
         return $this->belongsTo(Question::class);
     }
+    
+    public function feedback()
+    {
+        return $this->belongsTo(Feedback::class);
+    }
 
 
 }

@@ -22,6 +22,10 @@ Route::get('/seamen/profile/schools/{id}', [
     'uses' => 'Seamen\ProfileController@userschools',
     'as' => 'seamen.userschools'
 ]);
+Route::get('/seamen/answers/{id}', [
+    'uses' => 'Seamen\FeedbackController@answers',
+    'as' => 'seamen.feedback.answers'
+]);
 
 Route::delete('/seamen/profile/schooldelete/{id}', [
     'uses' => 'Seamen\ProfileController@schooldelete',

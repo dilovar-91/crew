@@ -16,7 +16,11 @@ class Invite extends Model
     }
     public function interview()
     {
-    return $this->belongsTo(Interview::class);
+    return $this->hasOne(Interview::class);
+    }
+    public function feedback()
+    {
+    return $this->hasMany(Feedback::class);
     }
     public function question()
     {

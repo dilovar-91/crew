@@ -8,6 +8,7 @@ use \FFMpeg;
 use App\Models\Interview;
 use App\Models\User;
 use App\Models\Invite;
+use Illuminate\Support\Facades\Auth;
 
 class SeamenController extends Controller
 {
@@ -32,7 +33,9 @@ class SeamenController extends Controller
     }
     public function invites(Request $request)
     {
-        $invites = Invite::with(['user', 'interview', 'inviter'])->get();
+        $user_id = Auth::user()->id;
+        $invites = Invite::with(['user', 'interview', 'inviter'])->where('user_id', $user_id)->get()->all();
+        //dd($invites);
         return view('seamen.invite_list')->with(array('invites'=>$invites));
     }
     

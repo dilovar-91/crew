@@ -104,6 +104,14 @@ Route::group([
         'uses' => 'SeamenController@invites',
         'as' => 'seamen.invites'
     ]);
+    Route::get('/feedback', [
+        'uses' => 'Seamen\FeedbackController@index',
+        'as' => 'seamen.feedbacks'
+    ]);
+    Route::get('/feedback/{id}', [
+        'uses' => 'Seamen\FeedbackController@detail',
+        'as' => 'seamen.feedback.detail'
+    ]);
     Route::get('/invite/aprove/{id}', [
         'uses' => 'SeamenController@aproveinvite',
         'as' => 'seamen.aproveinvite'
