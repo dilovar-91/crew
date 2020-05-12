@@ -91,7 +91,7 @@ export default {
     }, 
     methods: {
         playMe(item, index){
-            this.player.src('/storage/'+item.answer);
+            this.player.src('/storage/videos/'+item.answer);
             this.question = item.question.question
             this.activeVideo = index            
         }

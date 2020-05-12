@@ -3696,7 +3696,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     playMe: function playMe(item, index) {
-      this.player.src('/storage/' + item.answer);
+      this.player.src('/storage/videos/' + item.answer);
       this.question = item.question.question;
       this.activeVideo = index;
     }
