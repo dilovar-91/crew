@@ -31,7 +31,7 @@
                                     <ul class="nav nav-pills flex-column ">
                                     <li class="nav-item mb-1" v-for="(item, index) of videos" :key="index">
                                         <a :class="[activeVideo === index ? 'active': '']" class="nav-link d-flex justify-content-between align-items-center" @click="playMe(item, index)">
-                                         <i :class="[(activeVideo === index && player.paused() !== true) ? 'fa fa-fw fa-pause mr-1' : 'fa fa-fw fa-play mr-1',]" ></i>   {{item.question.question}} <span class="badge badge-pill badge-secondary ml-1"> {{item.question.time / 60}} min</span>
+                                         <i :class="[activeVideo === index ? 'fa fa-fw fa-pause mr-1' : 'fa fa-fw fa-play mr-1',]" ></i>   {{item.question.question}} <span class="badge badge-pill badge-secondary ml-1"> {{item.question.time / 60}} min</span>
                                         </a>
                                     </li>
                                     

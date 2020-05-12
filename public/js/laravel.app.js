@@ -96776,8 +96776,7 @@ var render = function() {
                               [
                                 _c("i", {
                                   class: [
-                                    _vm.activeVideo === index &&
-                                    _vm.player.paused() !== true
+                                    _vm.activeVideo === index
                                       ? "fa fa-fw fa-pause mr-1"
                                       : "fa fa-fw fa-play mr-1"
                                   ]
