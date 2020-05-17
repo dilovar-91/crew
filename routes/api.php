@@ -26,6 +26,14 @@ Route::get('/seamen/answers/{id}', [
     'uses' => 'Seamen\FeedbackController@answers',
     'as' => 'seamen.feedback.answers'
 ]);
+Route::get('/seamen/quizzes/{id}', [
+    'uses' => 'Seamen\InterviewController@quizzes',
+    'as' => 'seamen.interview.quizzes'
+]);
+Route::post('/seamen/interview/quizresult', [
+    'uses' => 'Seamen\InterviewController@quizresult',
+    'as' => 'seamen.interview.quizresult'
+]);
 
 Route::delete('/seamen/profile/schooldelete/{id}', [
     'uses' => 'Seamen\ProfileController@schooldelete',

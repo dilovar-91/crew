@@ -23,4 +23,9 @@ class Interview extends Model
     {
     return $this->hasOne(Feedback::class);
     }
+
+    public function quizzes()
+    {
+    return $this->hasMany(Quiz::class);
+    }
 }

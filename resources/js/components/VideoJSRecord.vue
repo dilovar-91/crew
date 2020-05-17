@@ -22,10 +22,23 @@
 
     export default {
         props: {
-            question_id: Number,
-            user_id: Number,
-            question_id: Number,
-            time: Number,
+            
+            question_id: {
+                type: Number,
+                required: true
+            },
+            user_id: {
+                type: Number,
+                required: true
+            },
+            feedback_id: {
+                type: Number,
+                required: true
+            },
+            time: {
+                type: Number,
+                required: true
+            }
         },
         data() {
             return {

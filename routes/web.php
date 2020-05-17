@@ -100,6 +100,11 @@ Route::group([
         'uses' => 'Seamen\InterviewController@videosend',
         'as' => 'seamen.interview.videosend'
     ]);
+
+    Route::get('/interview/quiz/{interview_id}', [
+        'uses' => 'Seamen\InterviewController@quiz',
+        'as' => 'seamen.interview.quiz'
+    ]);
     Route::get('/invites', [
         'uses' => 'SeamenController@invites',
         'as' => 'seamen.invites'

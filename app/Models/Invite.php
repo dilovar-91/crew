@@ -26,4 +26,8 @@ class Invite extends Model
     {
     return $this->hasMany(Question::class, 'seamen_id');
     }
+    public function quiz_result()
+    {
+    return $this->hasMany(QuizResult::class, 'seamen_id');
+    }
 }

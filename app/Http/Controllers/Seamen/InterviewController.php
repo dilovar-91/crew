@@ -9,6 +9,8 @@ use App\Models\User;
 use App\Models\Invite;
 use App\Models\Answer;
 use App\Models\Question;
+use App\Models\Quiz;
+use App\Models\QuizResult;
 use Illuminate\Support\Facades\Storage;
 use App\Jobs\ProcessVideoConvert;
 
@@ -35,9 +37,16 @@ class InterviewController extends Controller
         //dd($interview);
         return view('seamen.interview_detail')->with(array('interview'=>$interview));
     }
+    public function quiz($interview_id)
+    {
+        $interview = Interview::with(['invite'])->where('id', $interview_id)->first();
+        //dd($interview);
+        return view('seamen.interview_quiz')->with(array('interview'=>$interview));
+    }
     public function question($id)
     {
         $question = Question::with(['interview', 'invite'])->first();
+        dd($question);
         return view('seamen.interview_question')->with(array('question'=>$question));
     }
 
@@ -58,5 +67,22 @@ class InterviewController extends Controller
         ProcessVideoConvert::dispatch($answer);
         // return response()->json(['status'=>'success']);
         return response()->json($answer, 201);
+    }
+
+
+    public function quizzes($interview_id)
+    {
+        $quizzes = Interview::with(['quizzes', 'invite'])->where('id', $interview_id)->first();
+        return response()->json($quizzes, 200);
+        
+    }
+
+    public function quizResult(Request $request){
+        $result = new QuizResult;
+        $result->score = $request->score;
+        $result->user_id = $request->user_id;
+        $result->invite_id = $request->invite_id;
+        $result->save();
+        return response()->json($result, 201);
     }
 }
