@@ -73,7 +73,7 @@
                         <li class="nav-main-item{{ request()->is('seamen/interview/*') ? ' open' : '' }}">
                             <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="true" href="#">
                                 <i class="nav-main-link-icon si si-bulb"></i>
-                                <span class="nav-main-link-name">Interviews</span>
+                                <span class="nav-main-link-name">Jobs</span>
                             </a>
                             <ul class="nav-main-submenu">
                                 <li class="nav-main-item">

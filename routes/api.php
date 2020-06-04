@@ -18,6 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
 Route::get('/seamen/profile/schools/{id}', [
     'uses' => 'Seamen\ProfileController@userschools',
     'as' => 'seamen.userschools'
@@ -30,6 +31,12 @@ Route::get('/seamen/quizzes/{id}', [
     'uses' => 'Seamen\InterviewController@quizzes',
     'as' => 'seamen.interview.quizzes'
 ]);
+
+Route::middleware('auth')->get('/seamen/questions/{id}', [
+    'uses' => 'Seamen\InterviewController@questions',
+    'as' => 'seamen.interview.questions'
+]);
+
 Route::post('/seamen/interview/quizresult', [
     'uses' => 'Seamen\InterviewController@quizresult',
     'as' => 'seamen.interview.quizresult'

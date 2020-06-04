@@ -18,7 +18,7 @@ class InterviewController extends Controller
 {
     public function __construct()
     {
-        //$this->middleware('auth');
+       // $this->middleware('auth');
     }
 
     public function index()
@@ -45,9 +45,14 @@ class InterviewController extends Controller
     }
     public function question($id)
     {
-        $question = Question::with(['interview', 'invite'])->first();
-        dd($question);
+        $question = Question::with(['interview', 'invite'])->first();        
         return view('seamen.interview_question')->with(array('question'=>$question));
+    }
+    public function record($interview_id)
+    {
+        $interview = Interview::with(['questions', 'invite.feedback'])->first();
+        //dd($interview);
+        return view('seamen.interview_record')->with(array('interview'=>$interview));
     }
 
     public function videoSend(Request $request){
@@ -74,6 +79,12 @@ class InterviewController extends Controller
     {
         $quizzes = Interview::with(['quizzes', 'invite'])->where('id', $interview_id)->first();
         return response()->json($quizzes, 200);
+        
+    }
+    public function questions($interview_id)
+    {
+        $questions = Interview::with(['questions', 'invite'])->where('id', $interview_id)->first();
+        return response()->json($questions, 200);
         
     }
 

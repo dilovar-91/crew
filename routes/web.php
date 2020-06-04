@@ -16,6 +16,10 @@ Route::get('/', 'HomeController@index')->name('home');
 Auth::routes();
 
 
+
+
+
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 
@@ -92,6 +96,10 @@ Route::group([
         'uses' => 'Seamen\InterviewController@detail',
         'as' => 'seamen.interview.detail'
     ]);
+    Route::get('/interview/record/{id}', [
+        'uses' => 'Seamen\InterviewController@record',
+        'as' => 'seamen.interview.record'
+    ]);
     Route::get('/interview/question/{id}', [
         'uses' => 'Seamen\InterviewController@question',
         'as' => 'seamen.interview.question'
@@ -154,4 +162,6 @@ Route::group([
 
 
 });
+
+
 

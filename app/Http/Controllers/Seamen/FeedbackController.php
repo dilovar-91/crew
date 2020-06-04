@@ -30,7 +30,7 @@ class FeedbackController extends Controller
     {
         $user_id = Auth::user()->id;
         $feedback = Feedback::with(['user', 'answers', 'answers.question', 'invite.interview', 'invite.inviter'])->where('id', $id)->where('user_id', $user_id)->first();
-        //dd($feedback);
+        dd($feedback);
         return view('seamen.feedback-detail')->with(array('feedback'=>$feedback)); 
     }
     public function answers($id)
