@@ -1,12 +1,13 @@
 <template>
 <div class="vld-parent" >
 <RecordAnswer
-v-if="total"
+                                    v-if="total"
                                     :currentQuestion="questions[index]"
                                     :next="next"
                                     :increment="increment"
                                     :total="total"
                                     :user_id="15"  
+                                    :invite_id="invite_id"  
                                     />
   
    
@@ -37,6 +38,10 @@ v-if="total"
                 type: Number,
                 required: true
             },
+            invite_id: {
+                type: Number,
+                required: true
+            }
             
         },
         components: {

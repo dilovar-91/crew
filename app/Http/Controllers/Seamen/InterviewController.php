@@ -64,6 +64,7 @@ class InterviewController extends Controller
             ->put('videos/'.$filename.'.webm', file_get_contents($request->blob));
         
         $answer = new Answer;
+        $answer->invite_id = $request->invite_id;
         $answer->question_id = $request->question_id;
         $answer->answer = $filename.'.mp4';
         $answer->user_id = $request->user_id;

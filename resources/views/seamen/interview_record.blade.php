@@ -33,7 +33,7 @@
                         <i class="fa fa-fw fa-info-circle"></i>
                     </div>
                     <div class="flex-fill">
-                        <p class="mb-0">You can answer this question for   minutes. Record video in a light position and click send button. {{$interview->invite->id}}</p>
+                        <p class="mb-0">You can answer this question for   minutes. Record video in a light position and click send button.</p>
                     </div>
        
                 </div>
