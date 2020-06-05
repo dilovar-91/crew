@@ -48,11 +48,14 @@ export default {
     next: Function,
     increment: Function,
     total: Number,
-    
-            user_id: {
+    user_id: {
                 type: Number,
                 required: true
-            },            
+          },            
+    invite_id: {
+                type: Number,
+                required: true
+          },            
             
         },
   data: function() {
@@ -186,6 +189,7 @@ export default {
                 let blobSend = this.player.recordedData;
                 console.log(blobSend);
                 formData.append('blob',blobSend);
+                formData.append('invite_id',this.invite_id);
                 formData.append('question_id',this.currentQuestion.id);
                 formData.append('user_id',this.user_id);
                 formData.append('comment',this.comment);
