@@ -41,19 +41,19 @@ import 'vue-loading-overlay/dist/vue-loading.css';
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('record-component', require('@/components/RecordComponent.vue').default);
-Vue.component('capture-component', require('@/components/CaptureComponent.vue').default);
-Vue.component('videojs-record', require('@/components/VideoJSRecord.vue').default);
-Vue.component('profile-school', require('@/components/profile/SchoolComponent.vue').default);
-Vue.component('profile-document', require('@/components/profile/DocumentComponent.vue').default);
-Vue.component('personal-component', require('@/components/profile/PersonalComponent.vue').default);
-Vue.component('profile-main', require('@/components/profile/MainComponent.vue').default);
-Vue.component('profile-address', require('@/components/profile/AdressComponent.vue').default);
-Vue.component('profile-service', require('@/components/profile/ServiceComponent.vue').default);
-Vue.component('video-player', require('@/components/VideoPLayer.vue').default);
-Vue.component('video-list', require('@/components/VideoList.vue').default);
-Vue.component('quiz-component', require('@/components/interview/QuizComponent.vue').default);
-Vue.component('interview-record', require('@/components/interview/RecordComponent.vue').default);
+Vue.component('record-component', require('./components/RecordComponent.vue').default);
+Vue.component('capture-component', require('./components/CaptureComponent.vue').default);
+Vue.component('videojs-record', require('./components/VideoJSRecord.vue').default);
+Vue.component('profile-school', require('./components/profile/SchoolComponent.vue').default);
+Vue.component('profile-document', require('./components/profile/DocumentComponent.vue').default);
+Vue.component('personal-component', require('./components/profile/PersonalComponent.vue').default);
+Vue.component('profile-main', require('./components/profile/MainComponent.vue').default);
+Vue.component('profile-address', require('./components/profile/AdressComponent.vue').default);
+Vue.component('profile-service', require('./components/profile/ServiceComponent.vue').default);
+Vue.component('video-player', require('./components/VideoPLayer.vue').default);
+Vue.component('video-list', require('./components/VideoList.vue').default);
+Vue.component('quiz-component', require('./components/interview/QuizComponent.vue').default);
+Vue.component('interview-record', require('./components/interview/RecordComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
