@@ -204,12 +204,12 @@ export default {
                     loader.hide()
                      this.$swal('Спасибо!', 'Ваш ответ успешно сохранен!', 'success');
 
-                     this.increment(isCorrect)
+                     this.increment(true)
                       this.questionNumber++
+                      
                       if (this.questionNumber < this.total) {
-                          setTimeout(() => {
-                          this.next()                   
-                        }, 500);
+                          this.next()
+                          console.log('next clicked')
                       }
                       else {
                         this.isFinished = true
@@ -217,7 +217,7 @@ export default {
                       }
                 }).catch(err => {
                     loader.hide()
-                    this.$swal('Ошибка', 'При сохранении вашего ответа что-то пошло не так', 'error');  
+                    this.$swal('Ошибка', 'При сохранении вашего ответа что-то пошло не так'+ err, 'error');  
                 });
             },    
     
