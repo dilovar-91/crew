@@ -97,4 +97,10 @@ class InterviewController extends Controller
         $result->save();
         return response()->json($result, 201);
     }
+    public function invited(Request $request){       
+        $invite = Invite::find($request->input('invite_id'));
+        $invite->completed = 1;
+        $invite->save();
+        return response()->json($invite, 201);
+    }
 }

@@ -41,6 +41,10 @@ Route::post('/seamen/interview/quizresult', [
     'uses' => 'Seamen\InterviewController@quizresult',
     'as' => 'seamen.interview.quizresult'
 ]);
+Route::post('/seamen/interview/invited', [
+    'uses' => 'Seamen\InterviewController@invited',
+    'as' => 'seamen.interview.invited'
+]);
 
 Route::delete('/seamen/profile/schooldelete/{id}', [
     'uses' => 'Seamen\ProfileController@schooldelete',

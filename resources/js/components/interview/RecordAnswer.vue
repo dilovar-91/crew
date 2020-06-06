@@ -1,8 +1,5 @@
 <template>
-<div class="row ml-1 mr-1">
- <div class="col-sm-4">
-      <video id="myVideo" class="video-js vjs-default-skin" playsinline></video>    
-  </div>
+<div class="row mb-2">
   <div class="col-sm-8">
   <div class="block block-rounded block-themed">
    
@@ -27,6 +24,10 @@
              </div>
             
   </div>
+  </div>
+
+   <div class="col-sm-4">
+      <video id="myVideo" class="video-js vjs-default-skin" playsinline></video>    
   </div>
 </div> 
 </template>
@@ -85,7 +86,8 @@ export default {
                     width: 320,
                     height: 240,
                     controlBar: {
-                        volumePanel: false
+                        volumePanel: false,
+                        fullscreenToggle: false
                     },
                     plugins: {
                         // configure videojs-record plugin
@@ -204,6 +206,10 @@ export default {
                     loader.hide()
                      this.$swal('Спасибо!', 'Ваш ответ успешно сохранен!', 'success');
 
+                     if (this.player) {
+                            this.player.dispose();
+                        }
+
                      this.increment(true)
                       this.questionNumber++
                       
@@ -213,6 +219,7 @@ export default {
                       }
                       else {
                         this.isFinished = true
+                        
                         this.saveResult()
                       }
                 }).catch(err => {
@@ -223,11 +230,23 @@ export default {
     
        
   },
-        beforeDestroy() { 
-            if (this.player) {
-                this.player.dispose();
-            }
-        }
+
+  saveResult(){
+    axios.post('/seamen/interview/invited', {invite_id: this.invite_id}).then(res => {
+                    loader.hide()
+                     this.$swal('Спасибо!', 'Спасибо Ваш интервью успешно сохранен!', 'success');
+                     if (this.player) {
+                            this.player.dispose();
+                        }                     
+                }).catch(err => {
+                    loader.hide()
+                    this.$swal('Ошибка', 'При сохранении вашего интервью что-то пошло не так'+ err, 'error');  
+                });
+
+
+    
+  }
+       
 }
 </script>
 
