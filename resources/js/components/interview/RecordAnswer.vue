@@ -93,7 +93,7 @@ export default {
                             audio: true,
                             video: true,
                             debug: true,
-                            maxLength: this.time
+                            maxLength: this.currentQuestion.time
                         }
                     }
                 }
