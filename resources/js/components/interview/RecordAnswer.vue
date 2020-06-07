@@ -27,7 +27,8 @@
   </div>
 
    <div class="col-sm-4">
-      <video id="myVideo" class="video-js vjs-default-skin" playsinline></video>    
+      <video id="myVideo" class="video-js vjs-default-skin" playsinline></video>
+      <button class="btn btn-primary" @click="recordSend">Следующий вопрос</button>    
   </div>
 </div> 
 </template>
@@ -80,8 +81,8 @@ export default {
                 save: false,
                 comment: '',
                 options: {
-                    controls: true,
-                    autoplay: false,
+                    controls: false,
+                    autoplay: true,
                     fluid: true,
                     loop: false,
                     width: 320,
@@ -141,7 +142,7 @@ export default {
                 // the blob object contains the recorded data that
                 // can be downloaded by the user, stored on server etc.
                 //this.player.record().diable();
-                this.player.recordToggle
+                this.player.recordToggle.disable()
                 this.isRecorded = true;
                 console.log('finished recording: ', this.player.recordedData);
             });
