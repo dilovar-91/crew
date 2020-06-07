@@ -212,15 +212,10 @@ export default {
                       
                       if (this.questionNumber < this.total) {
                           this.next()
-                          this.player.recordToggle.enable()
+                          //this.player.recordToggle.enable()
+                          this.player.reset()
 
-                          this.player = videojs('#myVideo', this.options, () => {
-                          // print version information at startup
-                          var msg = 'Using video.js ' + videojs.VERSION +
-                              ' with videojs-record ' + videojs.getPluginVersion('record') +
-                              ' and recordrtc ' + RecordRTC.version;
-                          videojs.log(msg);
-                      });
+                          
                           
                       }
                       else {
