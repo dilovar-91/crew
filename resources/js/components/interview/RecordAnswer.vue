@@ -179,19 +179,17 @@ export default {
                           this.player.reset()
                           this.player.recordToggle.enable()
                           this.player.record().getDevice();
-                          
+                          this.isRecorded = false
                       }
                       else {
                         this.isFinished = true                        
-                        this.saveResult()
+                        saveResult()
                       }
                       loader.hide()
                 }).catch(err => {
                     loader.hide()                    
                 });
             },    
-    
-       
   },
 
   saveResult(){
