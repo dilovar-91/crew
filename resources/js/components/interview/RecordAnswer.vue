@@ -27,8 +27,7 @@
   </div>
 
    <div class="col-sm-4">
-      <video id="myVideo" class="video-js vjs-default-skin" playsinline></video>
-      <button class="btn btn-primary" @click="recordSend">Следующий вопрос</button>    
+      <video id="myVideo" class="video-js vjs-default-skin" playsinline></video>       
   </div>
 </div> 
 </template>
@@ -213,7 +212,16 @@ export default {
                       
                       if (this.questionNumber < this.total) {
                           this.next()
-                          console.log('next clicked')
+                          this.player.recordToggle.enable()
+
+                          this.player = videojs('#myVideo', this.options, () => {
+                          // print version information at startup
+                          var msg = 'Using video.js ' + videojs.VERSION +
+                              ' with videojs-record ' + videojs.getPluginVersion('record') +
+                              ' and recordrtc ' + RecordRTC.version;
+                          videojs.log(msg);
+                      });
+                          
                       }
                       else {
                         this.isFinished = true
