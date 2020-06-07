@@ -43,7 +43,7 @@
     import videojs from 'video.js'
     // eslint-disable-next-line
     import Record from 'videojs-record/dist/videojs.record.js'
-    import RecordToggle from 'videojs-record/js/controls/record-toggle.js'
+   
 export default {
   props: {
     currentQuestion: Object,
