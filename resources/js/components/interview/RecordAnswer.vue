@@ -43,6 +43,7 @@
     import videojs from 'video.js'
     // eslint-disable-next-line
     import Record from 'videojs-record/dist/videojs.record.js'
+    import RecordToggle from 'videojs-record/js/controls/record-toggle.js'
 export default {
   props: {
     currentQuestion: Object,
@@ -81,7 +82,7 @@ export default {
                 options: {
                     controls: true,
                     autoplay: false,
-                    fluid: false,
+                    fluid: true,
                     loop: false,
                     width: 320,
                     height: 240,
@@ -139,7 +140,8 @@ export default {
             this.player.on('finishRecord', () => {
                 // the blob object contains the recorded data that
                 // can be downloaded by the user, stored on server etc.
-                this.player.record().stopDevice();
+                //this.player.record().diable();
+                this.player.recordToggle
                 this.isRecorded = true;
                 console.log('finished recording: ', this.player.recordedData);
             });
