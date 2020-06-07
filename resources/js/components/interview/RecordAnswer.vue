@@ -207,12 +207,7 @@ export default {
                     }
                 ).then(res => {
                     loader.hide()
-                     this.$swal('Спасибо!', 'Ваш ответ успешно сохранен!', 'success');
-
-                     if (this.player) {
-                            this.player.dispose();
-                        }
-
+                     
                      this.increment(true)
                       this.questionNumber++
                       
@@ -226,8 +221,7 @@ export default {
                         this.saveResult()
                       }
                 }).catch(err => {
-                    loader.hide()
-                    this.$swal('Ошибка', 'При сохранении вашего ответа что-то пошло не так'+ err, 'error');  
+                    loader.hide()                    
                 });
             },    
     
@@ -244,10 +238,7 @@ export default {
                 }).catch(err => {
                     loader.hide()
                     this.$swal('Ошибка', 'При сохранении вашего интервью что-то пошло не так'+ err, 'error');  
-                });
-
-
-    
+                });    
   }
        
 }
