@@ -215,6 +215,7 @@ export default {
                           this.next()
                           this.player.reset()
                           this.player.recordToggle.enable()
+                          this.player.record().getDevice();
                           
                       }
                       else {
