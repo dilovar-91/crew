@@ -81,14 +81,15 @@ export default {
                 comment: '',
                 options: {
                     controls: true,
-                    autoplay: true,
+                    autoplay: false,
                     fluid: true,
                     loop: false,
                     width: 320,
                     height: 240,
                     controlBar: {
                         volumePanel: false,
-                        fullscreenToggle: false
+                        fullscreenToggle: false,
+                        pip: false
                     },
                     plugins: {
                         // configure videojs-record plugin
@@ -212,8 +213,15 @@ export default {
                       
                       if (this.questionNumber < this.total) {
                           this.next()
-                          //this.player.recordToggle.enable()
+                          this.player.recordToggle.enable()
                           this.player.reset()
+                          this.player = videojs('#myVideo', this.options, () => {
+                              // print version information at startup
+                              var msg = 'Using video.js ' + videojs.VERSION +
+                                  ' with videojs-record ' + videojs.getPluginVersion('record') +
+                                  ' and recordrtc ' + RecordRTC.version;
+                              videojs.log(msg);
+                          });
 
                           
                           
