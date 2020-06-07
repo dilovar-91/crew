@@ -216,12 +216,12 @@ export default {
                           this.player.reset()
                           this.player.recordToggle.enable()
                           
-                          this.player = videojs('#myVideo', this.options, () => {
-                              // print version information at startup
-                              var msg = 'Using video.js ' + videojs.VERSION +
-                                  ' with videojs-record ' + videojs.getPluginVersion('record') +
-                                  ' and recordrtc ' + RecordRTC.version;
-                              videojs.log(msg);
+                                              // stop device stream only
+                          this.player.record().stopStream();
+
+                          this.player.recordToggle.one(['click', 'tap'], function() {
+                              // start device and recording
+                              this.player.record().getDevice();
                           });
 
                           
