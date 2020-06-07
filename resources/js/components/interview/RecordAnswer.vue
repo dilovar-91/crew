@@ -81,7 +81,7 @@ export default {
                 save: false,
                 comment: '',
                 options: {
-                    controls: false,
+                    controls: true,
                     autoplay: true,
                     fluid: true,
                     loop: false,
