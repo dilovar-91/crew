@@ -10,7 +10,8 @@
                                 <div class="block-content">
                                     <p class="font-weight-bold">{{ currentQuestion.question }}</p>
              
-            <button v-show="isRecorded" class="btn btn-primary" @click="recordSend">Следующий вопрос</button>
+            <button :disabled="isRecorded" class="btn btn-primary" @click="recordSend">Следующий вопрос</button>
+            <button class="btn btn-primary" @click="next">Пропустить</button>
                                 </div>
     
              <div v-show="isFinished">             
@@ -104,18 +105,7 @@ export default {
       
     }
   },
-  computed: {
-    answers() {
-      // this function is no longer used in finished code
-      // it is replaced by the watch function below and the
-      // shuffleAnswers method
-      let answers = [...this.currentQuestion.answers]
-      answers.push(this.currentQuestion.correct)
-      return answers
-    }
-  },
   
-
   mounted() {
             /* eslint-disable no-console */
             this.player = videojs('#myVideo', this.options, () => {
@@ -156,31 +146,7 @@ export default {
                 console.error('device error:', this.player.deviceErrorCode);
             });
         },
-  methods: {
-    saveAnswer(index) {
-      this.selectedIndex = index
-      let isCorrect = false
-      
-
-      if (this.selectedIndex === this.correctIndex) {
-        isCorrect = true
-      }
-      this.answered = true
-
-      this.increment(isCorrect)
-      this.questionNumber++
-      if (this.questionNumber < this.total) {
-          setTimeout(() => {
-          this.next()                   
-        }, 500);
-      }
-      else {
-        this.isFinished = true
-        this.saveResult()
-      }
-      
-      
-    },
+  methods: {   
 
     recordSend(){
                 let loader = this.$loading.show({
@@ -206,11 +172,8 @@ export default {
                         }
                     }
                 ).then(res => {
-                    loader.hide()
-                     
                      this.increment(true)
-                      this.questionNumber++
-                      
+                      this.questionNumber++                      
                       if (this.questionNumber < this.total) {
                           this.next()
                           this.player.reset()
@@ -219,10 +182,10 @@ export default {
                           
                       }
                       else {
-                        this.isFinished = true
-                        
+                        this.isFinished = true                        
                         this.saveResult()
                       }
+                      loader.hide()
                 }).catch(err => {
                     loader.hide()                    
                 });
@@ -235,13 +198,14 @@ export default {
     axios.post('/seamen/interview/invited', {invite_id: this.invite_id}).then(res => {
                     loader.hide()
                      this.$swal('Спасибо!', 'Спасибо Ваш интервью успешно сохранен!', 'success');
-                     if (this.player) {
-                            this.player.dispose();
-                        }                     
+                                         
                 }).catch(err => {
                     loader.hide()
                     this.$swal('Ошибка', 'При сохранении вашего интервью что-то пошло не так'+ err, 'error');  
-                });    
+                });
+                if (this.player) {
+                            this.player.dispose();
+                        }     
   }
        
 }
