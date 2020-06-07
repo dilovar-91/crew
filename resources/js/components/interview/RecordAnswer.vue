@@ -216,16 +216,6 @@ export default {
                           this.player.reset()
                           this.player.recordToggle.enable()
                           
-                                              // stop device stream only
-                          this.player.record().stopStream();
-
-                          this.player.recordToggle.one(['click', 'tap'], function() {
-                              // start device and recording
-                              this.player.record().getDevice();
-                          });
-
-                          
-                          
                       }
                       else {
                         this.isFinished = true
