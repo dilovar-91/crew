@@ -10,7 +10,7 @@
                                 <div class="block-content">
                                     <p class="font-weight-bold">{{ currentQuestion.question }}</p>
              
-            <button :disabled="isRecorded" class="btn btn-primary" @click="recordSend">Следующий вопрос</button>
+            <button :disabled="!isRecorded" class="btn btn-primary" @click="recordSend">Следующий вопрос</button>
             <button class="btn btn-primary" @click="next">Пропустить</button>
                                 </div>
     
