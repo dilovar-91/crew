@@ -1,7 +1,7 @@
 <template>
 <div class="row mb-2">
 
-  <div class="col-sm-12" v-show="isFinished">
+  <div class="col-sm-12" v-show="!isFinished">
     <div class="block-header">
                         <h3 class="block-title">Recording interview: <span class="text-primary">{{title}}</span></h3>
                          </div>
@@ -37,8 +37,7 @@
              
             
   </div>
-
-  <div v-show="isFinished">             
+  <div v-show="isFinished" class="justify-content-center">             
                <div class="alert alert-primary alert-dismissable" role="alert">
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">×</span>
