@@ -8,6 +8,7 @@
                                     :total="total"
                                     :user_id="15"  
                                     :invite_id="invite_id"  
+                                    :title="title"  
                                     />
   
    
@@ -32,6 +33,10 @@
             
             questions: {
                 type: Array,
+                required: true
+            },
+            title: {
+                type: String,
                 required: true
             },
             user_id: {

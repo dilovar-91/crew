@@ -1,7 +1,27 @@
 <template>
 <div class="row mb-2">
+
+  <div class="col-sm-12" v-show="isFinished">
+    <div class="block-header">
+                        <h3 class="block-title">Recording interview: <span class="text-primary">{{title}}</span></h3>
+                         </div>
+                <div class="block-content">
+                    <div class="col-md-12 justify-content-center">
+                    <div class="alert alert-info d-flex align-items-center" role="alert">
+                    <div class="flex-00-auto">
+                        <i class="fa fa-fw fa-info-circle"></i>
+                    </div>
+                    <div class="flex-fill">
+                        <p class="mb-0 ml-2">In this page can record answer for questions. Record video in a light position and click "Next question". If you not ready for answering any question you can skip by clicking "Skip" button.</p>
+                    </div>
+       
+                </div>
+            </div>
+        
+            </div>
+  </div>
   <div class="col-sm-8">
-  <div class="block block-rounded block-themed">
+  <div v-show="!isFinished" class="block block-rounded block-themed">
    
                                 <div class="block-header bg-modern-light">
                                     <h3 class="block-title">Вопрос</h3>
@@ -14,17 +34,19 @@
             <button class="btn btn-primary" @click="next">Пропустить</button>
                                 </div>
     
-             <div v-show="isFinished">             
+             
+            
+  </div>
+
+  <div v-show="isFinished">             
                <div class="alert alert-primary alert-dismissable" role="alert">
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">×</span>
                                 </button>
                                 <h3 class="alert-heading font-w300 my-2">Thank you!</h3>
-                                <p class="mb-0">You result of quiz saved. <a class="alert-link" href="/seamen/interviews">Go to main</a>!</p>
+                                <p class="mb-0">You result of interview saved. <a class="alert-link" href="/seamen/interviews">Go to main</a>!</p>
                             </div>
              </div>
-            
-  </div>
   </div>
 
    <div class="col-sm-4">
@@ -51,6 +73,7 @@ export default {
     next: Function,
     increment: Function,
     total: Number,
+    title: String,
     user_id: {
                 type: Number,
                 required: true
