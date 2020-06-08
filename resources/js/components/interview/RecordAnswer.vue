@@ -182,8 +182,19 @@ export default {
                           this.isRecorded = false
                       }
                       else {
-                        this.isFinished = true                        
-                        this.saveResult()
+                        this.isFinished = true
+                        axios.post('/api/seamen/interview/invited', {invite_id: this.invite_id}).then(res => {
+                            loader.hide()
+                            this.$swal('Спасибо!', 'Спасибо Ваш интервью успешно сохранен!', 'success');
+                                                
+                        }).catch(err => {
+                            loader.hide()
+                            this.$swal('Ошибка', 'При сохранении вашего интервью что-то пошло не так'+ err, 'error');  
+                        });
+                        if (this.player) {
+                                    this.player.dispose();
+                                }  
+                        
                       }
                       loader.hide()
                 }).catch(err => {
@@ -192,27 +203,7 @@ export default {
 
                 });
             },    
-  },
-  saveResult(){
-    let loader = this.$loading.show({
-                  // Optional parameters
-                  container: null,
-                  canCancel: false,
-                  onCancel: this.onCancel,
-                  color: this.color
-                });
-    axios.post('/api/seamen/interview/invited', {invite_id: this.invite_id}).then(res => {
-                    loader.hide()
-                     this.$swal('Спасибо!', 'Спасибо Ваш интервью успешно сохранен!', 'success');
-                                         
-                }).catch(err => {
-                    loader.hide()
-                    this.$swal('Ошибка', 'При сохранении вашего интервью что-то пошло не так'+ err, 'error');  
-                });
-                if (this.player) {
-                            this.player.dispose();
-                        }     
-  }
+  },  
        
 }
 </script>

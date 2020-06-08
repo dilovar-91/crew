@@ -9,7 +9,7 @@
                     <ol class="breadcrumb breadcrumb-alt">
                         <li class="breadcrumb-item">Interview</li>
                         <li class="breadcrumb-item" aria-current="page">
-                            <a class="link-fx" href="">Answering</a>
+                            <a class="link-fx" href="">Recording</a>
                         </li>
                     </ol>
                 </nav>
@@ -24,7 +24,7 @@
             <div class="block ml-0 mr-0">
             
             <div class="block-header">
-                        <h3 class="block-title">Question: <span class="text-primary">{{$interview->title}}</span></h3>
+                        <h3 class="block-title">Recording interview: <span class="text-primary">{{$interview->title}}</span></h3>
                          </div>
                 <div class="block-content">
                     <div class="col-md-12 justify-content-center">
@@ -33,7 +33,7 @@
                         <i class="fa fa-fw fa-info-circle"></i>
                     </div>
                     <div class="flex-fill">
-                        <p class="mb-0">You can answer this question for   minutes. Record video in a light position and click send button.</p>
+                        <p class="mb-0">In this page can record answer for questions. Record video in a light position and click send button. If you not ready for answering any question you can skip by clicking "Skip" </p>
                     </div>
        
                 </div>
