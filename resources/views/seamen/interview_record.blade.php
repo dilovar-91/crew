@@ -22,7 +22,7 @@
     <div class="content">
         <div class="col-md-12">
             <div class="block ml-0 mr-0">            
-                <interview-record :title="{{$interview->title}}" :user_id="1" :questions="{{$interview->questions}}" :invite_id="{{$interview->invite->id}}"></interview-record>
+                <interview-record title="{{$interview->title}}" :user_id="1" :questions="{{$interview->questions}}" :invite_id="{{$interview->invite->id}}"></interview-record>
             </div>
     </div>
     </div>
