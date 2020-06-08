@@ -183,7 +183,7 @@ export default {
                       }
                       else {
                         this.isFinished = true                        
-                        saveResult()
+                        this.saveResult()
                       }
                       loader.hide()
                 }).catch(err => {
