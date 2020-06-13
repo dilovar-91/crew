@@ -1,14 +1,34 @@
 <template>
 <div class="vld-parent" >
+<div v-if="!isStarted">
+    <div class="alert alert-info d-flex align-items-center mb-2" role="alert">
+                    <div class="flex-00-auto">
+                        <i class="fa fa-fw fa-info-circle"></i>
+                    </div>
+                    <div class="flex-fill">
+                        <p class="mb-0 ml-2">Тшательно подготовтесь, а затем нажмите кнопку записи. Появляеться окно доступа вебкамера, разрешите доступ на запись. Внимание: запись начинается автоматически.</p>
+                    </div>
+       
+                </div>
+<div class="round-button ml-auto mr-auto" >
+    
+    <div class="round-button-circle">
+        
+        <i class="si si-video" aria-hidden="true"></i>
+        <span class="round-button" @click="isStarted=true" >Start Record</span>
+    </div>
+</div>
+</div>
 <RecordAnswer
-                                    v-if="total"
+                                    v-if="total && isStarted"
                                     :currentQuestion="questions[index]"
                                     :next="next"
                                     :increment="increment"
                                     :total="total"
                                     :user_id="15"  
                                     :invite_id="invite_id"  
-                                    :title="title"  
+                                    :title="title"
+                                    :start="true"  
                                     />
   
    
@@ -56,6 +76,7 @@
             return {
               total: this.questions.length,
               index: 0,
+              isStarted: false
             };
         },
 
@@ -77,5 +98,39 @@
 /* change player background color */
 #myVideo {
   background-color: #95DDF5;
+}
+
+.round-button {
+	width:15%;
+    
+}
+.round-button-circle {
+	width: 100%;
+	height:0;
+	padding-bottom: 92%;
+    border-radius: 50%;
+	border:10px solid #cfdcec;
+    overflow:hidden;
+    cursor: pointer;
+    background: #4679BD; 
+    box-shadow: 0 0 3px gray;
+}
+.round-button-circle:hover {
+	background:#30588e;
+}
+.round-button span {
+    display:block;
+	float:left;
+	width:100%;
+	padding-top:50%;
+    padding-bottom:50%;
+	line-height:1em;
+	margin-top:-0.5em;    
+	text-align:center;
+	color:#e2eaf3;
+    font-family:Verdana;
+    font-size:1.2em;
+    font-weight:bold;
+    text-decoration:none;
 }
 </style>

@@ -31,7 +31,7 @@
                                     <p class="font-weight-bold">{{ currentQuestion.question }}</p>
              
             <button :disabled="!isRecorded" class="btn btn-primary" @click="recordSend">Следующий вопрос</button>
-            <button class="btn btn-primary" @click="next">Пропустить</button>
+            <button class="btn btn-primary" @click="nextStep()">Пропустить</button>
                                 </div>
     
              
@@ -73,6 +73,7 @@ export default {
     increment: Function,
     total: Number,
     title: String,
+    start: Boolean,
     user_id: {
                 type: Number,
                 required: true
@@ -167,6 +168,9 @@ export default {
             this.player.on('deviceError', () => {
                 console.error('device error:', this.player.deviceErrorCode);
             });
+            if (this.start === true) {
+               this.player.record().getDevice();
+            }
         },
   methods: {   
 
@@ -224,7 +228,16 @@ export default {
                     console.log(err)
 
                 });
-            },    
+            },  
+            nextStep(){
+              this.next()
+                          this.player.reset()
+                          this.player.recordToggle.enable()
+                          this.player.record().getDevice();
+                          this.isRecorded = false
+            }
+            
+            
   },  
        
 }
