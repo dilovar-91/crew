@@ -100,10 +100,48 @@
   background-color: #95DDF5;
 }
 
-.round-button {
-	width:15%;
+@media only screen and (max-width: 600px) {    
+    .round-button {
+	width:45%;
     
 }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    
+    .round-button {
+	width:35%;
+    
+}
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .round-button {
+	width:30%;
+    
+}
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .round-button {
+	width:28%;
+    
+}
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .round-button {
+	width:25%;
+    
+}
+}
+
+
+
 .round-button-circle {
 	width: 100%;
 	height:0;
