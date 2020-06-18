@@ -32,11 +32,11 @@ class NewUserNotification extends Mailable
     public function build()
     {
         return $this->from('hello@yur-list.ru', 'Crew MSG')
-            ->subject('Mailtrap Confirmation')
+            ->subject('Приглашение на интервью')
             ->markdown('mails.exmpl')
             ->with([
-                'name' => "Dilovar",
-                'link' => 'https://yur-list.ru/interview/record/1'
+                'name' => $this->details['candidate'],
+                'link' => 'https://yur-list.ru/seamen/interview/record/1'
             ]);
     }
 }

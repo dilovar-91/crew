@@ -50,7 +50,7 @@ class LoginController extends Controller
             return redirect('/seamen');
         }
         if($request->user()->hasRole('employer')){
-            return redirect('/employer');
+            return redirect('/employer/invite');
         }
     }
 }
