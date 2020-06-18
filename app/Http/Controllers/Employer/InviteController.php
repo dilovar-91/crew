@@ -39,7 +39,7 @@ class InviteController extends Controller
                             'vacancy_id'=>$key['vacancy'],
                             'candidate'=>$key['candidate'],
                             'email'=>$key['email'],
-                            'phone'=>$ke['phone'],
+                            'phone'=>$key['phone'],
                             'invited_by_id'=>14,
                 );                
                 SendEmail::dispatch($details);
