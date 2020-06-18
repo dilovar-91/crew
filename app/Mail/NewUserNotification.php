@@ -31,11 +31,12 @@ class NewUserNotification extends Mailable
 
     public function build()
     {
+        
         return $this->from('hello@yur-list.ru', 'Crew MSG')
             ->subject('Приглашение на интервью')
             ->markdown('mails.exmpl')
             ->with([
-                'name' => $this->details['candidate']->name,
+                'name' => $this->details['candidate']['name'],
                 'link' => 'https://yur-list.ru/seamen/interview/record/1'
             ]);
     }

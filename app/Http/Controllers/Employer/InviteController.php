@@ -38,7 +38,7 @@ class InviteController extends Controller
             $details = array(
                             'vacancy_id'=>$key['vacancy'],
                             'candidate'=>$key['candidate'],
-                            //'email'=>$key->email,
+                            'email'=>$key->email,
                             //'phone'=>$key->phone,
                             'invited_by_id'=>14,
                 );                

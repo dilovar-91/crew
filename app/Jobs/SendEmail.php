@@ -34,7 +34,7 @@ class SendEmail implements ShouldQueue
     public function handle()
     {
         
-        Mail::to('pilotauto564@gmail.com')->send(new NewUserNotification($this->details));
+        Mail::to($this->details['email'])->send(new NewUserNotification($this->details));
         return 'A message has been sent!';
     }
 
