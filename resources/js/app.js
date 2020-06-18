@@ -25,6 +25,9 @@ import Loading from 'vue-loading-overlay';
 Vue.use(Loading);
 import 'vue-loading-overlay/dist/vue-loading.css';
 
+import VueTheMask from 'vue-the-mask'
+Vue.use(VueTheMask)
+
 
 
 
@@ -54,6 +57,9 @@ Vue.component('video-player', require('./components/VideoPLayer.vue').default);
 Vue.component('video-list', require('./components/VideoList.vue').default);
 Vue.component('quiz-component', require('./components/interview/QuizComponent.vue').default);
 Vue.component('interview-record', require('./components/interview/RecordComponent.vue').default);
+
+//Employer Components
+Vue.component('invite-candidate', require('./components/employer/InviteCandidate.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

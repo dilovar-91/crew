@@ -116,3 +116,17 @@ Route::get('/userinfo/{id}', [
     'uses' => 'Seamen\ProfileController@userinfo',
     'as' => 'seamen.userinfo'
 ]);
+
+//Emplyer routes
+Route::post('/employer/invite/sendinvites', [
+    'uses' => 'Employer\InviteController@sendinvites',
+    'as' => 'employer.invites.sendinvites'
+]);
+Route::get('/employer/vacancies/{user_id}', [
+    'uses' => 'Employer\VacancyController@vacancies',
+    'as' => 'employer.vacancies'
+]);
+Route::get('/employer/candidates', [
+    'uses' => 'Employer\VacancyController@candidates',
+    'as' => 'employer.candidates'
+]);
