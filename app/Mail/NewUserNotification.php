@@ -35,7 +35,7 @@ class NewUserNotification extends Mailable
             ->subject('Приглашение на интервью')
             ->markdown('mails.exmpl')
             ->with([
-                'name' => $this->details['candidate'],
+                'name' => $this->details['candidate']->name,
                 'link' => 'https://yur-list.ru/seamen/interview/record/1'
             ]);
     }
