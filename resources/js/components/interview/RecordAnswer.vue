@@ -142,6 +142,7 @@ export default {
             // device is ready
             this.player.on('deviceReady', () => {
                 console.log('device is ready!');
+                this.player.record().start()
             });
 
             // user clicked the record button and started recording
@@ -172,9 +173,7 @@ export default {
 
               this.player.reset()
                this.player.record().getDevice();   
-               if (this.player.record().deviceReady())   {
-                  this.player.record().start()
-               }         
+                      
                
             }
         },
