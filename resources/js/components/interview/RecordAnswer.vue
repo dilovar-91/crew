@@ -169,6 +169,8 @@ export default {
                 console.error('device error:', this.player.deviceErrorCode);
             });
             if (this.start === true) {
+
+              this.player.reset()
                this.player.record().getDevice();               
                this.player.record().start()
             }
