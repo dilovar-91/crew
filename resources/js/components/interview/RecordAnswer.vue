@@ -171,8 +171,11 @@ export default {
             if (this.start === true) {
 
               this.player.reset()
-               this.player.record().getDevice();               
-               this.player.record().start()
+               this.player.record().getDevice();   
+               if (this.player.record().deviceReady())   {
+                  this.player.record().start()
+               }         
+               
             }
         },
   methods: {   
@@ -207,8 +210,7 @@ export default {
                           this.next()
                           this.player.reset()
                           this.player.recordToggle.enable()
-                          this.player.record().getDevice()
-                          
+                          this.player.record().getDevice()                          
                           this.player.record().start()
                           this.isRecorded = false
                       }
