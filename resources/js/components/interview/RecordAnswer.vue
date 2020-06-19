@@ -99,7 +99,6 @@ export default {
 
       fullPage: true,
                 color: '#5c80d1',
-
                 player: '',
                 save: false,
                 comment: '',
