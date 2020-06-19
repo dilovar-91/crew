@@ -210,7 +210,7 @@ export default {
                           this.player.reset()
                           this.player.recordToggle.enable()
                           this.player.record().getDevice()                          
-                          this.player.record().start()
+                          //this.player.record().start()
                           this.isRecorded = false
                       }
                       else {
@@ -240,7 +240,7 @@ export default {
                           this.player.reset()
                           this.player.recordToggle.enable()
                           this.player.record().getDevice();                          
-                          this.player.record().start()
+                          ///this.player.record().start()
                           this.isRecorded = false
             }
             
