@@ -170,6 +170,7 @@ export default {
             });
             if (this.start === true) {
                this.player.record().getDevice();
+               this.player.muted(false);
                this.player.record().start()
             }
         },
@@ -206,6 +207,7 @@ export default {
                           this.player.reset()
                           this.player.recordToggle.enable()
                           this.player.record().getDevice();
+                          this.player.muted(false);
                           this.player.record().start()
                           this.isRecorded = false
                       }
@@ -236,6 +238,7 @@ export default {
                           this.player.reset()
                           this.player.recordToggle.enable()
                           this.player.record().getDevice();
+                          this.player.muted(false);
                           this.player.record().start()
                           this.isRecorded = false
             }
