@@ -11,6 +11,7 @@ class NewUserNotification extends Mailable
 {
     use Queueable, SerializesModels;
     protected $details;
+    
 
     /**
      * Create a new message instance.

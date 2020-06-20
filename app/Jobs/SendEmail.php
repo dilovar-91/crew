@@ -19,6 +19,7 @@ class SendEmail implements ShouldQueue
      * @return void
      */
     protected $details;
+    public $timeout = 80;
   
     /**
      * Create a new job instance.
