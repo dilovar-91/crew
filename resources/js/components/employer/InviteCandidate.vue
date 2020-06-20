@@ -16,16 +16,22 @@
             <table class="table table-striped table-borderless">
                 <thead class="border-bottom">
                     <tr>
-                        <th style="50px">#</th>
+                        <th style="50px">Выбор</th>
                         <th >Вакансия</th>
                         <th class="text-center">Кандидат</th>
                         <th class="text-center"  >Email</th>
                         <th class="" >Телефон</th>
+                        <th class="" >Действия</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="(invite, i) in invites" :key="i">
-                        <td><i class="fa fa-trash text-danger trash" @click="deleteRow(i)"></i></td>
+                        <td>
+                            <div class="custom-control custom-checkbox mb-1">
+                                <input v-model="invite.checked" type="checkbox" class="custom-control-input" id="example-checkbox-custom3" name="example-checkbox-custom3">
+                                <label class="custom-control-label" for="example-checkbox-custom3"></label>
+                            </div>
+                        </td>
                         <td>
                         <v-select v-model="invite.vacancy" taggable :options="vacancies" label="title" >
                            <span slot="noResult">Список пуст!</span>
@@ -40,6 +46,7 @@
                         <td class="">
                             <the-mask v-model="invite.phone" class="form-control" :mask="['+# (###) ###-####', '+# (###) ###-####']"  type="tell"/>
                         </td>
+                        <td><i class="fa fa-trash text-danger trash" @click="deleteRow(i)"></i></td>
                     </tr>
                 </tbody>
             </table>
@@ -64,10 +71,12 @@ export default {
                 "Capfffffffffftain",
             ], 
             vacancies: [],
+            vacancies: [],
             candidates: [],
             emails: [],
             phones: [],
             invites: [{
+              checked:false,
               vacancy:'',
               candidate:'',
               email:'',
@@ -86,6 +95,7 @@ export default {
     methods: {
         addRow() {
             this.invites.push({
+              checked:false,
               vacancy:'',
               candidate:'',
               email:'',

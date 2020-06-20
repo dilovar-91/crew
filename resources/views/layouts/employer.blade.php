@@ -73,28 +73,28 @@
                         <li class="nav-main-item{{ request()->is('seamen/interview/*') ? ' open' : '' }}">
                             <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="true" href="#">
                                 <i class="nav-main-link-icon si si-bulb"></i>
-                                <span class="nav-main-link-name">Jobs</span>
+                                <span class="nav-main-link-name">Вакансии</span>
                             </a>
                             <ul class="nav-main-submenu">
                                 <li class="nav-main-item">
                                     <a class="nav-main-link{{ request()->is('seamen/interviews') ? ' active' : '' }}" href="/seamen/interviews">
                                     <i class="nav-main-link-icon si si-camera"></i>     
-                                    <span class="nav-main-link-name">Interviews</span>
+                                    <span class="nav-main-link-name">Интервью</span>
                                     </a>
                                 </li>
                                 <li class="nav-main-item">
                                     <a class="nav-main-link{{ request()->is('seamen/invites') ? ' active' : '' }}" href="/seamen/invites">
                                     <i class="nav-main-link-icon si si-user-follow"></i>     
-                                    <span class="nav-main-link-name">Invites</span>
+                                    <span class="nav-main-link-name">Тест</span>
                                     </a>
                                 </li>
                             </ul>
                         </li>
                         <li class="nav-main-item">
-                            <a class="nav-main-link" href="/seamen/resume">
-                                <i class="nav-main-link-icon si si-doc"></i>
-                                <span class="nav-main-link-name">Resume</span>
-                            </a>
+                        <a class="nav-main-link{{ request()->is('seamen/invites') ? ' active' : '' }}" href="/seamen/invites">
+                                    <i class="nav-main-link-icon si si-user-follow"></i>     
+                                    <span class="nav-main-link-name">Отклики</span>
+                        </a>
                         </li>
 
                         

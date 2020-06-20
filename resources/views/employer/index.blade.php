@@ -1,4 +1,4 @@
-@extends('layouts.seamen')
+@extends('layouts.employer')
 
 @section('css_before')
     <!-- Page JS Plugins CSS -->

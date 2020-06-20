@@ -35,6 +35,7 @@ class InviteController extends Controller
         //dd($request->invites);
         
         foreach($request->invites as $key){         
+           if($key['checked'] == false) break;
             $details = array(
                             'vacancy_id'=>$key['vacancy'],
                             'candidate'=>$key['candidate'],
