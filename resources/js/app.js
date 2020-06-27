@@ -15,6 +15,9 @@ import vSelect from 'vue-select'
 Vue.component('v-select', vSelect)
 import 'vue-select/dist/vue-select.css';
 
+import Vuelidate from 'vuelidate'
+Vue.use(Vuelidate)
+
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 Vue.use(VueSweetalert2);
@@ -27,6 +30,11 @@ import 'vue-loading-overlay/dist/vue-loading.css';
 
 import VueTheMask from 'vue-the-mask'
 Vue.use(VueTheMask)
+
+import CKEditor from '@ckeditor/ckeditor5-vue';
+Vue.use( CKEditor );
+
+
 
 
 
@@ -58,8 +66,11 @@ Vue.component('video-list', require('./components/VideoList.vue').default);
 Vue.component('quiz-component', require('./components/interview/QuizComponent.vue').default);
 Vue.component('interview-record', require('./components/interview/RecordComponent.vue').default);
 
+
 //Employer Components
 Vue.component('invite-candidate', require('./components/employer/InviteCandidate.vue').default);
+Vue.component('add-vacancy', require('./components/employer/AddVacancy.vue').default);
+Vue.component('add-interview', require('./components/employer/AddInterview.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

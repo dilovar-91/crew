@@ -116,17 +116,34 @@ Route::get('/userinfo/{id}', [
     'uses' => 'Seamen\ProfileController@userinfo',
     'as' => 'seamen.userinfo'
 ]);
+Route::get('/vacancies', [
+    'uses' => 'Employer\VacancyController@allvacancies',
+    'as' => 'api.vacancies'
+]);
 
 //Emplyer routes
 Route::post('/employer/invite/sendinvites', [
     'uses' => 'Employer\InviteController@sendinvites',
     'as' => 'employer.invites.sendinvites'
 ]);
+
+Route::post('/employer/interview/create', [
+    'uses' => 'Employer\InterviewController@save',
+    'as' => 'employer.interview.create'
+]);
 Route::get('/employer/vacancies/{user_id}', [
     'uses' => 'Employer\VacancyController@vacancies',
     'as' => 'employer.vacancies'
 ]);
+Route::post('/employer/vacancy/create', [
+    'uses' => 'Employer\VacancyController@save',
+    'as' => 'employer.vacancy.create'
+]);
 Route::get('/employer/candidates', [
     'uses' => 'Employer\VacancyController@candidates',
     'as' => 'employer.candidates'
+]);
+Route::post('/vacancy/uploadimage', [
+    'uses' => 'Employer\VacancyController@imageUpload',
+    'as' => 'employer.vacancy.imageUpload'
 ]);

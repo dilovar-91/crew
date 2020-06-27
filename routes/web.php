@@ -161,6 +161,14 @@ Route::group([
         'uses' => 'Employer\InviteController@index',
         'as'   => 'employerInvite'
     ]);
+    Route::get('vacancy/create', [
+        'uses' => 'Employer\VacancyController@create',
+        'as'   => 'employervacancycreate'
+    ]);
+    Route::get('interview/create', [
+        'uses' => 'Employer\InterviewController@create',
+        'as'   => 'employerinterviewcreate'
+    ]);
 
 
 });
