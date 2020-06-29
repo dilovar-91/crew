@@ -70,26 +70,19 @@
                             </a>
                         </li>
                         
-                        <li class="nav-main-item{{ request()->is('employer/interview/*') ? ' open' : '' }}">
-                            <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="true" href="#">
+                        <li class="nav-main-item{{ request()->is('employer/vacancies/*') ? ' open' : '' }}">
+                            <a class="nav-main-link" href="/employer/vacancies">
                                 <i class="nav-main-link-icon si si-bulb"></i>
                                 <span class="nav-main-link-name">Вакансии</span>
                             </a>
-                            <ul class="nav-main-submenu">
-                                <li class="nav-main-item">
+                            
+                        </li>
+                        <li class="nav-main-item">
                                     <a class="nav-main-link{{ request()->is('employer/interviews') ? ' active' : '' }}" href="/employer/interviews">
                                     <i class="nav-main-link-icon si si-camera"></i>     
                                     <span class="nav-main-link-name">Интервью</span>
                                     </a>
                                 </li>
-                                <li class="nav-main-item">
-                                    <a class="nav-main-link{{ request()->is('employer/invites') ? ' active' : '' }}" href="/employer/invites">
-                                    <i class="nav-main-link-icon si si-user-follow"></i>     
-                                    <span class="nav-main-link-name">Тест</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
                         <li class="nav-main-item">
                         <a class="nav-main-link{{ request()->is('employer/invite') ? ' active' : '' }}" href="/employer/invite">
                                     <i class="nav-main-link-icon si si-user-follow"></i>     
@@ -104,11 +97,11 @@
                         </li>
 
                         
-                        <li class="nav-main-heading">More</li>
+                        <li class="nav-main-heading">Язык</li>
                         <li class="nav-main-item open">
                             <a class="nav-main-link" href="/">
                                 <i class="nav-main-link-icon si si-globe"></i>
-                                <span class="nav-main-link-name">Landing</span>
+                                <span class="nav-main-link-name">Русский</span>
                             </a>
                         </li>
                     </ul>

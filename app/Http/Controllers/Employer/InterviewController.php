@@ -19,6 +19,13 @@ class InterviewController extends Controller
         return view('employer.add-interview')->with(array('user_id'=>$user_id)); 
         
     }
+
+    public function interviews()
+    {
+        $user_id = Auth::user()->id;
+        $interviews = Interview::with(['questions', 'quizzes'])->where('invite_id', $user_id)->orderBy('created_at', 'desc')->paginate(15); 
+        return view('employer.interviews')->with(array('interviews'=>$interviews));
+    }
     public function save(Request $request)
     {
         $interview = new Interview;
@@ -54,12 +61,8 @@ class InterviewController extends Controller
             ];
             }              
         }
-
-        //dd($request->quizzes);
-
         Question::insert($questions);
         Quiz::insert($quizzes);
         return response()->json($quizzes, 201);
-        
     }
 }
