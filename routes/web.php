@@ -25,7 +25,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::get('/test', 'SeamenController@test')->name('seamen.test');
+Route::get('/sailors', 'HomeController@sailors')->name('sailors');
+Route::get('/companies', 'HomeController@companies')->name('companies');
 Route::get('lang/{locale}', 'HomeController@lang');
 
 
@@ -119,6 +120,7 @@ Route::group([
         'uses' => 'SeamenController@invites',
         'as' => 'seamen.invites'
     ]);
+    
     Route::get('/feedback', [
         'uses' => 'Seamen\FeedbackController@index',
         'as' => 'seamen.feedbacks'
@@ -154,24 +156,59 @@ Route::group([
 
 });
 Route::group([
-    'prefix'=>'employer/',
+    'prefix'=>'employer',
     'middleware'=>'auth'
 ], function() {
-    Route::get('invite', [
+
+    //Главная страница работадателья
+    Route::get('/', [
+        'uses' => 'Employer\InterviewController@welcome',
+        'as' => 'employer.welcome'
+    ]);
+    Route::get('/invite', [
         'uses' => 'Employer\InviteController@index',
         'as'   => 'employerInvite'
     ]);
-    Route::get('vacancy/create', [
+    Route::get('/invite/response', [
+        'uses' => 'Employer\InviteController@response',
+        'as'   => 'employerInviteResponse'
+    ]);
+    Route::get('/vacancy/create', [
         'uses' => 'Employer\VacancyController@create',
         'as'   => 'employervacancycreate'
     ]);
-    Route::get('interviews', [
+
+    Route::get('/vacancy/edit/{id}', [
+        'uses' => 'Employer\VacancyController@edit',
+        'as'   => 'employervacancyedit'
+    ]);
+    Route::get('/vacancies', [
+        'uses' => 'Employer\VacancyController@index',
+        'as'   => 'employervacancies'
+    ]);
+    Route::get('/vacancy/detail/{id}', [
+        'uses' => 'Employer\VacancyController@detail',
+        'as'   => 'employervacancydetail'
+    ]);
+    Route::get('/interviews', [
         'uses' => 'Employer\InterviewController@interviews',
         'as'   => 'employerinterviews'
     ]);
-    Route::get('interview/create', [
+    Route::get('/interview/create', [
         'uses' => 'Employer\InterviewController@create',
         'as'   => 'employerinterviewcreate'
+    ]);
+    Route::get('/interview/detail/{id}', [
+        'uses' => 'Employer\InterviewController@detail',
+        'as'   => 'employerinterviewdetail'
+    ]);
+    Route::get('/interview/delete/{id}', [
+        'uses' => 'Employer\InterviewController@delete',
+        'as'   => 'employerinterviewdetail'
+    ]);
+    Route::get('/interview/edit/{id}', [
+        'uses' => 'Employer\InterviewController@edit',
+        'as'   => 'employerinterviewedit'
     ]);
 
 

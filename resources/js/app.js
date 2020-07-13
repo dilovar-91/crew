@@ -70,7 +70,9 @@ Vue.component('interview-record', require('./components/interview/RecordComponen
 //Employer Components
 Vue.component('invite-candidate', require('./components/employer/InviteCandidate.vue').default);
 Vue.component('add-vacancy', require('./components/employer/AddVacancy.vue').default);
+Vue.component('edit-vacancy', require('./components/employer/EditVacancy.vue').default);
 Vue.component('add-interview', require('./components/employer/AddInterview.vue').default);
+Vue.component('edit-interview', require('./components/employer/EditInterview.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

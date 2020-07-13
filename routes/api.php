@@ -131,6 +131,18 @@ Route::post('/employer/interview/create', [
     'uses' => 'Employer\InterviewController@save',
     'as' => 'employer.interview.create'
 ]);
+Route::post('/employer/interview/update', [
+    'uses' => 'Employer\InterviewController@update',
+    'as' => 'employer.interview.update'
+]);
+Route::post('/employer/interview/delete', [
+    'uses' => 'Employer\InterviewController@delete',
+    'as' => 'employer.interview.delete'
+]);
+Route::get('/employer/interview/get/{interview_id}', [
+    'uses' => 'Employer\InterviewController@getInterview',
+    'as' => 'employer.interview.get'
+]);
 Route::get('/employer/vacancies/{user_id}', [
     'uses' => 'Employer\VacancyController@vacancies',
     'as' => 'employer.vacancies'
@@ -138,6 +150,10 @@ Route::get('/employer/vacancies/{user_id}', [
 Route::post('/employer/vacancy/create', [
     'uses' => 'Employer\VacancyController@save',
     'as' => 'employer.vacancy.create'
+]);
+Route::post('/employer/vacancy/update', [
+    'uses' => 'Employer\VacancyController@update',
+    'as' => 'employer.vacancy.update'
 ]);
 Route::get('/employer/candidates', [
     'uses' => 'Employer\VacancyController@candidates',

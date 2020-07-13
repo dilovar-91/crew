@@ -90,7 +90,7 @@
                         </a>
                         </li>
                         <li class="nav-main-item">
-                        <a class="nav-main-link{{ request()->is('employer/response') ? ' active' : '' }}" href="/employer/response">
+                        <a class="nav-main-link{{ request()->is('employer/invite/response') ? ' active' : '' }}" href="/employer/invite/response">
                                     <i class="nav-main-link-icon si si-user-follow"></i>     
                                     <span class="nav-main-link-name">Отклики</span>
                         </a>
@@ -432,7 +432,21 @@
         <!-- OneUI Core JS -->
         <script src="{{ mix('js/oneui.app.js') }}"></script>
 
-        
+        <script type="text/javascript">
+     function deleteData(id)
+     {
+         var id = id;
+         var url = '/employer/interview/delete/'+id;
+         url = url.replace(':id', id);
+         $("#deleteForm").attr('action', url);
+     }
+
+     function formSubmit()
+     {
+         $("#deleteForm").submit();
+     }
+  </script>
+
 
         @yield('js_after')
     </body>

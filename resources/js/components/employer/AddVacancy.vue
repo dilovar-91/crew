@@ -131,6 +131,7 @@ export default {
                 ).then(res => {                    
                     loader.hide()
                     this.$swal('Спасибо!', 'Вакансия успешно добавлена!', 'success');
+                    setTimeout(window.location.replace("/employer/vacancies"), 1000);
                 }).catch(err => {
                     loader.hide()
                     console.log(err)

@@ -16,6 +16,41 @@ class VacancyController extends Controller
         return view('employer.add-vacancy')->with(array('user_id'=>$user_id)); 
         
     }
+
+    public function update(Request $request)
+    {
+        //dd($request);
+        
+        $vacancy_id = $request->vacancy_id;
+        $vacancy = Vacancy::find($vacancy_id);
+        $vacancy->title = $request->title;
+        $vacancy->user_id = $request->user_id;
+        $vacancy->pic = $request->image;
+        $vacancy->description = $request->content;
+        $vacancy->videointerview = $request->videointerview;
+        $vacancy->test = $request->test;
+        $vacancy->save();         
+        return response()->json($vacancy, 201);
+    }
+    public function index()
+    {
+        $user_id = Auth::user()->id;
+        $vacancies = Vacancy::where('user_id', $user_id)->paginate(12);
+        return view('employer.vacancies')->with(array('user_id'=>$user_id, 'vacancies'=>$vacancies)); 
+        
+    }
+
+    public function detail($id)
+    {
+        $vacancy = Vacancy::where('id', $id)->first();
+        //dd($interview);
+        return view('employer.vacancy-detail')->with(array('vacancy'=>$vacancy));
+    }
+    public function edit($id)
+    {
+        $vacancy = Vacancy::where('id', $id)->first();        
+        return view('employer.vacancy-edit')->with(array('vacancy'=>$vacancy));
+    }
     public function vacancies($user_id)
     {
         $vacancies = Vacancy::where('user_id', $user_id)->get();

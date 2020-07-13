@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\Interview;
 use App\Models\User;
 use App\Models\Invite;
+use App\Models\Feedback;
 use Illuminate\Support\Facades\Auth;
 use App\Mail\NewUserNotification;
 use Illuminate\Support\Facades\Mail;
@@ -49,6 +50,15 @@ class InviteController extends Controller
 
         //$result  = Invite::insert($data);
         return response()->json("Sended", 201);
+    }
+
+
+    public function response()
+    {
+        $user_id = Auth::user()->id;
+        $feedback = Feedback::with(['invite.interview', 'invite.inviter'])->where('user_id', 15)->get();
+        //dd($feedback);
+        return view('employer.response')->with(array('feedback'=>$feedback)); 
     }
 
 

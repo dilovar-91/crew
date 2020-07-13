@@ -43,12 +43,16 @@
 
     <div class="content">
     <div class="block">
-        <div class="block-header block-header-default">
-            <h3 class="block-title">All Products</h3>
-            
+        
+       
+        <div  class="block-header block-header-default">
+        <h3  class="block-title">Список</h3>
+        <div  class="block-options">
+            <a  href="/employer/interview/create" class="btn-block-option mr-2"><i data-v-5c41ed51="" class="fa fa-plus mr-1"></i> Добавить интнервью</a>
+            <button  type="button" data-toggle="block-option" data-action="fullscreen_toggle" class="btn-block-option"><i class="si si-size-fullscreen"></i></button>
         </div>
-        <div class="block-content">
-            
+    </div>
+    <div class="block-content">
             <div class="table-responsive">
                 <table class="table table-borderless table-striped table-vcenter">
                     <thead>
@@ -72,7 +76,7 @@
                                 </a>
                             </td>
                             <td class="d-md-table-cell font-size-sm">
-                                <a href="/employer/interview/{{$interviews[$i]->id}}">{{$interviews[$i]->title}}</a>
+                                <a href="/employer/interview/detail/{{$interviews[$i]->id}}">{{$interviews[$i]->title}}</a>
                             </td>
                             <td class="d-sm-table-cell text-center font-size-sm">{{$interviews[$i]->created_at->format('d/m/Y')}}</td>
                             <td>
@@ -85,15 +89,15 @@
                                 <strong>{{count($interviews[$i]->quizzes)}}</strong>
                             </td>
                             <td class="text-center font-size-sm">
-                                <a class="btn btn-sm btn-alt-secondary js-tooltip-enabled" href="/employer/interview/{{$interviews[$i]->id}}" data-toggle="tooltip" title="" data-original-title="View">
+                                <a class="btn btn-sm btn-alt-secondary js-tooltip-enabled" href="/employer/interview/detail/{{$interviews[$i]->id}}" data-toggle="tooltip" title="" data-original-title="View">
                                     <i class="fa fa-fw fa-eye"></i>
                                 </a>
                                 <a class="btn btn-sm btn-alt-secondary js-tooltip-enabled" href="/employer/interview/edit/{{$interviews[$i]->id}}" data-toggle="tooltip" title="" data-original-title="View">
                                     <i class="fa fa-fw fa-pen"></i>
-                                </a>
-                                <a class="btn btn-sm btn-alt-danger js-tooltip-enabled" href="/employer/interview/delete/{{$interviews[$i]->id}}" data-toggle="tooltip" title="" data-original-title="Delete">
-                                    <i class="fa fa-fw fa-times text-danger"></i>
-                                </a>
+                                </a>                              
+
+                               <a href="javascript:;" data-toggle="modal" onclick="deleteData({{$interviews[$i]->id}})" 
+data-target="#DeleteModal" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Delete</a>
                             </td>
                         </tr>
                         @endfor
@@ -107,5 +111,32 @@
     </div>
     </div>
 
+    <div id="DeleteModal" class="modal fade " role="dialog">
+   <div class="modal-dialog ">
+     <!-- Modal content-->
+     <form action="" id="deleteForm" method="get">
+         <div class="modal-content">
+             <div class="modal-header bg-primary">
+                 
+                 <h4 class="modal-title text-white">DELETE CONFIRMATION</h4>
+                 <button type="button" class="close" data-dismiss="modal">&times;</button>
+             </div>
+             <div class="modal-body">
+                
+                 
+                 <p class="text-center">Are You Sure Want To Delete ?</p>
+             </div>
+             <div class="modal-footer">
+                 <center>
+                     <button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button>
+                     <button type="submit" name="" class="btn btn-danger" data-dismiss="modal" onclick="formSubmit()">Yes, Delete</button>
+                 </center>
+             </div>
+         </div>
+     </form>
+   </div>
+  </div>
+
+ 
     
 @endsection

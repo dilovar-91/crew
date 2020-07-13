@@ -3,6 +3,8 @@
 <div class="block">
        
         <div class="block-content block-content-full">
+
+            
             <form action="be_forms_elements.html" method="POST" enctype="multipart/form-data" onsubmit="return false;">
                 <div class="row push">
                     
@@ -10,13 +12,16 @@
                         <div class="form-group" >
                             <label for="example-text-input">Выберите вакансию</label>
                             
-                            <select class="custom-select" id="example-select-custom" name="example-select-custom" v-model="vacancy">
+                            <select class="custom-select mb-2" id="example-select-custom" name="example-select-custom" v-model="vacancy">
                                 <option value="0" >Please select</option>
                                 <option v-for="vacancy in vacancies" :value="{ id: vacancy.id, title: vacancy.title }" :key="vacancy.id">{{vacancy.title}}</option>
                                 
                             </select>
+                        <div class="text-danger mb-2" v-if="!$v.vacancy.mustBeSelected">Vacancy is required.</div>
                         
-                        <div class="text-danger" v-if="!$v.vacancy.mustBeSelected">Vacancy is required.</div>
+                        <ckeditor :editor="editor" v-model="description" :config="editorConfig"></ckeditor>
+                         <div class="text-danger mb-1" v-if="!$v.description.required">Content is required.</div>
+                            <div class="text-danger mb-1" v-if="!$v.description.minLength">Content must be at least {{ $v.editorData.$params.minLength.min }} characters.</div>    
                         
                         </div>
                         
@@ -122,20 +127,22 @@ export default {
         user_id: Number
     },
     components: {
-    vueDropzone: vue2Dropzone
-  },
+        vueDropzone: vue2Dropzone
+    },
     data() {
         return {
             activetab: 1,
             title: '',
-            vacancy: 240,
+            vacancy: '',
+            
             vacancies: [],            
             questions: [],
             question:{
               text:'',
-              time:'',
+              time: 240,
               pripare_time:'',              
           },
+          
             quizzes: [],
             quiz:{
               text:'',
@@ -145,6 +152,12 @@ export default {
               option4:'',
               correct_answer:''                          
           },
+          description: '',
+          editor: ClassicEditor,
+                editorData: '<p>Описание интервью</p>',
+                editorConfig: {
+                    // The configuration of the editor.
+                },
 
           
 
@@ -165,6 +178,10 @@ export default {
             vacancy: {                
                 required,
                 mustBeSelected
+            },            
+            description: {                
+                required,
+                minLength: minLength(10),
             },            
             questions: { 
                 minLength: minLength(3),             
@@ -206,10 +223,11 @@ export default {
                   onCancel: this.onCancel,
                   color: this.color
                 });
-            axios.post('/api/employer/interview/create', {vacancy: this.vacancy.id, title:this.vacancy.title,  user_id: this.user_id, questions: this.questions, quizzes: this.quizzes}
+            axios.post('/api/employer/interview/create', {vacancy: this.vacancy, title:this.vacancy.title, description: this.description,  user_id: this.user_id, questions: this.questions, quizzes: this.quizzes}
                 ).then(res => {                    
                     loader.hide()
                     this.$swal('Спасибо!', 'Интервью успешно добавлен!', 'success');
+                     setTimeout(window.location.replace("/employer/interviews"), 1000);
                 }).catch(err => {
                     loader.hide()
                     console.log(err)

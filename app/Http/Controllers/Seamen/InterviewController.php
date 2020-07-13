@@ -33,7 +33,7 @@ class InterviewController extends Controller
     }
     public function interview($id)
     {
-        $interview = Interview::with(['questions', 'user', 'questions.answer'])->first();        
+        $interview = Interview::with(['questions', 'user', 'questions.answer'])->where('id', $id)->first();        
         return view('seamen.interview_detail')->with(array('interview'=>$interview));
     }
     public function quiz($interview_id)
